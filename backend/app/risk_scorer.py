@@ -48,6 +48,7 @@ def compute_risk(
     news: list[NewsArticle],
     forensics: ForensicSignals,
     adverse_events: list[AdverseEvent],
+    gdelt_yearly: dict[int, int] | None = None,
 ) -> RiskBreakdown:
     contributions: dict[str, int] = {}
     notes: list[str] = []
@@ -94,9 +95,9 @@ def compute_risk(
         contributions["t3010_violations"] = 0
 
     overhead = forensics.cra_max_overhead_ratio
-    if overhead is not None and overhead > 0.5:
+    if overhead is not None and overhead > 50:
         contributions["overhead"] = 5
-        notes.append(f"high overhead ratio ({overhead:.0%})")
+        notes.append(f"high overhead ratio ({overhead:.0f}%)")
     else:
         contributions["overhead"] = 0
 
@@ -105,6 +106,22 @@ def compute_risk(
         notes.append(f"{forensics.ab_sole_source_count} Alberta sole-source contract(s)")
     else:
         contributions["ab_sole_source"] = 0
+
+    # GDELT historical-frequency layer (cap at 10 pts).
+    if gdelt_yearly:
+        peak = max(gdelt_yearly.values()) if gdelt_yearly else 0
+        if peak >= 100:
+            contributions["gdelt_spike"] = 10
+            peak_year = max(gdelt_yearly, key=lambda y: gdelt_yearly[y])
+            notes.append(f"GDELT adverse-event spike: {peak} events in {peak_year}")
+        elif peak >= 30:
+            contributions["gdelt_spike"] = 5
+        elif peak >= 5:
+            contributions["gdelt_spike"] = 3
+        else:
+            contributions["gdelt_spike"] = 0
+    else:
+        contributions["gdelt_spike"] = 0
 
     raw = sum(contributions.values())
     score = max(0, min(100, raw))
@@ -123,6 +140,7 @@ def top_flag_for(breakdown: RiskBreakdown) -> str | None:
         ("court_cases", "Court matter"),
         ("critical_news", "Critical adverse media"),
         ("cra_loop", "Circular gifting"),
+        ("gdelt_spike", "Historical adverse-event spike"),
         ("t3010_violations", "T3010 violations"),
         ("ab_sole_source", "Sole-source preference"),
         ("overhead", "High overhead"),

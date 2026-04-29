@@ -60,18 +60,43 @@ def _client() -> Anthropic | None:
 
 
 def _fallback_classify(articles: list[NewsArticle]) -> list[NewsArticle]:
-    """Keyword-based degraded classifier for when Anthropic isn't configured."""
-    keywords = {
-        "CRITICAL": ["fraud charge", "convicted", "indictment", "sanctions imposed", "raid", "criminal charges"],
-        "HIGH": ["investigation", "auditor general", "rcmp", "lawsuit", "regulator", "revoked"],
-        "MEDIUM": ["controversy", "scrutiny", "questioned", "complaint"],
+    """Keyword-based degraded classifier for when Anthropic isn't configured.
+
+    Tiers ordered most-severe first; first match wins. Matched against a
+    lower-cased concatenation of title + summary."""
+    keywords: dict[str, list[str]] = {
+        "CRITICAL": [
+            "fraud charge", "fraud charges", "indicted", "indictment",
+            "convicted", "guilty plea", "guilty of", "criminal charges",
+            "embezzlement", "embezzled", "money laundering", "bribery",
+            "sanctions imposed", "added to sanctions", "ofac",
+            "registration revoked", "charity status revoked",
+            "rcmp charges", "raid", "search warrant",
+            "ineligible for federal", "barred from", "debarred",
+            "court found", "found guilty",
+        ],
+        "HIGH": [
+            "investigation", "rcmp investigation", "rcmp", "auditor general",
+            "ag report", "ethics commissioner", "lawsuit", "sued", "litigation",
+            "regulator", "revoked", "wound down", "cease and desist",
+            "audit found", "improper", "misconduct", "conflict of interest",
+            "whistleblower", "kickback", "non-competitive contract",
+            "sole-source contract", "wrongdoing", "complaint filed",
+            "settled", "settlement",
+        ],
+        "MEDIUM": [
+            "scandal", "scandals", "controversy", "controversial", "scrutiny",
+            "criticized", "criticism", "questioned", "ethics complaint",
+            "withdrew", "withdrawn", "withdrew from", "dropped",
+            "stepped down", "resigned", "fallout", "mishandled",
+        ],
     }
     out: list[NewsArticle] = []
     for a in articles:
         text = f"{a.title or ''} {a.summary or ''}".lower()
         sev = "NOISE"
-        for tier, kws in keywords.items():
-            if any(k in text for k in kws):
+        for tier in ("CRITICAL", "HIGH", "MEDIUM"):
+            if any(k in text for k in keywords[tier]):
                 sev = tier
                 break
         out.append(a.model_copy(update={"severity": sev, "category": "auto"}))

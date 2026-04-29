@@ -165,6 +165,7 @@ async def screen_profile(
         news=news,
         forensics=forensics,
         adverse_events=adverse,
+        gdelt_yearly=gdelt_yearly,
     )
 
     briefing = await author_briefing_memo(

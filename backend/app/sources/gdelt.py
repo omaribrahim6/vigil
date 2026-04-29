@@ -1,11 +1,9 @@
 """GDELT v2 historical adverse-mention frequency, queried via the BigQuery public
-dataset `gdelt-bq.gdeltv2.events` (no extra key — uses gcloud ADC).
+GKG dataset `gdelt-bq.gdeltv2.gkg_partitioned`.
 
-Yields a yearly count of events whose Actor1Name or Actor2Name matches the org
-AND whose V2Themes include corruption/fraud/scandal/regulatory tokens. The
-earliest such event date drives the timeline's 'first adverse signal' annotation.
-
-We bound SQLDATE to >= 20100101 to keep scan size sensible."""
+GKG (Global Knowledge Graph) carries `V2Organizations`, `V2Persons`, and
+`V2Themes` — the right surfaces for org-level adverse-event detection. We bound
+DATE to >= 20100101 to keep scan size sensible. No extra key — uses gcloud ADC."""
 from __future__ import annotations
 
 import logging
@@ -24,7 +22,9 @@ ADVERSE_THEME_TOKENS = [
     "TRIAL",
     "BANKRUPTCY",
     "TAX_FNCACT_FRAUDSTER",
-    "WB_2462_REGULATORY_AGENCIES",
+    "REGULATORY_AGENCIES",
+    "TAX_FNCACT_INVESTIGATOR",
+    "MILITARY",
 ]
 
 
@@ -32,7 +32,7 @@ def _name_filter(names: list[str]) -> tuple[str, list[bigquery.ScalarQueryParame
     parts: list[str] = []
     params: list[bigquery.ScalarQueryParameter] = []
     for i, n in enumerate(names):
-        parts.append(f"LOWER(Actor1Name) LIKE @n{i} OR LOWER(Actor2Name) LIKE @n{i}")
+        parts.append(f"LOWER(V2Organizations) LIKE @n{i}")
         params.append(bigquery.ScalarQueryParameter(f"n{i}", "STRING", f"%{n.lower()}%"))
     return "(" + " OR ".join(parts) + ")", params
 
@@ -42,17 +42,18 @@ def _theme_filter() -> str:
 
 
 async def fetch_yearly_and_first(names: list[str]) -> tuple[dict[int, int], date | None]:
-    """Returns (yearly_counts, earliest_adverse_date). Both empty/None when the
-    query returns no rows or fails."""
+    """Returns (yearly_counts, earliest_adverse_date). Both empty/None on no
+    rows or any error."""
     names = [n for n in names if n][:5]
     if not names:
         return {}, None
     name_clause, name_params = _name_filter(names)
     sql = f"""
     WITH adverse AS (
-      SELECT SAFE.PARSE_DATE('%Y%m%d', CAST(SQLDATE AS STRING)) AS dt
-      FROM `gdelt-bq.gdeltv2.events`
-      WHERE SQLDATE >= 20100101
+      SELECT SAFE.PARSE_DATE('%Y%m%d', SUBSTR(CAST(DATE AS STRING), 1, 8)) AS dt
+      FROM `gdelt-bq.gdeltv2.gkg_partitioned`
+      WHERE _PARTITIONTIME >= TIMESTAMP("2010-01-01")
+        AND DATE >= 20100101000000
         AND {name_clause}
         AND {_theme_filter()}
     )
@@ -72,7 +73,7 @@ async def fetch_yearly_and_first(names: list[str]) -> tuple[dict[int, int], date
             job_config=bigquery.QueryJobConfig(query_parameters=name_params),
         )
         rows = list(job)
-    except Exception as e:  # noqa: BLE001 - any BQ error degrades gracefully
+    except Exception as e:  # noqa: BLE001
         logger.warning("GDELT query failed for %s: %s", names, e)
         return {}, None
     if not rows:
