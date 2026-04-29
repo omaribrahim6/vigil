@@ -14,8 +14,10 @@ services:
       - LETSENCRYPT_HOST=api.astrali.tech
       - VIRTUAL_PORT=8000
       - LETSENCRYPT_EMAIL=omarmgmi08@gmail.com
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/gcp-credentials.json
     volumes:
       - ./cache:/app/cache
+      - ./gcp-credentials.json:/app/gcp-credentials.json:ro
     networks:
       - webnet
 
