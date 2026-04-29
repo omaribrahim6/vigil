@@ -1,0 +1,388 @@
+{
+  "org": {
+    "id": "adhoc-atkinsrealis",
+    "canonical_name": "AtkinsRealis",
+    "aliases": [],
+    "bn_root": null,
+    "entity_type": null,
+    "province": null,
+    "city": null,
+    "fed_total": null,
+    "fed_grant_count": null,
+    "fed_top_departments": [],
+    "cra_designation": null,
+    "cra_category": null,
+    "cra_registration_date": null,
+    "ab_total": null,
+    "ab_payment_count": null,
+    "ab_ministries": [],
+    "dataset_sources": []
+  },
+  "risk": {
+    "score": 13,
+    "tier": "GREEN",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 5,
+      "high_news": 10,
+      "recency": 0,
+      "cra_loop": 0,
+      "t3010_violations": 0,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 3,
+      "remediation_dampening": -5
+    },
+    "notes": [
+      "1 CRITICAL news article(s) — 3 are >5y old (down-weighted)",
+      "Remediation dampening x0.70 (2 recent positive-integrity signal(s))",
+      "Post-remediation: historic adverse signals are documented as addressed."
+    ]
+  },
+  "timeline_funding": [],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": "2019-01-01",
+      "title": "AtkinsRealis, Two Former Executives Hit With Class Action Lawsuit Over Alleged Disclosure Failures -- Update - MarketWatch",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Class action lawsuit alleging AtkinsRealis (formerly SNC-Lavalin) and two former executives misled investors about business problems including a $346M loss on a Chilean mining contract and collapse of Saudi Arabia business prospects in 2018-2019.",
+      "url": "https://www.marketwatch.com/story/atkinsrealis-two-former-executives-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-update-0aeda6c5",
+      "confidence": 0.85,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2019-01-01",
+      "title": "AtkinsRéalis | The Canadian Encyclopedia",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "SNC-Lavalin pleaded guilty to fraud in 2019 in connection with past activity in Libya involving payments to associates of dictator Muammar Gaddafi; RCMP charged former executives with fraud and bribing foreign officials.",
+      "url": "https://www.thecanadianencyclopedia.ca/en/article/snc-lavalin",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2022-01-01",
+      "title": "Former SNC-Lavalin exec sentenced to prison in bridge bribery case",
+      "severity": "HIGH",
+      "category": "criminal_charges",
+      "summary": "Former SNC-Lavalin executive sentenced to prison in bridge bribery case; company agreed in 2022 to pay Quebec nearly $30 million via deferred prosecution agreement to settle criminal bribery charges from Jacques Cartier Bridge work.",
+      "url": "https://financialpost.com/fp-finance/snc-lavalin-executive-prison-bridge-bribery",
+      "confidence": 0.88,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2019-01-01",
+      "title": "AtkinsRealis Hit With Class Action Lawsuit Over Alleged Disclosure Failures - MarketWatch",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Class action lawsuit alleging SNC-Lavalin failed to disclose a $346M loss on Chilean mining contract and Saudi Arabia business collapse until January-February 2019, causing $2.8B drop in market value.",
+      "url": "https://www.marketwatch.com/story/atkinsrealis-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-5e1f56c3",
+      "confidence": 0.85,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "AtkinsRealis, Two Former Executives Hit With Class Action Lawsuit Over Alleged Disclosure Failures -- Update - MarketWatch",
+      "url": "https://www.marketwatch.com/story/atkinsrealis-two-former-executives-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-update-0aeda6c5",
+      "source_name": "marketwatch.com",
+      "published_at": "2019-01-01",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Class action lawsuit alleging AtkinsRealis (formerly SNC-Lavalin) and two former executives misled investors about business problems including a $346M loss on a Chilean mining contract and collapse of Saudi Arabia business prospects in 2018-2019.",
+      "confidence": 0.85,
+      "is_remediation": false,
+      "is_stale": true,
+      "age_years": 7.3
+    },
+    {
+      "title": "AtkinsRéalis | The Canadian Encyclopedia",
+      "url": "https://www.thecanadianencyclopedia.ca/en/article/snc-lavalin",
+      "source_name": "thecanadianencyclopedia.ca",
+      "published_at": "2019-01-01",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "SNC-Lavalin pleaded guilty to fraud in 2019 in connection with past activity in Libya involving payments to associates of dictator Muammar Gaddafi; RCMP charged former executives with fraud and bribing foreign officials.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": true,
+      "age_years": 7.3
+    },
+    {
+      "title": "[PDF] Our integrity journey - Atkins Realis",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/documents/integrity/integrity-journey_en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": "2022-01-01",
+      "severity": "MEDIUM",
+      "category": "remediation",
+      "summary": "AtkinsRealis reached remediation agreement in 2022 for charges related to 1997-2004 Jacques Cartier Bridge project, signed administrative agreement with Public Services Canada, received early lifting of World Bank sanctions in 2021, changed board and leadership, and earned Compliance Leader Verification from Ethisphere Institute.",
+      "confidence": 0.9,
+      "is_remediation": true,
+      "is_stale": false,
+      "age_years": 4.3
+    },
+    {
+      "title": "Former SNC-Lavalin exec sentenced to prison in bridge bribery case",
+      "url": "https://financialpost.com/fp-finance/snc-lavalin-executive-prison-bridge-bribery",
+      "source_name": "financialpost.com",
+      "published_at": "2022-01-01",
+      "severity": "HIGH",
+      "category": "criminal_charges",
+      "summary": "Former SNC-Lavalin executive sentenced to prison in bridge bribery case; company agreed in 2022 to pay Quebec nearly $30 million via deferred prosecution agreement to settle criminal bribery charges from Jacques Cartier Bridge work.",
+      "confidence": 0.88,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 4.3
+    },
+    {
+      "title": "Integrity Highlights",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/download-centre/en/policy/integrity-highlights-en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Corporate policy document outlining AtkinsRealis anti-corruption commitments, compliance procedures, and integrity investigation processes.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    },
+    {
+      "title": "Code of Conduct 2026",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/documents/policies/code-of-conduct-en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Corporate Code of Conduct document describing internal investigation procedures, confidentiality requirements, and cooperation expectations for employees.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    },
+    {
+      "title": "AtkinsRealis Hit With Class Action Lawsuit Over Alleged Disclosure Failures - MarketWatch",
+      "url": "https://www.marketwatch.com/story/atkinsrealis-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-5e1f56c3",
+      "source_name": "marketwatch.com",
+      "published_at": "2019-01-01",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Class action lawsuit alleging SNC-Lavalin failed to disclose a $346M loss on Chilean mining contract and Saudi Arabia business collapse until January-February 2019, causing $2.8B drop in market value.",
+      "confidence": 0.85,
+      "is_remediation": false,
+      "is_stale": true,
+      "age_years": 7.3
+    },
+    {
+      "title": "[PDF] Management Proxy Circular - Atkins Realis",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/investor-briefcase/en/2026/atkinsrealis-proxy-circular-2026-en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Management proxy circular discussing auditor evaluation process and recommending reappointment of Deloitte LLP as company auditor.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    },
+    {
+      "title": "Integrity – AtkinsRéalis",
+      "url": "https://www.atkinsrealis.com/en/site-services/ethics-compliance",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Description of AtkinsRealis Integrity Ambassador Program designed to expand integrity awareness, provide employee support, and promote ethical business practices.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    },
+    {
+      "title": "Integrity Highlights",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/download-centre/en/policy/integrity-highlights-en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Corporate document outlining AtkinsRealis Integrity Program structure including prevention, detection, and response elements with investigation processes.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    },
+    {
+      "title": "AtkinsRéalis recognized as one of the 2026 World's Most Ethical Companies® by Ethisphere",
+      "url": "https://finance.yahoo.com/news/atkinsr-alis-recognized-one-2026-114500910.html",
+      "source_name": "finance.yahoo.com",
+      "published_at": "2026-01-01",
+      "severity": "NOISE",
+      "category": "remediation",
+      "summary": "AtkinsRealis recognized as one of the 2026 World's Most Ethical Companies by Ethisphere, reflecting robust integrity function, comprehensive due diligence controls, and transparent accountability culture.",
+      "confidence": 0.92,
+      "is_remediation": true,
+      "is_stale": false,
+      "age_years": 0.3
+    },
+    {
+      "title": "Ethisphere Recognizes AtkinsRéalis with Compliance Leader Verification™ - Ethisphere | Good. Smart. Business. Profit.®",
+      "url": "https://ethisphere.com/press-release/compliance-leader-verification-atkinsrealis-2025/",
+      "source_name": "ethisphere.com",
+      "published_at": "2025-01-01",
+      "severity": "NOISE",
+      "category": "remediation",
+      "summary": "Ethisphere grants AtkinsRealis Compliance Leader Verification for 2025-2027 after rigorous review of ethics and compliance program, affirming world-class integrity standards.",
+      "confidence": 0.92,
+      "is_remediation": true,
+      "is_stale": false,
+      "age_years": 1.3
+    },
+    {
+      "title": "Code of Conduct 2026",
+      "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/documents/policies/code-of-conduct-en.pdf",
+      "source_name": "atkinsrealis.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Code of Conduct document outlining employee duties to report suspected misconduct, investigation cooperation requirements, and available reporting resources.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": null,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": null,
+    "cra_loop_hop_breakdown": null,
+    "cra_t3010_violation_count": null,
+    "cra_t3010_violation_examples": null,
+    "cra_max_overhead_ratio": null,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": null
+  },
+  "related_entities": [],
+  "gdelt_yearly": {
+    "2024": 5,
+    "2025": 14,
+    "2026": 2
+  },
+  "first_adverse_signal": "2019-01-01",
+  "briefing_memo": "AtkinsRealis has received federal funding, though the total amount is not specified in available records. The company pleaded guilty to fraud in 2019 related to payments to associates of Libyan dictator Muammar Gaddafi, and in 2022 paid Quebec nearly $30 million via deferred prosecution agreement to settle criminal bribery charges stemming from 1997-2004 Jacques Cartier Bridge work. The company has since undergone substantial remediation: World Bank sanctions were lifted early in 2021, board and leadership were changed, and AtkinsRealis earned Compliance Leader Verification from Ethisphere Institute in 2025 and recognition as one of the 2026 World's Most Ethical Companies. Given the completed settlements, leadership renewal, and recent third-party integrity certifications, federal contracting may proceed with standard due diligence and enhanced monitoring protocols for high-value engagements.",
+  "actions": [
+    {
+      "urgency": "monitor",
+      "title": "Review historical integrity incidents and verify ongoing compliance framework",
+      "rationale": "Organization shows one CRITICAL and multiple HIGH severity news items including a 2022 executive prison sentence for bribery, but has documented substantial remediation including Ethisphere World's Most Ethical Companies recognition (2026), Compliance Leader Verification (2025), and a published integrity journey framework (2022).",
+      "evidence": [
+        "CRITICAL news item",
+        "3 HIGH severity news",
+        "2022 executive bribery conviction",
+        "Ethisphere World's Most Ethical 2026",
+        "Compliance Leader Verification 2025"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Conduct enhanced due diligence on governance and anti-corruption controls for future contracts",
+      "rationale": "Historic criminal conduct by former executives warrants verification that current leadership and compliance systems are distinct from the legacy environment that produced criminal behavior, despite strong remediation signals.",
+      "evidence": [
+        "Former executive prison sentence",
+        "Class action lawsuit 2019",
+        "Recent third-party ethics certifications"
+      ]
+    }
+  ],
+  "remediation": {
+    "signal_count": 3,
+    "recent_signal_count": 2,
+    "most_recent_at": "2026-01-01",
+    "summary": "[PDF] Our integrity journey - Atkins Realis (2022-01-01); AtkinsRéalis recognized as one of the 2026 World's Most Ethical Companies® by Ethisphere (2026-01-01); Ethisphere Recognizes AtkinsRéalis with Compliance Leader Verification™ - Ethisphere | Good. Smart. Business. Profit.® (2025-01-01)",
+    "dampening_factor": 0.45,
+    "articles": [
+      {
+        "title": "[PDF] Our integrity journey - Atkins Realis",
+        "url": "https://www.atkinsrealis.com/~/media/Files/A/atkinsrealis/documents/integrity/integrity-journey_en.pdf",
+        "source_name": "atkinsrealis.com",
+        "published_at": "2022-01-01",
+        "severity": "MEDIUM",
+        "category": "remediation",
+        "summary": "AtkinsRealis reached remediation agreement in 2022 for charges related to 1997-2004 Jacques Cartier Bridge project, signed administrative agreement with Public Services Canada, received early lifting of World Bank sanctions in 2021, changed board and leadership, and earned Compliance Leader Verification from Ethisphere Institute.",
+        "confidence": 0.9,
+        "is_remediation": true,
+        "is_stale": false,
+        "age_years": 4.3
+      },
+      {
+        "title": "AtkinsRéalis recognized as one of the 2026 World's Most Ethical Companies® by Ethisphere",
+        "url": "https://finance.yahoo.com/news/atkinsr-alis-recognized-one-2026-114500910.html",
+        "source_name": "finance.yahoo.com",
+        "published_at": "2026-01-01",
+        "severity": "NOISE",
+        "category": "remediation",
+        "summary": "AtkinsRealis recognized as one of the 2026 World's Most Ethical Companies by Ethisphere, reflecting robust integrity function, comprehensive due diligence controls, and transparent accountability culture.",
+        "confidence": 0.92,
+        "is_remediation": true,
+        "is_stale": false,
+        "age_years": 0.3
+      },
+      {
+        "title": "Ethisphere Recognizes AtkinsRéalis with Compliance Leader Verification™ - Ethisphere | Good. Smart. Business. Profit.®",
+        "url": "https://ethisphere.com/press-release/compliance-leader-verification-atkinsrealis-2025/",
+        "source_name": "ethisphere.com",
+        "published_at": "2025-01-01",
+        "severity": "NOISE",
+        "category": "remediation",
+        "summary": "Ethisphere grants AtkinsRealis Compliance Leader Verification for 2025-2027 after rigorous review of ethics and compliance program, affirming world-class integrity standards.",
+        "confidence": 0.92,
+        "is_remediation": true,
+        "is_stale": false,
+        "age_years": 1.3
+      }
+    ]
+  },
+  "provenance": {
+    "bigquery_rows": [],
+    "external_urls": [
+      {
+        "label": "marketwatch.com: AtkinsRealis, Two Former Executives Hit With Class Action Lawsuit Over Alleged D",
+        "url": "https://www.marketwatch.com/story/atkinsrealis-two-former-executives-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-update-0aeda6c5"
+      },
+      {
+        "label": "thecanadianencyclopedia.ca: AtkinsRéalis | The Canadian Encyclopedia",
+        "url": "https://www.thecanadianencyclopedia.ca/en/article/snc-lavalin"
+      },
+      {
+        "label": "financialpost.com: Former SNC-Lavalin exec sentenced to prison in bridge bribery case",
+        "url": "https://financialpost.com/fp-finance/snc-lavalin-executive-prison-bridge-bribery"
+      },
+      {
+        "label": "marketwatch.com: AtkinsRealis Hit With Class Action Lawsuit Over Alleged Disclosure Failures - Ma",
+        "url": "https://www.marketwatch.com/story/atkinsrealis-hit-with-class-action-lawsuit-over-alleged-disclosure-failures-5e1f56c3"
+      }
+    ]
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily_adverse",
+    "tavily_remediation",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T16:35:38.863589"
+}

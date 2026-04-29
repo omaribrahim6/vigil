@@ -27,6 +27,7 @@ from .models import (
     ForensicSignals,
     NewsArticle,
     OrgProfile,
+    RemediationContext,
     SanctionsHit,
     CourtCase,
 )
@@ -37,16 +38,27 @@ CLASSIFY_SYSTEM = """You classify news articles for adverse-media screening of
 organizations that receive Canadian government funding. Distinguish genuine
 red flags (fraud charges, criminal investigations, sanctions, regulatory
 enforcement actions, safety incidents, court findings) from noise (political
-controversy, critical op-eds, opinion pieces, unrelated mentions).
+controversy, critical op-eds, opinion pieces, unrelated mentions) AND from
+remediation signals (settlements completed, leadership turnover that
+addressed past issues, deferred-prosecution agreements concluded, integrity
+awards/certifications, monitorship concluded, rebrands tied to compliance
+reform, new ethics programs).
 
 For each article return:
 - classification: CRITICAL | HIGH | MEDIUM | NOISE
 - category: fraud | sanctions | criminal_charges | regulatory | safety |
-            political_opinion | business_news | unrelated
+            political_opinion | business_news | unrelated | remediation
 - event_date: YYYY-MM-DD or null
-- allegation_summary: one sentence describing the alleged red flag
+- allegation_summary: one sentence describing the alleged red flag (or, for
+                      remediation, the positive action taken)
 - source_credibility: high | medium | low
 - confidence: 0.0 to 1.0
+- is_remediation: true if the article describes a positive integrity action
+                  the entity has taken (e.g. completed DPA, paid settlement,
+                  fired implicated leadership, won integrity award, certified
+                  to ISO 37001 / Canadian government Integrity Regime, etc.).
+                  Articles describing the *original wrongdoing* are NOT
+                  remediation, even if remediation is mentioned in passing.
 
 Precision over recall. When in doubt, classify as NOISE."""
 
@@ -55,11 +67,17 @@ BRIEFING_SYSTEM = """You write Minister-ready briefing memos. Tone: factual,
 crisp, government-grade, no political colouring. Use exactly 4 sentences.
 
 Sentence 1: Identify the entity and total federal funding to date.
-Sentence 2: State the highest-severity adverse signal, citing the source.
-Sentence 3: Add at most one supporting forensic or court signal.
-Sentence 4: State the recommendation (e.g., "elevated due-diligence review
-recommended before next disbursement", "no concerning signals detected", or
-similar). Reference uncertainty where it exists."""
+Sentence 2: State the highest-severity adverse signal, citing the source AND
+            the date / how recent it is. Distinguish current-state signals
+            (active sanctions, ongoing investigations) from historic ones
+            (>5 years old, since-remediated).
+Sentence 3: If material remediation is documented (settlement completed, new
+            leadership, monitorship concluded, integrity certification),
+            state it. Otherwise, add at most one supporting forensic or
+            court signal.
+Sentence 4: State the recommendation, calibrated to the recency + remediation
+            picture. A 7-year-old conviction with a completed DPA and new
+            leadership is NOT the same risk as a current criminal charge."""
 
 
 def _client() -> Anthropic | AnthropicBedrock | None:
@@ -81,6 +99,21 @@ def _client() -> Anthropic | AnthropicBedrock | None:
 
 def _model_id() -> str:
     return SETTINGS.bedrock_model_id if SETTINGS.has_bedrock else SETTINGS.anthropic_model
+
+
+REMEDIATION_KEYWORDS = [
+    "deferred prosecution agreement", "remediation agreement",
+    "settlement reached", "settled with", "paid the penalty",
+    "monitorship concluded", "monitorship completed", "monitor lifted",
+    "integrity award", "ethics certification", "iso 37001",
+    "compliance certified", "new ceo", "new chief executive",
+    "fired", "terminated", "leadership change", "removed from",
+    "code of conduct", "ethics program", "compliance program",
+    "rebranded as", "renamed to", "rebrand",
+    "voluntary disclosure", "self-disclosed", "cleared by",
+    "exonerated", "charges withdrawn", "charges dropped",
+    "culture change",
+]
 
 
 def _fallback_classify(articles: list[NewsArticle], name: str = "") -> list[NewsArticle]:
@@ -136,12 +169,18 @@ def _fallback_classify(articles: list[NewsArticle], name: str = "") -> list[News
             sum(1 for t in name_tokens if t in text) >= max(1, len(name_tokens) // 2)
         )
         sev = "NOISE"
-        if mentions_org:
+        is_rem = a.is_remediation or any(k in text for k in REMEDIATION_KEYWORDS)
+        if mentions_org and not is_rem:
             for tier in ("CRITICAL", "HIGH", "MEDIUM"):
                 if any(k in text for k in keywords[tier]):
                     sev = tier
                     break
-        out.append(a.model_copy(update={"severity": sev, "category": "auto"}))
+        category = "remediation" if is_rem else "auto"
+        out.append(a.model_copy(update={
+            "severity": sev,
+            "category": category,
+            "is_remediation": is_rem,
+        }))
     return out
 
 
@@ -159,6 +198,7 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
             "url": a.url,
             "source": a.source_name,
             "content": (a.summary or "")[:1500],
+            "from_remediation_query": a.is_remediation,
         }
         for i, a in enumerate(articles)
     ]
@@ -167,12 +207,20 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         f"Articles to classify (JSON):\n{json.dumps(payload, ensure_ascii=False)}\n\n"
         "Return ONLY a JSON array; one object per article in the same order, with keys: "
         "index, classification, category, event_date, allegation_summary, "
-        "source_credibility, confidence.\n\n"
+        "source_credibility, confidence, is_remediation.\n\n"
         "For event_date: extract the date the alleged event/decision occurred from "
         "the article body. Use YYYY-MM-DD. If multiple dates are present, use the "
         "primary event date (when the action took place). The URL may contain a "
         "date too (e.g. /2024/11/title or /article-name-2024). Use null only if "
-        "no date can be reasonably inferred."
+        "no date can be reasonably inferred.\n\n"
+        "For is_remediation: true ONLY when the article documents a corrective "
+        "action the entity has TAKEN (settlement paid, leadership change to "
+        "address compliance, monitorship concluded, integrity award won, ethics "
+        "certification, charges dropped/withdrawn after compliance). Articles "
+        "describing the original wrongdoing — even when remediation is mentioned "
+        "in passing — are NOT remediation. The `from_remediation_query` field "
+        "tells you the article came from a remediation-keyword query but you "
+        "must still verify the content."
     )
     try:
         msg = client.messages.create(
@@ -201,14 +249,26 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
     for i, a in enumerate(articles):
         match = next((l for l in labels if l.get("index") == i), None)
         if not match:
-            out.append(a.model_copy(update={"severity": "NOISE", "category": "unrated"}))
+            out.append(a.model_copy(update={
+                "severity": "NOISE",
+                "category": "unrated",
+            }))
             continue
         event_date = _parse_iso(match.get("event_date"))
+        is_rem = bool(match.get("is_remediation"))
+        # If Claude flags it as remediation, the historic-adverse severity
+        # shouldn't drive the risk score. We keep `severity` as classified
+        # (it still describes the underlying event severity) but the risk
+        # scorer ignores remediation-flagged articles.
+        sev = match.get("classification") or "NOISE"
+        cat = match.get("category") or "unrated"
+        if is_rem and cat == "unrated":
+            cat = "remediation"
         out.append(
             a.model_copy(
                 update={
-                    "severity": match.get("classification") or "NOISE",
-                    "category": match.get("category") or "unrated",
+                    "severity": sev,
+                    "category": cat,
                     "summary": match.get("allegation_summary") or a.summary,
                     "published_at": a.published_at or event_date,
                     "confidence": (
@@ -216,6 +276,7 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
                         if isinstance(match.get("confidence"), (int, float))
                         else a.confidence
                     ),
+                    "is_remediation": is_rem,
                 }
             )
         )
@@ -297,6 +358,7 @@ async def author_briefing_memo(
     news: list[NewsArticle],
     forensics: ForensicSignals,
     risk_score: int,
+    remediation: RemediationContext | None = None,
 ) -> str:
     client = _client()
     if client is None:
@@ -321,7 +383,7 @@ async def author_briefing_memo(
             }
             for c in court[:5]
         ],
-        "top_news": [
+        "top_adverse_news": [
             {
                 "title": a.title,
                 "severity": a.severity,
@@ -329,9 +391,32 @@ async def author_briefing_memo(
                 "summary": a.summary,
                 "source": a.source_name,
                 "date": a.published_at.isoformat() if a.published_at else None,
+                "age_years": a.age_years,
+                "is_stale": a.is_stale,
             }
-            for a in news[:6]
+            for a in news[:6] if not a.is_remediation
         ],
+        "remediation": (
+            {
+                "signal_count": remediation.signal_count,
+                "recent_signal_count": remediation.recent_signal_count,
+                "most_recent_at": (
+                    remediation.most_recent_at.isoformat()
+                    if remediation.most_recent_at else None
+                ),
+                "summary": remediation.summary,
+                "articles": [
+                    {
+                        "title": a.title,
+                        "source": a.source_name,
+                        "date": a.published_at.isoformat() if a.published_at else None,
+                        "summary": a.summary,
+                    }
+                    for a in remediation.articles[:5]
+                ],
+            }
+            if remediation else None
+        ),
         "forensics": {
             "cra_loop_score": forensics.cra_loop_score,
             "cra_loop_score_max": 30,
@@ -379,13 +464,26 @@ Output ONLY a JSON array of 2 to 5 action objects. Each object has:
 - evidence: array of short labels for the supporting facts (e.g.
             "AG report 2024", "OpenSanctions hit", "T3010 violations")
 
-Calibration:
-- "immediate" only when there is a sanctions hit, criminal charge, ban,
-  registration revocation, or other already-confirmed adverse outcome.
+Calibration — adverse signals:
+- "immediate" only when there is an ACTIVE sanctions hit, recent (≤2y)
+  criminal charge, current ban, recent registration revocation, or other
+  already-confirmed adverse outcome that is still in-effect today.
 - "scheduled" for serious-but-not-yet-confirmed signals (active investigation,
   AG findings, multiple HIGH news, large circular-gifting score).
 - "monitor" for borderline / weak signals (mixed news, single forensic hit).
 - "none" when no concerning signals were detected.
+
+Calibration — remediation matters:
+- If material remediation has occurred (settlement paid in full, monitorship
+  concluded, leadership change addressed, integrity certification, charges
+  withdrawn), DOWNGRADE the urgency by one level — historic adverse signals
+  that have been demonstrably addressed should not warrant immediate action.
+- The remediation section of the dossier tells you what corrective steps the
+  org has taken. Reference them by name in your rationale when downgrading.
+- A historic conviction (>5y old) with no documented remediation is still
+  worth scheduling enhanced due diligence; you don't get to ignore it.
+- An active sanctions hit is current state — never downgrade past "immediate"
+  even if remediation is documented elsewhere.
 
 Tone: factual, government-grade, no political colouring."""
 
@@ -497,10 +595,12 @@ async def author_actions(
     news: list[NewsArticle],
     forensics: ForensicSignals,
     risk_score: int,
+    remediation: RemediationContext | None = None,
 ) -> list[ActionItem]:
     client = _client()
     if client is None:
         return _fallback_actions(profile, sanctions, court, news, forensics, risk_score)
+    adverse_news = [a for a in news if not a.is_remediation]
     context = {
         "name": profile.canonical_name,
         "fed_total": profile.fed_total,
@@ -513,14 +613,41 @@ async def author_actions(
         "court_case_count": len(court),
         "court_summary": [{"citation": c.citation, "title": c.title} for c in court[:3]],
         "news_severity_counts": {
-            "CRITICAL": sum(1 for a in news if a.severity == "CRITICAL"),
-            "HIGH": sum(1 for a in news if a.severity == "HIGH"),
-            "MEDIUM": sum(1 for a in news if a.severity == "MEDIUM"),
+            "CRITICAL": sum(1 for a in adverse_news if a.severity == "CRITICAL"),
+            "HIGH": sum(1 for a in adverse_news if a.severity == "HIGH"),
+            "MEDIUM": sum(1 for a in adverse_news if a.severity == "MEDIUM"),
         },
-        "top_news": [
-            {"title": a.title, "severity": a.severity, "source": a.source_name}
-            for a in news[:5] if a.severity in ("CRITICAL", "HIGH")
+        "top_adverse_news": [
+            {
+                "title": a.title,
+                "severity": a.severity,
+                "source": a.source_name,
+                "date": a.published_at.isoformat() if a.published_at else None,
+                "age_years": a.age_years,
+                "is_stale": a.is_stale,
+            }
+            for a in adverse_news[:5] if a.severity in ("CRITICAL", "HIGH")
         ],
+        "remediation": (
+            {
+                "signal_count": remediation.signal_count,
+                "recent_signal_count": remediation.recent_signal_count,
+                "most_recent_at": (
+                    remediation.most_recent_at.isoformat()
+                    if remediation.most_recent_at else None
+                ),
+                "summary": remediation.summary,
+                "articles": [
+                    {
+                        "title": a.title,
+                        "source": a.source_name,
+                        "date": a.published_at.isoformat() if a.published_at else None,
+                    }
+                    for a in remediation.articles[:5]
+                ],
+            }
+            if remediation else None
+        ),
         "forensics": {
             "circular_gifting_score": forensics.cra_loop_score,
             "circular_gifting_max": 30,

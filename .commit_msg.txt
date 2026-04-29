@@ -1,7 +1,0 @@
-docs: rewrite README around the action-items + provenance story
-
-- Lead with the 'single thing' — the prescriptive action list
-- Update demo-orgs table with Canada Charity Partners as headline
-- Explain mentor-driven design (external sources, traceability, actions)
-- Add component / route map and API surface
-- Suppress dev-only hydration warning on FeaturedScreenings

@@ -17,8 +17,11 @@ export function NewsPanel({
   articles: NewsArticle[];
   configured: boolean;
 }) {
-  const flagged = articles.filter((a) => a.severity && a.severity !== "NOISE");
-  const noise = articles.filter((a) => !a.severity || a.severity === "NOISE");
+  // Remediation articles are shown in the dedicated RemediationPanel, not
+  // here — this panel is strictly the adverse-media view.
+  const adverse = articles.filter((a) => !a.is_remediation);
+  const flagged = adverse.filter((a) => a.severity && a.severity !== "NOISE");
+  const noise = adverse.filter((a) => !a.severity || a.severity === "NOISE");
 
   return (
     <Section
@@ -26,13 +29,13 @@ export function NewsPanel({
       subtitle="Tavily search · Claude-classified · Canadian-bias"
       right={
         <span className="inline-flex items-center gap-1.5">
-          <Newspaper size={12} /> {flagged.length} flagged · {articles.length} total
+          <Newspaper size={12} /> {flagged.length} flagged · {adverse.length} total
         </span>
       }
     >
       {!configured ? (
         <EmptyPanel message="Tavily API key not configured." />
-      ) : articles.length === 0 ? (
+      ) : adverse.length === 0 ? (
         <EmptyPanel message="No adverse-media hits returned for this entity." />
       ) : (
         <div className="space-y-4">
@@ -59,10 +62,22 @@ export function NewsPanel({
                   >
                     {a.title}
                   </a>
-                  <div className="text-xs text-[var(--muted)] mt-0.5 flex flex-wrap gap-x-3">
+                  <div className="text-xs text-[var(--muted)] mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
                     {a.source_name && <span className="font-mono">{a.source_name}</span>}
                     {a.published_at && <span>{fmtDate(a.published_at)}</span>}
                     {a.category && <span className="italic">{a.category}</span>}
+                    {a.is_stale && (
+                      <span
+                        className="px-1.5 py-0.5 rounded-sm font-mono text-[9px] uppercase tracking-wider"
+                        style={{
+                          background: "var(--risk-grey-bg)",
+                          color: "var(--risk-grey)",
+                        }}
+                        title={`${a.age_years?.toFixed(1) ?? ">5"} years old — down-weighted in risk score`}
+                      >
+                        Historic · {a.age_years?.toFixed(1) ?? ">5"}y
+                      </span>
+                    )}
                   </div>
                   {a.summary && (
                     <p className="mt-1 text-xs text-[var(--foreground)]/80 leading-snug line-clamp-3">

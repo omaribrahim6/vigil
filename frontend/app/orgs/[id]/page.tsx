@@ -10,6 +10,7 @@ import { ActionItems } from "../../../components/ActionItems";
 import { ForensicSignalsPanel } from "../../../components/ForensicSignalsPanel";
 import { CourtCasesPanel } from "../../../components/CourtCasesPanel";
 import { NewsPanel } from "../../../components/NewsPanel";
+import { RemediationPanel } from "../../../components/RemediationPanel";
 import { SanctionsPanel } from "../../../components/SanctionsPanel";
 import { RelatedEntities } from "../../../components/RelatedEntities";
 import { ProvenancePanel } from "../../../components/ProvenancePanel";
@@ -171,6 +172,11 @@ export default async function OrgDetail({
 
       {/* ─── Action items (the 'so what') ───────────────────────────── */}
       <ActionItems actions={dossier.actions} />
+
+      {/* ─── Remediation context (counterweight to adverse signals) ─── */}
+      {dossier.remediation && (
+        <RemediationPanel remediation={dossier.remediation} />
+      )}
 
       {/* ─── Briefing memo ──────────────────────────────────────────── */}
       <BriefingMemo memo={dossier.briefing_memo} />

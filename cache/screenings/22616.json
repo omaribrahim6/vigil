@@ -1,0 +1,545 @@
+{
+  "org": {
+    "id": "22616",
+    "canonical_name": "United Way of Greater Toronto",
+    "aliases": [
+      "CIBC UNITED WAY",
+      "HOPE STREET",
+      "HOPE STRORY",
+      "MTGF-MEMORIAL DONATION",
+      "RANGERS FOUNDATION",
+      "Sistering",
+      "SISTERING",
+      "Sistering, A Woman's Place",
+      "SISTERING, A WOMEN'S PLACE",
+      "The United Way, Greater Toronto",
+      "TORONTO'S UNITED WAY LOCAL LOVE FUND",
+      "TORONTO UNITED WAY",
+      "UNITD WAY",
+      "United Wa Greater Toronto",
+      "UnitedWay",
+      "United Way Centraide",
+      "UNITED WAY CENTRAIDE",
+      "UNITED WAY (DORSET PARK ENGLISH CIRCLE FOR WOMEN)",
+      "United Way Greater of Toronto (Bison Match)",
+      "United  Way Greater Toronto",
+      "United Way - Greater Toronto",
+      "United Way Greater Toronto",
+      "UNITED WAY  GREATER TORONTO",
+      "UNITED WAY GREATERTORONTO",
+      "UNITED WAY, GREATER TORONTO"
+    ],
+    "bn_root": "119278216",
+    "entity_type": "public_foundation",
+    "province": "ON",
+    "city": "TORONTO",
+    "fed_total": 167183331.0,
+    "fed_grant_count": 9,
+    "fed_top_departments": [
+      "Department of Housing, Infrastructure and Communities | Ministère du Logement, de l’Infrastructure et des Collectivités",
+      "Employment and Social Development Canada | Emploi et Développement social Canada"
+    ],
+    "cra_designation": "A",
+    "cra_category": "210",
+    "cra_registration_date": null,
+    "ab_total": null,
+    "ab_payment_count": null,
+    "ab_ministries": [],
+    "dataset_sources": [
+      "cra",
+      "fed"
+    ]
+  },
+  "risk": {
+    "score": 12,
+    "tier": "GREEN",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 0,
+      "high_news": 0,
+      "recency": 0,
+      "cra_loop": 7,
+      "t3010_violations": 5,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 0
+    },
+    "notes": [
+      "CRA circular-gifting score 21/30",
+      "1 T3010 form violation(s)"
+    ]
+  },
+  "timeline_funding": [
+    {
+      "source": "fed",
+      "date": "2025-04-21",
+      "amount": 22252.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ 2025 – The Earth Rangers Foundation (Vaughan-Woodbridge)",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2024-04-22",
+      "amount": 21413.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ 2024 - The Earth Rangers Foundation (Vaughan-Woodbridge)",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2023-04-24",
+      "amount": 20048.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ 2023 - Earth Rangers (Vaughan--Woodbridge)",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2022-04-25",
+      "amount": 19360.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ 2022 - Earth Rangers (Vaughan--Woodbridge)",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2021-12-01",
+      "amount": 379687.0,
+      "department_or_program": "Immigration, Refugees and Citizenship Canada | Immigration, Réfugiés et Citoyenneté Canada",
+      "title": "Peel region plan to co-design a new settlement sector funding and governance model",
+      "agreement_type": "C",
+      "description": "Indirect"
+    },
+    {
+      "source": "fed",
+      "date": "2021-04-26",
+      "amount": 18036.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ 2021 - Earth Rangers (Vaughan--Woodbridge)",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2021-03-22",
+      "amount": 3326205.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "Project 2050: Community Climate Challenge"
+    },
+    {
+      "source": "fed",
+      "date": "2020-04-01",
+      "amount": 3064933.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "Through Canada’s COVID-19 Economic Response Plan, these Agreements are providing targeted support to Persons Experiencing Homelessness and At Risk of Homelessness, as these individuals and communities are particularly vulnerable during the COVID-19 crisis.\nCommunities across Canada that have a significant issue with homelessness and will have increased supports for their vulnerable populations thr"
+    },
+    {
+      "source": "fed",
+      "date": "2020-04-01",
+      "amount": 1359144.55,
+      "department_or_program": "Immigration, Refugees and Citizenship Canada | Immigration, Réfugiés et Citoyenneté Canada",
+      "title": "Peel Newcomer Strategy Group – 2020-2025 Collective Impact for Peel Newcomers",
+      "agreement_type": "G",
+      "description": "Indirect"
+    },
+    {
+      "source": "fed",
+      "date": "2019-10-02",
+      "amount": 50050.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "G",
+      "description": "Youth Climate Change Podcast"
+    },
+    {
+      "source": "fed",
+      "date": "2019-05-06",
+      "amount": 8860.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "O",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills. The CSJ program is delivered by the Department of ESD."
+    },
+    {
+      "source": "fed",
+      "date": "2019-05-01",
+      "amount": 5000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": "Earth Rangers Programming 2019-2020",
+      "agreement_type": "G",
+      "description": "Enhancement of Official Languages Program"
+    },
+    {
+      "source": "fed",
+      "date": "2019-04-01",
+      "amount": 6776231.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "N/A"
+    },
+    {
+      "source": "fed",
+      "date": "2018-10-18",
+      "amount": 1125000.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "Engaging Kids in Wildlife Conservation"
+    },
+    {
+      "source": "fed",
+      "date": "2018-06-04",
+      "amount": 4240.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "CSJ2018-Earth Rangers Foundation(Vaughan--Woodbridge)",
+      "agreement_type": "C",
+      "description": "N/A"
+    },
+    {
+      "source": "fed",
+      "date": "2017-08-15",
+      "amount": 700000.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2017-05-10",
+      "amount": 5000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "G",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2016-10-18",
+      "amount": 39134.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "G",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2015-05-29",
+      "amount": 5000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "G",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2014-10-03",
+      "amount": 3000000.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2014-03-04",
+      "amount": 55996.0,
+      "department_or_program": "Natural Resources Canada | Ressources naturelles Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2013-10-21",
+      "amount": 180000.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "G",
+      "description": "The Social Development Partnerships Program (SDPP) works in partnership with social not-for-profit organizations to help improve life outcomes for people with disabilities, children and families and other vulnerable populations."
+    },
+    {
+      "source": "fed",
+      "date": "2012-08-29",
+      "amount": 55000.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2011-06-16",
+      "amount": 1108000.0,
+      "department_or_program": "Innovation, Science and Economic Development Canada | Innovation, Sciences et Développement économique Canada",
+      "title": "509126",
+      "agreement_type": "C",
+      "description": "Expand environmental science outreach programs to an additional 285 schools, expand the science centre program and promote STEM careers through television and website presence."
+    },
+    {
+      "source": "fed",
+      "date": "2009-06-30",
+      "amount": 2500328.0,
+      "department_or_program": "Innovation, Science and Economic Development Canada | Innovation, Sciences et Développement économique Canada",
+      "title": "505250001",
+      "agreement_type": "C",
+      "description": "Expand Earth Rangers building to accommodate 35 new staff, provide additional space for housing animals and integrate new environmental technologies into the structure."
+    },
+    {
+      "source": "fed",
+      "date": "2009-04-01",
+      "amount": 2500328.0,
+      "department_or_program": "Innovation, Science and Economic Development Canada | Innovation, Sciences et Développement économique Canada",
+      "title": "505250",
+      "agreement_type": "C",
+      "description": "Expand Earth Rangers building to accommodate 35 new staff, provide additional space for housing animals and integrate new environmental technologies into the structure."
+    },
+    {
+      "source": "fed",
+      "date": "2008-05-15",
+      "amount": 31793.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "The Youth Employment Strategy is the Government of Canada's commitment to help young people, particularly those facing barriers to employment, get the information and gain the skills, work experience and abilities they need to make a successful transition to the workplace."
+    },
+    {
+      "source": "fed",
+      "date": "2006-05-23",
+      "amount": 34720.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "The Youth Employment Strategy is the Government of Canada's commitment to help young people, particularly those facing barriers to employment, get the information and gain the skills, work experience and abilities they need to make a successful transition to the workplace."
+    }
+  ],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": null,
+      "title": "Former city employee charged with stealing tens of ... - Toronto Star",
+      "severity": "MEDIUM",
+      "category": "fraud",
+      "summary": "Former City of Toronto employee charged with theft over $5,000 for allegedly stealing tens of thousands from United Way campaign funds while serving as financial coordinator.",
+      "url": "https://www.thestar.com/news/crime/former-city-employee-charged-with-stealing-tens-of-thousands-of-dollars-from-united-way-campaign/article_b8cc6f63-e39b-56f3-9835-48012a420584.html",
+      "confidence": 0.75,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "Recent southwestern Ontario fraud investigations could make ... - CBC",
+      "url": "https://www.cbc.ca/news/canada/windsor/united-way-embezzlement-lorraine-goddard-consumers-fraud-police-1.7131789",
+      "source_name": "cbc.ca",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses fraud charges against United Way of Chatham-Kent employee, not United Way of Greater Toronto.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Tears, apology from ex-employee who took $300K from United Way",
+      "url": "https://lfpress.com/news/local-news/tears-apology-from-ex-employee-who-took-300k-from-united-way",
+      "source_name": "lfpress.com",
+      "published_at": "2024-10-11",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Former employee of United Way of Chatham-Kent pleaded guilty to defrauding $302,341, not related to United Way of Greater Toronto.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Former United Way employee charged with fraud | Chatham Daily News",
+      "url": "https://www.chathamdailynews.ca/news/local-news/former-united-way-chatham-kent-employee-charged-with-fraud",
+      "source_name": "chathamdailynews.ca",
+      "published_at": "2024-02-02",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Former United Way Chatham-Kent employee charged with fraud over $5,000 for allegedly misappropriating $292,614, not United Way of Greater Toronto.",
+      "confidence": 0.95
+    },
+    {
+      "title": "'I feel terrible' — Employee tearful sorry over United Way $300K fraud",
+      "url": "https://windsorstar.com/news/local-news/i-feel-terrible-tearful-apology-from-employee-who-defrauded-united-way-of-300k",
+      "source_name": "windsorstar.com",
+      "published_at": "2024-10-11",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Employee of United Way Chatham-Kent defrauded $302,341 through false electronic fund transfers, not related to United Way of Greater Toronto.",
+      "confidence": 0.95
+    },
+    {
+      "title": "[PDF] Whistleblower Policy 1 - Purpose 2 - Scope 3",
+      "url": "https://www.unitedwaygt.org/wp-content/uploads/2022/09/Whistleblower-Policy.pdf",
+      "source_name": "unitedwaygt.org",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Whistleblower policy document from United Way Greater Toronto outlining reporting procedures for misconduct.",
+      "confidence": 0.98
+    },
+    {
+      "title": "Former city employee charged with stealing tens of ... - Toronto Star",
+      "url": "https://www.thestar.com/news/crime/former-city-employee-charged-with-stealing-tens-of-thousands-of-dollars-from-united-way-campaign/article_b8cc6f63-e39b-56f3-9835-48012a420584.html",
+      "source_name": "thestar.com",
+      "published_at": null,
+      "severity": "MEDIUM",
+      "category": "fraud",
+      "summary": "Former City of Toronto employee charged with theft over $5,000 for allegedly stealing tens of thousands from United Way campaign funds while serving as financial coordinator.",
+      "confidence": 0.75
+    },
+    {
+      "title": "A statement on the allegations against United Way Worldwide",
+      "url": "https://www.unitedwaygt.org/special-statements/a-statement-on-the-allegations-against-united-way-worldwide/",
+      "source_name": "unitedwaygt.org",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Statement from United Way Greater Toronto clarifying that allegations against United Way Worldwide do not involve or affect their organization.",
+      "confidence": 0.95
+    },
+    {
+      "title": "$100 million is missing from the Jewish National Fund Canada's tax ...",
+      "url": "https://www.justpeaceadvocates.ca/100-million-is-missing-from-the-jewish-national-fund-canadas-tax-returns-where-did-the-money-go/",
+      "source_name": "justpeaceadvocates.ca",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article about Jewish National Fund Canada's missing tax return funds mentions United Way of Greater Toronto only as a recipient of donations from JNF Canada.",
+      "confidence": 0.9
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": 21,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": 1617286.0,
+    "cra_loop_hop_breakdown": {
+      "2hop": 2,
+      "3hop": 4,
+      "4hop": 12,
+      "5hop": 41,
+      "6hop": 133,
+      "7plus": 0
+    },
+    "cra_t3010_violation_count": 1,
+    "cra_t3010_violation_examples": [
+      "CROSS_SCHEDULE COMP_4880_EQ_390 (FY2022)"
+    ],
+    "cra_max_overhead_ratio": 15.51,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": [
+      {
+        "bn": "848521837RR0001",
+        "legal_name": "Jack.org",
+        "shared_count": 1,
+        "sample_director": "Katherine Dudtschak"
+      },
+      {
+        "bn": "871142634RR0001",
+        "legal_name": "HOLLAND BLOORVIEW KIDS REHABILITATION HOSPITAL",
+        "shared_count": 1,
+        "sample_director": "Laura Dottori-Attanasio"
+      },
+      {
+        "bn": "891276081RR0001",
+        "legal_name": "CANADIAN RACE RELATIONS FOUNDATION - FONDATION CANADIENNE DES RELATIONS RACIALES",
+        "shared_count": 1,
+        "sample_director": "Mohammed Hashim"
+      },
+      {
+        "bn": "871067245RR0001",
+        "legal_name": "PEDIATRIC ONCOLOGY GROUP OF ONTARIO",
+        "shared_count": 1,
+        "sample_director": "Michelle Johnston"
+      },
+      {
+        "bn": "133338046RR0001",
+        "legal_name": "PROVIDENCE HEALTHCARE FOUNDATION",
+        "shared_count": 1,
+        "sample_director": "Bruce Mccuaig"
+      },
+      {
+        "bn": "815601760RR0001",
+        "legal_name": "CAPITALIZE FOR KIDS FOUNDATION",
+        "shared_count": 1,
+        "sample_director": "Kurankye Sekyi-Otu"
+      }
+    ]
+  },
+  "related_entities": [
+    {
+      "related_id": 95254,
+      "name": "United Way Greater Toronto",
+      "relationship": "RELATED",
+      "reasoning": "BN roots differ (119278216 vs 119278821), so these are distinct legal registrations. Names are nearly identical but different BN roots under CRA rules means DIFFERENT/RELATED legal entities — likely a rebranding or successor registration.",
+      "risk_tier": null
+    }
+  ],
+  "gdelt_yearly": {},
+  "first_adverse_signal": null,
+  "briefing_memo": "United Way of Greater Toronto has received $167,183,331 in federal funding to date and holds CRA charitable designation 'A'. A former City of Toronto employee was charged with theft over $5,000 for allegedly stealing tens of thousands from United Way campaign funds while serving as financial coordinator (thestar.com), though this involves misappropriation by a municipal employee rather than organizational malfeasance. The organization has one T3010 filing violation and an overhead ratio of 15.51%, with all other adverse signals relating to the separate United Way of Chatham-Kent entity. Standard due-diligence procedures are recommended for future disbursements, noting that the identified theft involved a City of Toronto employee's alleged misappropriation rather than systemic organizational control failures.",
+  "actions": [
+    {
+      "urgency": "monitor",
+      "title": "Review circular gifting patterns with recipient organizations",
+      "rationale": "Circular gifting score of 21/30 indicates moderate reciprocal funding relationships that warrant documentation review to ensure arm's-length transactions.",
+      "evidence": [
+        "circular_gifting_score: 21/30"
+      ]
+    },
+    {
+      "urgency": "monitor",
+      "title": "Follow up on T3010 compliance issue",
+      "rationale": "One T3010 violation detected requires verification of corrective action and current filing compliance status.",
+      "evidence": [
+        "t3010_violations: 1"
+      ]
+    },
+    {
+      "urgency": "none",
+      "title": "Continue standard monitoring procedures",
+      "rationale": "Overall risk score of 12 with no sanctions hits, court cases, or critical news indicates low adverse risk profile for an organization of this funding scale.",
+      "evidence": [
+        "risk_score: 12",
+        "sanctions_hits: 0",
+        "court_case_count: 0"
+      ]
+    }
+  ],
+  "provenance": {
+    "bigquery_rows": [
+      "agency2026ot-data-1776775157.general.entity_golden_records id=22616",
+      "agency2026ot-data-1776775157.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '119278216')",
+      "agency2026ot-data-1776775157.cra.cra_identification WHERE STARTS_WITH(bn, '119278216')",
+      "agency2026ot-data-1776775157.cra.loop_universe WHERE STARTS_WITH(bn, '119278216')",
+      "agency2026ot-data-1776775157.cra.t3010_impossibilities WHERE STARTS_WITH(bn, '119278216')",
+      "agency2026ot-data-1776775157.cra.overhead_by_charity WHERE STARTS_WITH(bn, '119278216')",
+      "agency2026ot-data-1776775157.cra.cra_directors (shared-director join)"
+    ],
+    "external_urls": []
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T15:35:04.355839"
+}

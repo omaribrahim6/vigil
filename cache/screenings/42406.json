@@ -1,0 +1,257 @@
+{
+  "org": {
+    "id": "42406",
+    "canonical_name": "WE Charity Foundation",
+    "aliases": [
+      "We Charity Foundation",
+      "WE Charity Foundation",
+      "WE CHARITY FOUNDATION"
+    ],
+    "bn_root": "773125687",
+    "entity_type": "public_foundation",
+    "province": "ON",
+    "city": "TORONTO",
+    "fed_total": 543530000.0,
+    "fed_grant_count": 2,
+    "fed_top_departments": [
+      "Employment and Social Development Canada | Emploi et Développement social Canada"
+    ],
+    "cra_designation": "A",
+    "cra_category": "210",
+    "cra_registration_date": null,
+    "ab_total": null,
+    "ab_payment_count": null,
+    "ab_ministries": [],
+    "dataset_sources": [
+      "cra",
+      "fed"
+    ]
+  },
+  "risk": {
+    "score": 10,
+    "tier": "GREEN",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 0,
+      "high_news": 0,
+      "recency": 0,
+      "cra_loop": 0,
+      "t3010_violations": 0,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 10
+    },
+    "notes": [
+      "GDELT adverse-event spike: 452 events in 2020"
+    ]
+  },
+  "timeline_funding": [
+    {
+      "source": "fed",
+      "date": "2020-05-05",
+      "amount": 543530000.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "This project will include the development of volunteer opportunities in collaboration with other not-for-profit organizations; in-kind and financial supports to not-for-profits; matching, onboarding, training and supports for student participants, including additional supports for students facing technological or other barriers; the vetting of service placements to ensure they meet program eligibi"
+    }
+  ],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": null,
+      "title": "WE scandal hurts youth and trust in government and charities",
+      "severity": "MEDIUM",
+      "category": "political_opinion",
+      "summary": "Opinion piece discussing alleged corruption charges and loss of trust in WE Charity related to government transparency issues.",
+      "url": "https://rabble.ca/politics/canadian-politics/we-scandal-hurts-youth-and-trust-government-and-charities/",
+      "confidence": 0.7,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": null,
+      "title": "Charity coalition says it has concerns about secrecy at WE Charity - The Globe and Mail",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Kenyan regulatory agency announced examination of WE Charity's Kenya affiliate regarding regulatory and governance matters including asset transfers.",
+      "url": "https://www.theglobeandmail.com/world/article-canadian-charity-coalition-says-it-has-concerns-about-secrecy-at-we/",
+      "confidence": 0.75,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "[PDF] Case 1:22-cv-00340 Document 1 Filed 02/08/22 Page 1 of 230",
+      "url": "https://a.storyblok.com/f/52095/x/83f2426c01/we-charity-v-cbc-february-08-2022.pdf",
+      "source_name": "a.storyblok.com",
+      "published_at": "2022-02-08",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "WE Charity filed a defamation lawsuit against CBC alleging false reporting about fraud and deception claims related to Kenya projects.",
+      "confidence": 0.85
+    },
+    {
+      "title": "Charitable status revoked for 12 charities linked to Vancouver ...",
+      "url": "https://vancouversun.com/news/local-news/charitable-status-revoked-for-12-b-c-charities-linked-to-single-vancouver-company",
+      "source_name": "vancouversun.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "CRA revoked charitable status for 12 Vancouver-linked charities for tax receipt violations and circular transactions, unrelated to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "WE scandal hurts youth and trust in government and charities",
+      "url": "https://rabble.ca/politics/canadian-politics/we-scandal-hurts-youth-and-trust-government-and-charities/",
+      "source_name": "rabble.ca",
+      "published_at": null,
+      "severity": "MEDIUM",
+      "category": "political_opinion",
+      "summary": "Opinion piece discussing alleged corruption charges and loss of trust in WE Charity related to government transparency issues.",
+      "confidence": 0.7
+    },
+    {
+      "title": "Revoked Canadian charity listed under the Criminal Code as ...",
+      "url": "https://www.canada.ca/en/revenue-agency/services/charities-giving/charities/whats-new/revoked-canadian-charity-listed-under-criminal-code-terrorist-entity.html",
+      "source_name": "canada.ca",
+      "published_at": "2011-04-09",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "CRA revoked IRFAN-Canada's charitable status for providing $14.6 million in support to Hamas, a listed terrorist organization; unrelated to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Auditor General Report on CRA, Registered Charities and Abusive ...",
+      "url": "https://www.canadiancharitylaw.ca/blog/auditor_general_report_on_cra_registered_charities_and_abusive_charity_gifi/",
+      "source_name": "canadiancharitylaw.ca",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Auditor General report on CRA's compliance tools and sanctions for registered charities generally, not specific to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Court filings | Friends of WE",
+      "url": "https://www.friendsofwe.org/court-filings",
+      "source_name": "friendsofwe.org",
+      "published_at": "2023-06-27",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "WE Charity's lawsuit against CBC for allegedly false reporting about Kenya projects was allowed to proceed by federal court.",
+      "confidence": 0.8
+    },
+    {
+      "title": "CRA Charity Revocation: Audit Triggers, Revocation Tax & Appeals",
+      "url": "https://taxpage.com/articles-and-tips/canadian-charity-revocation-guide-cra-audit-triggers-revocation-tax-and-appeal-strategy/",
+      "source_name": "taxpage.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "General article about CRA charity revocation procedures and foreign activities compliance requirements, not specific to WE Charity.",
+      "confidence": 0.9
+    },
+    {
+      "title": "Charity coalition says it has concerns about secrecy at WE Charity - The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/world/article-canadian-charity-coalition-says-it-has-concerns-about-secrecy-at-we/",
+      "source_name": "theglobeandmail.com",
+      "published_at": null,
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Kenyan regulatory agency announced examination of WE Charity's Kenya affiliate regarding regulatory and governance matters including asset transfers.",
+      "confidence": 0.75
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": null,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": null,
+    "cra_loop_hop_breakdown": null,
+    "cra_t3010_violation_count": 0,
+    "cra_t3010_violation_examples": [],
+    "cra_max_overhead_ratio": 24.61,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": [
+      {
+        "bn": "856050257RR0001",
+        "legal_name": "THE RIVER FELLOWSHIP",
+        "shared_count": 1,
+        "sample_director": "Paul Hughes"
+      },
+      {
+        "bn": "119147726RR0001",
+        "legal_name": "THE UNITED CHURCHES OF LANGLEY",
+        "shared_count": 1,
+        "sample_director": "Paul Hughes"
+      },
+      {
+        "bn": "886578095RR0001",
+        "legal_name": "WE Charity",
+        "shared_count": 1,
+        "sample_director": "Steve Mainda"
+      },
+      {
+        "bn": "807930045RR0001",
+        "legal_name": "The Brian Ludwig Scholarship Foundation",
+        "shared_count": 1,
+        "sample_director": "Paul Hughes"
+      }
+    ]
+  },
+  "related_entities": [],
+  "gdelt_yearly": {
+    "2020": 452,
+    "2021": 4,
+    "2023": 5,
+    "2026": 1
+  },
+  "first_adverse_signal": "2020-07-15",
+  "briefing_memo": "WE Charity Foundation has received $543,530,000 in federal funding to date and holds CRA designation \"A\". The highest-severity adverse signal is a medium-level political opinion piece discussing alleged corruption charges and loss of trust in government transparency issues related to WE Charity, as reported by rabble.ca. WE Charity filed a defamation lawsuit against CBC in February 2022 alleging false reporting about fraud claims related to Kenya projects, with the federal court allowing the case to proceed in June 2023. Elevated due-diligence review is recommended before next disbursement given the substantial federal exposure, ongoing litigation concerning fraud allegations, and maximum overhead ratio of 24.61%, though no CRA violations or sanctions are currently recorded.",
+  "actions": [
+    {
+      "urgency": "monitor",
+      "title": "Review medium-severity media coverage for context",
+      "rationale": "Two medium-severity news items identified; context needed to assess whether these relate to governance, operational, or reputational concerns given the significant federal funding relationship",
+      "evidence": [
+        "2 MEDIUM news items",
+        "$543.5M federal funding"
+      ]
+    },
+    {
+      "urgency": "none",
+      "title": "Continue standard monitoring protocols",
+      "rationale": "No sanctions hits, court cases, T3010 violations, or elevated forensic indicators detected; overhead ratio within acceptable range at 24.61%",
+      "evidence": [
+        "0 sanctions hits",
+        "0 court cases",
+        "0 T3010 violations",
+        "24.61% overhead ratio"
+      ]
+    }
+  ],
+  "provenance": {
+    "bigquery_rows": [
+      "agency2026ot-data-1776775157.general.entity_golden_records id=42406",
+      "agency2026ot-data-1776775157.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '773125687')",
+      "agency2026ot-data-1776775157.cra.cra_identification WHERE STARTS_WITH(bn, '773125687')",
+      "agency2026ot-data-1776775157.cra.overhead_by_charity WHERE STARTS_WITH(bn, '773125687')",
+      "agency2026ot-data-1776775157.cra.cra_directors (shared-director join)"
+    ],
+    "external_urls": []
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T15:32:20.478393"
+}

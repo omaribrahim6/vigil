@@ -13,10 +13,29 @@ from .models import (
     CourtCase,
     ForensicSignals,
     NewsArticle,
+    RemediationContext,
     RiskBreakdown,
     RiskTier,
     SanctionsHit,
 )
+
+
+def _decay_weight(article_date: date | None) -> float:
+    """Temporal decay so SNC-Lavalin-2014 doesn't outweigh GC-Strategies-2025.
+
+    - <5y old:  full weight (1.0)
+    - 5-10y:    half weight (0.5) — context, not driver
+    - >10y:     quarter weight (0.25) — historical record only
+    - unknown:  three-quarter weight (0.75) — hedge between recent and stale
+    """
+    if article_date is None:
+        return 0.75
+    age_days = (date.today() - article_date).days
+    if age_days <= 365 * 5:
+        return 1.0
+    if age_days <= 365 * 10:
+        return 0.5
+    return 0.25
 
 
 def _tier(score: int) -> RiskTier:
@@ -49,33 +68,53 @@ def compute_risk(
     forensics: ForensicSignals,
     adverse_events: list[AdverseEvent],
     gdelt_yearly: dict[int, int] | None = None,
+    remediation: RemediationContext | None = None,
 ) -> RiskBreakdown:
     contributions: dict[str, int] = {}
     notes: list[str] = []
 
-    # ─── External-signals layer (spec §6 step 7) ──────────────────────
+    # Sanctions hit is current-state by definition — OpenSanctions removes
+    # entries when delistings happen. No decay applied.
     sanctions_hit_score = 40 if sanctions else 0
     contributions["sanctions"] = sanctions_hit_score
     if sanctions:
         notes.append(f"OpenSanctions hit on {sanctions[0].list_name}")
 
-    court_score = 15 * min(len(court_cases), 3)
+    court_weights = [_decay_weight(c.decision_date) for c in court_cases]
+    weighted_court = sum(court_weights[:3])
+    court_score = round(15 * weighted_court)
     contributions["court_cases"] = court_score
     if court_cases:
-        notes.append(f"{len(court_cases)} CanLII court matter(s)")
+        notes.append(
+            f"{len(court_cases)} CanLII court matter(s) (weighted {weighted_court:.1f})"
+        )
 
-    crit = sum(1 for a in news if a.severity == "CRITICAL")
-    high = sum(1 for a in news if a.severity == "HIGH")
-    crit_score = min(30, 10 * crit)
-    high_score = min(15, 5 * high)
+    # Adverse news only — remediation articles are excluded from the risk
+    # calculation (they're surfaced separately).
+    adverse_news = [a for a in news if not a.is_remediation]
+    crit_weighted = sum(
+        _decay_weight(a.published_at) for a in adverse_news if a.severity == "CRITICAL"
+    )
+    high_weighted = sum(
+        _decay_weight(a.published_at) for a in adverse_news if a.severity == "HIGH"
+    )
+    crit_score = min(30, round(10 * crit_weighted))
+    high_score = min(15, round(5 * high_weighted))
     contributions["critical_news"] = crit_score
     contributions["high_news"] = high_score
-    if crit:
-        notes.append(f"{crit} CRITICAL news article(s)")
-    elif high:
-        notes.append(f"{high} HIGH news article(s)")
 
-    recency = _recency_weight(e.date for e in adverse_events)
+    crit_count = sum(1 for a in adverse_news if a.severity == "CRITICAL")
+    high_count = sum(1 for a in adverse_news if a.severity == "HIGH")
+    stale_count = sum(1 for a in adverse_news if a.is_stale)
+    if crit_count:
+        msg = f"{crit_count} CRITICAL news article(s)"
+        if stale_count:
+            msg += f" — {stale_count} are >5y old (down-weighted)"
+        notes.append(msg)
+    elif high_count:
+        notes.append(f"{high_count} HIGH news article(s)")
+
+    recency = _recency_weight(e.date for e in adverse_events if not e.title.startswith("Sanctions hit"))
     recency_score = round(10 * recency)
     contributions["recency"] = recency_score
 
@@ -124,10 +163,54 @@ def compute_risk(
         contributions["gdelt_spike"] = 0
 
     raw = sum(contributions.values())
+
+    # ─── Remediation dampening ────────────────────────────────────────
+    # If the org has demonstrated material remediation in the last 24 months
+    # (new leadership, completed monitorship, integrity certification, ethics
+    # award, settled/concluded historic matters), reduce the risk score so
+    # historic adverse signals don't permanently brand the org. We never
+    # dampen below the sanctions floor — an active sanctions hit is current
+    # state and survives any dampening.
+    dampening_factor = 1.0
+    if remediation and remediation.recent_signal_count > 0:
+        if remediation.recent_signal_count >= 3:
+            dampening_factor = 0.55
+        elif remediation.recent_signal_count == 2:
+            dampening_factor = 0.7
+        else:
+            dampening_factor = 0.85
+        notes.append(
+            f"Remediation dampening x{dampening_factor:.2f} "
+            f"({remediation.recent_signal_count} recent positive-integrity signal(s))"
+        )
+
+    if dampening_factor < 1.0:
+        # Apply dampening to the historic-adverse contributions (not to
+        # current-state sanctions). Court cases / news / GDELT / forensics
+        # all describe past conduct, so they get dampened.
+        keep_keys = {"sanctions"}
+        damp_total = sum(v for k, v in contributions.items() if k not in keep_keys)
+        kept_total = sum(v for k, v in contributions.items() if k in keep_keys)
+        damped = round(damp_total * dampening_factor)
+        contributions["remediation_dampening"] = -(damp_total - damped)
+        raw = kept_total + damped
+
     score = max(0, min(100, raw))
+    tier = _tier(score)
+
+    # If we dampened the score AND the post-dampening tier is YELLOW or below,
+    # tag a "post-remediation" note so the UI can show "Moderate — historic,
+    # remediated" instead of just "Moderate". The score itself reflects the
+    # dampening; this just lets the funder see the *story*.
+    if dampening_factor < 1.0 and remediation and remediation.recent_signal_count > 0:
+        if tier in ("YELLOW", "GREEN"):
+            notes.append("Post-remediation: historic adverse signals are documented as addressed.")
+        elif tier == "ORANGE":
+            notes.append("Partial remediation: significant signals dampened but residual concerns remain.")
+
     return RiskBreakdown(
         score=score,
-        tier=_tier(score),
+        tier=tier,
         contributions=contributions,
         notes=notes,
     )

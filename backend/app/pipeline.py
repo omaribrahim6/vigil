@@ -28,6 +28,7 @@ from .models import (
     OrgProfile,
     ProvenanceTrail,
     RelatedEntity,
+    RemediationContext,
     SanctionsHit,
     ScreeningDossier,
 )
@@ -60,9 +61,12 @@ def _build_provenance(
     """Materialize the full citation trail. Each row is a clickable BQ dataset
     table (or a primary-source URL) — the mentor's 'every fact must trace back
     to a database row or source' requirement."""
-    bq_rows: list[str] = [
-        f"{DATA_PROJECT}.general.entity_golden_records id={profile.id}",
-    ]
+    is_adhoc = profile.id.startswith("adhoc-") or profile.id.startswith("adhoc:")
+    bq_rows: list[str] = []
+    if not is_adhoc:
+        bq_rows.append(
+            f"{DATA_PROJECT}.general.entity_golden_records id={profile.id}"
+        )
     if profile.bn_root:
         bq_rows.append(f"{DATA_PROJECT}.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '{profile.bn_root}')")
         bq_rows.append(f"{DATA_PROJECT}.cra.cra_identification WHERE STARTS_WITH(bn, '{profile.bn_root}')")
@@ -125,6 +129,8 @@ def _adverse_events_from_sources(
             )
         )
     for a in news:
+        if a.is_remediation:
+            continue
         if a.severity not in ("CRITICAL", "HIGH", "MEDIUM"):
             continue
         out.append(
@@ -143,18 +149,139 @@ def _adverse_events_from_sources(
 
 
 async def _run_external_sources(name: str) -> tuple[
-    list[SanctionsHit], list[NewsArticle], list[CourtCase]
+    list[SanctionsHit], list[NewsArticle], list[NewsArticle], list[CourtCase]
 ]:
-    coros = []
-    coros.append(opensanctions.match_company(name))
-    coros.append(tavily.search_adverse(name))
-    coros.append(canlii.search_decisions(name))
-    sanctions, news, court = await asyncio.gather(*coros, return_exceptions=False)
+    coros = [
+        opensanctions.match_company(name),
+        tavily.search_adverse(name),
+        tavily.search_remediation(name),
+        canlii.search_decisions(name),
+    ]
+    sanctions, adverse_news, remediation_news, court = await asyncio.gather(
+        *coros, return_exceptions=False
+    )
     return (
         sanctions if isinstance(sanctions, list) else [],
-        news if isinstance(news, list) else [],
+        adverse_news if isinstance(adverse_news, list) else [],
+        remediation_news if isinstance(remediation_news, list) else [],
         court if isinstance(court, list) else [],
     )
+
+
+# Independent third-party certifications carry more weight than self-published
+# Code-of-Conduct PDFs. A SOURCE-name match here triggers a multiplier on the
+# remediation signal so a single Ethisphere certification > 3 self-disclosures.
+INDEPENDENT_CERTIFIERS = {
+    "ethisphere.com",
+    "iso.org",
+    "transparencyinternational.org",
+    "deloitte.com",   # external compliance audits
+    "pwc.com",
+    "kpmg.com",
+    "ey.com",
+    "finance.yahoo.com",  # press coverage of WMEC
+    "businesswire.com",
+    "globenewswire.com",
+    "reuters.com",
+    "bloomberg.com",
+    "wsj.com",
+    "ft.com",
+    "csagroup.org",
+    "bsigroup.com",
+}
+
+# Self-published / promotional sources are still useful context but don't
+# count as independent verification of remediation.
+SELF_PUBLISHED_DOMAINS = {
+    "atkinsrealis.com", "snclavalin.com",
+    # Falls through automatically for any *.com that matches the org slug
+}
+
+
+def _is_independent_source(source_name: str | None, org_name: str) -> bool:
+    if not source_name:
+        return False
+    s = source_name.lower()
+    if s in INDEPENDENT_CERTIFIERS:
+        return True
+    org_slug = (org_name or "").lower().replace(" ", "").replace("'", "")
+    if org_slug and (org_slug in s or s.startswith(org_slug)):
+        return False  # self-published
+    return s not in SELF_PUBLISHED_DOMAINS
+
+
+def _build_remediation_context(
+    news: list[NewsArticle], org_name: str = ""
+) -> RemediationContext:
+    """Aggregate remediation-flagged articles into a single context object.
+
+    A signal is 'recent' if it occurred in the last 24 months. Signals from
+    independent third-party certifiers (Ethisphere, ISO, audit firms, major
+    business press) count *double* — a self-published Code-of-Conduct PDF is
+    not the same evidence as a Compliance Leader Verification."""
+    from datetime import date, timedelta
+
+    rem = [a for a in news if a.is_remediation]
+    if not rem:
+        return RemediationContext()
+    cutoff = date.today() - timedelta(days=730)
+    recent = [a for a in rem if a.published_at and a.published_at >= cutoff]
+    independent_recent = [
+        a for a in recent if _is_independent_source(a.source_name, org_name)
+    ]
+    most_recent = max(
+        (a.published_at for a in rem if a.published_at),
+        default=None,
+    )
+    summary_bits: list[str] = []
+    for a in rem[:3]:
+        bit = a.title.strip()
+        if a.published_at:
+            bit += f" ({a.published_at.isoformat()})"
+        summary_bits.append(bit)
+    summary = "; ".join(summary_bits) if summary_bits else None
+
+    # Weighted recent count: independent certifications worth 2x.
+    weighted = len(recent) + len(independent_recent)
+    if weighted >= 5:
+        damp = 0.35
+    elif weighted >= 4:
+        damp = 0.45
+    elif weighted >= 3:
+        damp = 0.55
+    elif weighted == 2:
+        damp = 0.7
+    elif weighted == 1:
+        damp = 0.85
+    else:
+        damp = 1.0
+    return RemediationContext(
+        signal_count=len(rem),
+        recent_signal_count=len(recent),
+        most_recent_at=most_recent,
+        summary=summary,
+        dampening_factor=damp,
+        articles=rem[:6],
+    )
+
+
+def _annotate_age(news: list[NewsArticle]) -> list[NewsArticle]:
+    """Compute `age_years` and `is_stale` on each article so the UI can show
+    'historic / >5y old' badges without recomputing on every render."""
+    from datetime import date
+
+    today = date.today()
+    out: list[NewsArticle] = []
+    for a in news:
+        if a.published_at:
+            age = (today - a.published_at).days / 365.25
+            out.append(a.model_copy(update={
+                "age_years": round(age, 1),
+                "is_stale": age > 5.0,
+            }))
+        else:
+            out.append(a)
+    return out
 
 
 async def screen_profile(
@@ -166,13 +293,16 @@ async def screen_profile(
     sources_run: list[str] = []
     sources_skipped: list[str] = []
 
-    sanctions, news, court = await _run_external_sources(profile.canonical_name)
+    sanctions, adverse_news, remediation_news, court = await _run_external_sources(
+        profile.canonical_name
+    )
     if SETTINGS.has_opensanctions:
         sources_run.append("opensanctions")
     else:
         sources_skipped.append("opensanctions")
     if SETTINGS.has_tavily:
-        sources_run.append("tavily")
+        sources_run.append("tavily_adverse")
+        sources_run.append("tavily_remediation")
     else:
         sources_skipped.append("tavily")
     if SETTINGS.has_canlii:
@@ -180,11 +310,18 @@ async def screen_profile(
     else:
         sources_skipped.append("canlii")
 
-    news = await classify_articles(profile.canonical_name, news)
+    # Classify adverse and remediation streams together so Claude sees them
+    # in one pass and can disambiguate (e.g. a Tavily remediation hit that's
+    # actually re-reporting the original wrongdoing).
+    combined = adverse_news + remediation_news
+    news = await classify_articles(profile.canonical_name, combined)
+    news = _annotate_age(news)
     if SETTINGS.has_anthropic:
         sources_run.append("claude_classifier")
     else:
         sources_skipped.append("claude_classifier")
+
+    remediation = _build_remediation_context(news, org_name=profile.canonical_name)
 
     forensics = await fetch_forensics(profile)
     sources_run.append("forensics")
@@ -210,6 +347,7 @@ async def screen_profile(
         forensics=forensics,
         adverse_events=adverse,
         gdelt_yearly=gdelt_yearly,
+        remediation=remediation,
     )
 
     briefing = await author_briefing_memo(
@@ -219,6 +357,7 @@ async def screen_profile(
         news=news,
         forensics=forensics,
         risk_score=risk.score,
+        remediation=remediation,
     )
     actions = await author_actions(
         profile=profile,
@@ -227,6 +366,7 @@ async def screen_profile(
         news=news,
         forensics=forensics,
         risk_score=risk.score,
+        remediation=remediation,
     )
 
     candidates = [a.date for a in adverse if a.date]
@@ -250,6 +390,7 @@ async def screen_profile(
         first_adverse_signal=first_adverse,
         briefing_memo=briefing,
         actions=actions,
+        remediation=remediation,
         provenance=provenance,
         sources_run=sources_run,
         sources_skipped=sources_skipped,

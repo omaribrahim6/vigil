@@ -1,0 +1,371 @@
+{
+  "org": {
+    "id": "72807",
+    "canonical_name": "WE Charity",
+    "aliases": [
+      "Free the Children",
+      "Free The Children",
+      "FREE THE CHILDREN",
+      "Kids Can Free the Children",
+      "KIDS CAN FREE THE CHILDREN",
+      "ME TO WE TRIPS C/O WE CHARITY",
+      "We Charity",
+      "WE Charity",
+      "WE CHARITY",
+      "WE CHARITY FAMILY",
+      "WE Charity (Free the Children)",
+      "WE CHARITY Total",
+      "WE CHARITY TOTAL",
+      "Welcome Friend Association",
+      "WELCOME FRIEND ASSOCIATION",
+      "WE ORGANIZATION"
+    ],
+    "bn_root": "886578095",
+    "entity_type": "charitable_org",
+    "province": "ON",
+    "city": "TORONTO",
+    "fed_total": 5197155.0,
+    "fed_grant_count": 7,
+    "fed_top_departments": [
+      "Canadian Heritage | Patrimoine canadien",
+      "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "Environment and Climate Change Canada | Environnement et Changement climatique Canada"
+    ],
+    "cra_designation": "C",
+    "cra_category": "155",
+    "cra_registration_date": null,
+    "ab_total": 400000.0,
+    "ab_payment_count": 2,
+    "ab_ministries": [
+      "EDUCATION"
+    ],
+    "dataset_sources": [
+      "cra",
+      "fed",
+      "ab"
+    ]
+  },
+  "risk": {
+    "score": 15,
+    "tier": "GREEN",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 0,
+      "high_news": 0,
+      "recency": 0,
+      "cra_loop": 0,
+      "t3010_violations": 5,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 10
+    },
+    "notes": [
+      "2 T3010 form violation(s)",
+      "GDELT adverse-event spike: 7249 events in 2020"
+    ]
+  },
+  "timeline_funding": [
+    {
+      "source": "fed",
+      "date": "2020-05-05",
+      "amount": 543530000.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "This project will include the development of volunteer opportunities in collaboration with other not-for-profit organizations; in-kind and financial supports to not-for-profits; matching, onboarding, training and supports for student participants, including additional supports for students facing technological or other barriers; the vetting of service placements to ensure they meet program eligibi"
+    },
+    {
+      "source": "fed",
+      "date": "2019-09-03",
+      "amount": 3000000.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "The objectives of the Program are to:                                                                                                         -support the development and utilization of effective approaches to address social issues and challenges;.- develop, exchange and apply knowledge, tools and resources that address social needs of individuals, families and communities                         "
+    },
+    {
+      "source": "fed",
+      "date": "2019-04-01",
+      "amount": 25000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": "WE Are Inclusive",
+      "agreement_type": "C",
+      "description": "Youth Take Charge"
+    },
+    {
+      "source": "fed",
+      "date": "2019-04-01",
+      "amount": 80000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": "WE Are Inclusive",
+      "agreement_type": "C",
+      "description": "Youth Take Charge"
+    },
+    {
+      "source": "fed",
+      "date": "2018-09-19",
+      "amount": 25000.0,
+      "department_or_program": "Environment and Climate Change Canada | Environnement et Changement climatique Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "G7 Ocean Student Education by WE"
+    },
+    {
+      "source": "fed",
+      "date": "2018-07-03",
+      "amount": 887155.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "N/A"
+    },
+    {
+      "source": "fed",
+      "date": "2017-04-20",
+      "amount": 180000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2017-02-28",
+      "amount": 1000000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2016-05-20",
+      "amount": 500000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2014-06-13",
+      "amount": 300000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2013-04-26",
+      "amount": 100000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    },
+    {
+      "source": "fed",
+      "date": "2012-06-05",
+      "amount": 100000.0,
+      "department_or_program": "Canadian Heritage | Patrimoine canadien",
+      "title": null,
+      "agreement_type": "C",
+      "description": null
+    }
+  ],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": "2020-07-01",
+      "title": "What happened behind the scenes of our WE Charity investigation",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Federal ethics commissioner found former Finance Minister Morneau breached Conflict of Interest Act regarding WE Charity contract; Prime Minister Trudeau cleared of wrongdoing.",
+      "url": "https://www.cbc.ca/news/editorsblog/editors-blog-we-charity-investigation-behind-the-scenes-1.6256936",
+      "confidence": 0.8,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "WE scandal hurts youth and trust in government and charities",
+      "url": "https://rabble.ca/politics/canadian-politics/we-scandal-hurts-youth-and-trust-government-and-charities/",
+      "source_name": "rabble.ca",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "political_opinion",
+      "summary": "Opinion piece discussing alleged corruption charges and loss of trust related to WE Charity scandal without specifying concrete regulatory actions or findings.",
+      "confidence": 0.85
+    },
+    {
+      "title": "What happened behind the scenes of our WE Charity investigation",
+      "url": "https://www.cbc.ca/news/editorsblog/editors-blog-we-charity-investigation-behind-the-scenes-1.6256936",
+      "source_name": "cbc.ca",
+      "published_at": "2020-07-01",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Federal ethics commissioner found former Finance Minister Morneau breached Conflict of Interest Act regarding WE Charity contract; Prime Minister Trudeau cleared of wrongdoing.",
+      "confidence": 0.8
+    },
+    {
+      "title": "Charitable status revoked for 12 charities linked to Vancouver ...",
+      "url": "https://vancouversun.com/news/local-news/charitable-status-revoked-for-12-b-c-charities-linked-to-single-vancouver-company",
+      "source_name": "vancouversun.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses CRA revocation of 12 BC charities linked to Vancouver company Benefic, unrelated to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Here are the Canadian Jewish charitable organizations CRA has ...",
+      "url": "https://thecjn.ca/news/here-are-the-canadian-jewish-charitable-organizations-cra-has-revoked-since-2024/",
+      "source_name": "thecjn.ca",
+      "published_at": "2024-01-01",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses CRA revocations of various Canadian Jewish charitable organizations since 2024, unrelated to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Revoked Canadian charity listed under the Criminal Code as ...",
+      "url": "https://www.canada.ca/en/revenue-agency/services/charities-giving/charities/whats-new/revoked-canadian-charity-listed-under-criminal-code-terrorist-entity.html",
+      "source_name": "canada.ca",
+      "published_at": "2011-04-09",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "CRA revoked IRFAN-Canada charity registration for providing support to Hamas terrorist organization, unrelated to WE Charity.",
+      "confidence": 0.98
+    },
+    {
+      "title": "CRA Charity Revocation: Audit Triggers, Revocation Tax & Appeals",
+      "url": "https://taxpage.com/articles-and-tips/canadian-charity-revocation-guide-cra-audit-triggers-revocation-tax-and-appeal-strategy/",
+      "source_name": "taxpage.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses CRA charity revocation involving Canadian Zionist Cultural Association for governance and recordkeeping failures, unrelated to WE Charity.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Why did the CRA revoke CZCA and CCP's charitable status?",
+      "url": "https://www.justpeaceadvocates.ca/why-did-the-cra-revoke-czca-and-ccps-charitable-status-supporting-a-foreign-armed-forces/",
+      "source_name": "justpeaceadvocates.ca",
+      "published_at": "2026-02-21",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "CRA revoked charitable status of Canadian Zionist Cultural Association and Canada Charity Partners for supporting foreign armed forces, unrelated to WE Charity.",
+      "confidence": 0.98
+    },
+    {
+      "title": "[PDF] Counter Fraud, Bribery and Corruption Policy Statement",
+      "url": "https://www.forestryengland.uk/sites/default/files/documents/FC%20Counter%20Fraud%20Bribery%20and%20Corruption%20Policy%20Statement%20.pdf",
+      "source_name": "forestryengland.uk",
+      "published_at": "2024-11-26",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Forestry Commission UK counter-fraud policy statement, completely unrelated to WE Charity or Canadian organizations.",
+      "confidence": 0.99
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": null,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": null,
+    "cra_loop_hop_breakdown": null,
+    "cra_t3010_violation_count": 2,
+    "cra_t3010_violation_examples": [
+      "CROSS_SCHEDULE COMP_4880_EQ_390 (FY2024)",
+      "CROSS_SCHEDULE COMP_4880_EQ_390 (FY2022)"
+    ],
+    "cra_max_overhead_ratio": 15.2,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": [
+      {
+        "bn": "772777512RR0001",
+        "legal_name": "Legacy Plus Foundation Canada",
+        "shared_count": 1,
+        "sample_director": "Greg Rogers"
+      },
+      {
+        "bn": "773125687RR0001",
+        "legal_name": "WE Charity Foundation",
+        "shared_count": 1,
+        "sample_director": "Steve Mainda"
+      }
+    ]
+  },
+  "related_entities": [],
+  "gdelt_yearly": {
+    "2015": 15,
+    "2016": 161,
+    "2017": 115,
+    "2018": 81,
+    "2019": 46,
+    "2020": 7249,
+    "2021": 834,
+    "2022": 78,
+    "2023": 183,
+    "2024": 107,
+    "2025": 151,
+    "2026": 29
+  },
+  "first_adverse_signal": "2015-03-12",
+  "briefing_memo": "WE Charity, based in Ontario, has received $5,197,155 in federal funding to date. The federal ethics commissioner found that former Finance Minister Morneau breached the Conflict of Interest Act regarding a WE Charity contract, though Prime Minister Trudeau was cleared of wrongdoing (CBC, July 2020). The organization shows two T3010 filing violations and a maximum overhead ratio of 15.2%, though no court cases or sanctions are recorded. Given the past ethics breach finding and moderate filing irregularities, an elevated due-diligence review is recommended before any next disbursement, though the charity retains its CRA designation and no current regulatory actions are pending.",
+  "actions": [
+    {
+      "urgency": "scheduled",
+      "title": "Conduct compliance review of T3010 filing practices",
+      "rationale": "Two T3010 violations detected indicate potential irregularities in charitable reporting obligations that require formal assessment",
+      "evidence": [
+        "T3010 violations",
+        "risk_score: 15"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Request documentation for overhead expenditure justification",
+      "rationale": "Overhead ratio of 15.2% approaches threshold levels and warrants verification against program delivery outcomes given federal funding of $5.2M",
+      "evidence": [
+        "max_overhead_ratio: 15.2%",
+        "fed_total: $5,197,155"
+      ]
+    },
+    {
+      "urgency": "monitor",
+      "title": "Track ongoing media coverage and regulatory developments",
+      "rationale": "One medium-severity news item indicates public attention that may evolve; continued monitoring ensures awareness of emerging issues",
+      "evidence": [
+        "MEDIUM news: 1",
+        "Alberta funding: $400,000"
+      ]
+    }
+  ],
+  "provenance": {
+    "bigquery_rows": [
+      "agency2026ot-data-1776775157.general.entity_golden_records id=72807",
+      "agency2026ot-data-1776775157.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '886578095')",
+      "agency2026ot-data-1776775157.cra.cra_identification WHERE STARTS_WITH(bn, '886578095')",
+      "agency2026ot-data-1776775157.cra.t3010_impossibilities WHERE STARTS_WITH(bn, '886578095')",
+      "agency2026ot-data-1776775157.cra.overhead_by_charity WHERE STARTS_WITH(bn, '886578095')",
+      "agency2026ot-data-1776775157.cra.cra_directors (shared-director join)"
+    ],
+    "external_urls": []
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T15:33:29.061126"
+}

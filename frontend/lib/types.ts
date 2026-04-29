@@ -51,6 +51,18 @@ export interface NewsArticle {
   category?: string | null;
   summary?: string | null;
   confidence?: number | null;
+  is_remediation?: boolean;
+  is_stale?: boolean;
+  age_years?: number | null;
+}
+
+export interface RemediationContext {
+  signal_count: number;
+  recent_signal_count: number;
+  most_recent_at?: string | null;
+  summary?: string | null;
+  dampening_factor: number;
+  articles: NewsArticle[];
 }
 
 export interface ForensicSignals {
@@ -132,6 +144,7 @@ export interface ScreeningDossier {
   first_adverse_signal?: string | null;
   briefing_memo?: string | null;
   actions: ActionItem[];
+  remediation: RemediationContext;
   provenance: ProvenanceTrail;
   sources_run: string[];
   sources_skipped: string[];

@@ -18,6 +18,48 @@ logger = logging.getLogger(__name__)
 URL = "https://api.opensanctions.org/match/default"
 THRESHOLD = 0.65
 
+# OpenSanctions indexes pure-identifier registries (SWIFT BIC, GLEIF LEI, etc.)
+# alongside actual sanctions/PEP/debarment lists. A match against
+# `iso9362_bic` only means "this entity has a SWIFT bank code" — that's not
+# a red flag. We filter those out so they don't trigger sanctions scoring.
+NON_FLAG_DATASETS = {
+    "iso9362_bic",   # SWIFT/BIC bank identifier registry
+    "gleif",         # Global Legal Entity Identifier Foundation
+    "permid",        # Refinitiv PermID
+    "wikidata",      # Wikidata reference
+    "ext_cy_companies",  # Cyprus companies registry
+    "ext_gleif",
+    "ext_md_companies",
+    "ext_offshore_leaks",  # informational, not a sanctions list
+}
+
+
+def _is_actual_flag(result: dict) -> bool:
+    """Returns True only when the matched OpenSanctions entry is a
+    sanctions / PEP / debarment / wanted / crime / regulatory list — not a
+    pure identifier registry like SWIFT BIC or GLEIF.
+
+    Heuristic: at least one dataset must NOT be in `NON_FLAG_DATASETS` AND
+    `target` must be true OR there must be at least one flag-worthy topic
+    (sanction, sanction.linked, debarment, crime, wanted, role.pep, etc.)."""
+    datasets = result.get("datasets") or []
+    flag_datasets = [d for d in datasets if d not in NON_FLAG_DATASETS]
+    if not flag_datasets:
+        return False
+    if result.get("target") is True:
+        return True
+    props = result.get("properties") or {}
+    topics = [t for t in (props.get("topics") or []) if isinstance(t, str)]
+    flag_topics = {
+        "sanction", "sanction.linked", "sanction.counter",
+        "debarment", "crime", "crime.boss", "crime.fraud",
+        "crime.theft", "crime.war", "crime.terror", "crime.traffick",
+        "wanted", "role.pep", "role.rca", "role.judge",
+        "role.diplo", "role.spy", "asset.frozen", "export.control",
+        "reg.warn", "reg.action",
+    }
+    return any(t in flag_topics for t in topics)
+
 
 async def match_company(name: str, *, country: str = "ca", timeout: float = 15.0) -> list[SanctionsHit]:
     """Returns sanctions/PEP/debarment matches above THRESHOLD. Empty list on
@@ -62,6 +104,13 @@ async def match_company(name: str, *, country: str = "ca", timeout: float = 15.0
     for r in results:
         score = float(r.get("score") or 0)
         if score < THRESHOLD:
+            continue
+        if not _is_actual_flag(r):
+            logger.info(
+                "OpenSanctions match for %r is identifier-registry-only "
+                "(datasets=%s, target=%s) — not flagging",
+                name, r.get("datasets"), r.get("target"),
+            )
             continue
         props: dict[str, Any] = r.get("properties", {}) or {}
         countries: list[str] = []

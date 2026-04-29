@@ -1,0 +1,373 @@
+{
+  "org": {
+    "id": "50517",
+    "canonical_name": "Canada Charity Partners",
+    "aliases": [
+      "B'nai Brith Canada Foundation",
+      "B'NAI BRITH CANADA FOUNDATION",
+      "CANADA CHAIRTY PARTNERS",
+      "Canada Charity",
+      "CANADA CHARITY",
+      "CANADA CHARITY COTE ST LUC",
+      "CANADA CHARITY COTE ST. LUC",
+      "CANADA CHARITY PARNERS",
+      "Canada Charity Partner",
+      "CANADA CHARITY PARTNER",
+      "Canada Charity Partners",
+      "CanadaCharityPartners",
+      "CANADA CHARITY PARTNERS",
+      "CANADA CHARITY PARTNERS (ISRA AID)",
+      "CANADA CHARITY PARTNERS (ISRAEL GIVES",
+      "CANADA CHARITY PARTNERS (ISRAEL GIVES)",
+      "CANADA CHARITY PARTNERS (NGO MONITOR)",
+      "CANADA CHARITY PARTNERS (Yad Ezra V'Shulamit)",
+      "CANADA CHARITY PARTNERS (YAD EZRA V'SHULAMIT)",
+      "CANADA CHARITY PATNERS",
+      "CANADIAN CHARITABLE PARTNERS",
+      "Canadian Charity Partners",
+      "CANADIAN CHARITY PARTNERS",
+      "CANADIAN CHARITY PARTNERS HELP FOR VICTIMS OF KIBBUTZ NIT OZ",
+      "CANADIAN CHARITY PARTNERS (NGO MONITORS)"
+    ],
+    "bn_root": "818335390",
+    "entity_type": "charity",
+    "province": "QC",
+    "city": "COTE SAINT-LUC",
+    "fed_total": 55772.0,
+    "fed_grant_count": 3,
+    "fed_top_departments": [
+      "Employment and Social Development Canada | Emploi et Développement social Canada"
+    ],
+    "cra_designation": "C",
+    "cra_category": "1",
+    "cra_registration_date": null,
+    "ab_total": null,
+    "ab_payment_count": null,
+    "ab_ministries": [],
+    "dataset_sources": [
+      "cra",
+      "fed"
+    ]
+  },
+  "risk": {
+    "score": 32,
+    "tier": "YELLOW",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 0,
+      "high_news": 15,
+      "recency": 10,
+      "cra_loop": 2,
+      "t3010_violations": 5,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 0
+    },
+    "notes": [
+      "4 HIGH news article(s)",
+      "1 T3010 form violation(s)"
+    ]
+  },
+  "timeline_funding": [
+    {
+      "source": "fed",
+      "date": "2023-03-24",
+      "amount": 25000.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "InterGen Media Ensemble",
+      "agreement_type": "G",
+      "description": "The objectives of the Program are: .• promoting volunteerism among seniors; .• engaging seniors in the community through.mentoring of others; .• expanding awareness of elder abuse, including.financial abuse; .• supporting social participation and inclusion of.seniors; and .• providing capital assistance for new and existing.community projects and/or programs for seniors. ."
+    },
+    {
+      "source": "fed",
+      "date": "2022-04-27",
+      "amount": 17735.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "EEC 52 - Canada Charity Partners",
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2021-04-26",
+      "amount": 13037.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "C",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth, particularly those who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills."
+    },
+    {
+      "source": "fed",
+      "date": "2019-04-23",
+      "amount": 11058.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": null,
+      "agreement_type": "O",
+      "description": "Through the application of national and local priorities, the CSJ program seeks to provide youth who face barriers to employment with access to work opportunities. Funded employers must demonstrate that they are providing quality work experiences for youth that provide opportunities to develop and improve their skills. The CSJ program is delivered by the Department of ESD."
+    },
+    {
+      "source": "fed",
+      "date": "2018-04-23",
+      "amount": 9303.0,
+      "department_or_program": "Employment and Social Development Canada | Emploi et Développement social Canada",
+      "title": "Congo-Canada Charity Foundation Inc. (CCCF)",
+      "agreement_type": "C",
+      "description": "N/A"
+    }
+  ],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": "2026-02-21",
+      "title": "Audits by CRA of Charities - CanadianCharityLaw.ca",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' registration as a registered charity following audit findings of non-compliance with the Income Tax Act.",
+      "url": "https://www.canadiancharitylaw.ca/blog/category/audits-by-cra-of-charities/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2026-02-21",
+      "title": "Why did the CRA revoke CZCA and CCP's charitable status?",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' charitable status after the organization failed to implement corrective measures from a 2020 compliance agreement and continued non-compliance with the Income Tax Act during 2020-2021 audit period.",
+      "url": "https://www.justpeaceadvocates.ca/why-did-the-cra-revoke-czca-and-ccps-charitable-status-supporting-a-foreign-armed-forces/",
+      "confidence": 0.9,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2026-02-21",
+      "title": "Here are the Canadian Jewish charitable organizations CRA has ...",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' charitable status following a 2020 audit where the organization failed to demonstrate proper compliance and corrective measures.",
+      "url": "https://thecjn.ca/news/here-are-the-canadian-jewish-charitable-organizations-cra-has-revoked-since-2024/",
+      "confidence": 0.92,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2026-02-21",
+      "title": "Canada Gazette, Part 1, Volume 160, Number 8: COMMISSIONS",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Official Canada Gazette notice of CRA's proposed revocation of Canada Charity Partners' registration for failure to meet requirements under paragraphs 168(1)(b), (d), and (e) of the Income Tax Act.",
+      "url": "https://gazette.gc.ca/rp-pr/p1/2026/2026-02-21/html/commis-eng.html",
+      "confidence": 0.98,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "Audits by CRA of Charities - CanadianCharityLaw.ca",
+      "url": "https://www.canadiancharitylaw.ca/blog/category/audits-by-cra-of-charities/",
+      "source_name": "canadiancharitylaw.ca",
+      "published_at": "2026-02-21",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' registration as a registered charity following audit findings of non-compliance with the Income Tax Act.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Why did the CRA revoke CZCA and CCP's charitable status?",
+      "url": "https://www.justpeaceadvocates.ca/why-did-the-cra-revoke-czca-and-ccps-charitable-status-supporting-a-foreign-armed-forces/",
+      "source_name": "justpeaceadvocates.ca",
+      "published_at": "2026-02-21",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' charitable status after the organization failed to implement corrective measures from a 2020 compliance agreement and continued non-compliance with the Income Tax Act during 2020-2021 audit period.",
+      "confidence": 0.9
+    },
+    {
+      "title": "Here are the Canadian Jewish charitable organizations CRA has ...",
+      "url": "https://thecjn.ca/news/here-are-the-canadian-jewish-charitable-organizations-cra-has-revoked-since-2024/",
+      "source_name": "thecjn.ca",
+      "published_at": "2026-02-21",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "CRA revoked Canada Charity Partners' charitable status following a 2020 audit where the organization failed to demonstrate proper compliance and corrective measures.",
+      "confidence": 0.92
+    },
+    {
+      "title": "Revoked Canadian charity listed under the Criminal Code as ...",
+      "url": "https://www.canada.ca/en/revenue-agency/services/charities-giving/charities/whats-new/revoked-canadian-charity-listed-under-criminal-code-terrorist-entity.html",
+      "source_name": "canada.ca",
+      "published_at": "2011-04-09",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses IRFAN-Canada charity revocation in 2011 for supporting Hamas, unrelated to Canada Charity Partners.",
+      "confidence": 0.98
+    },
+    {
+      "title": "[PDF] Canadian Charities and Canada Revenue Agency (CRA) Audits",
+      "url": "https://www.canadiancharitylaw.ca/uploads/Canadian_Charities_and_Audits_by_the_Canada_Revenue_Agency.pdf",
+      "source_name": "canadiancharitylaw.ca",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "General educational article about CRA charity audits and compliance processes, discussing audit statistics and intermediate sanctions without specific allegations against Canada Charity Partners.",
+      "confidence": 0.85
+    },
+    {
+      "title": "[PDF] Charitable status revoked for 12 B.C. charities linked to single ...",
+      "url": "https://moodysprivateclient.com/wp-content/uploads/Charitable-status-revoked-for-B.C.-charities-Victoria-Times-Colonist.pdf",
+      "source_name": "moodysprivateclient.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article discusses 12 B.C. charities linked to a Vancouver company having charitable status revoked for tax planning arrangements, unrelated to Canada Charity Partners.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Charitable status revoked for 12 charities linked to Vancouver ...",
+      "url": "https://vancouversun.com/news/local-news/charitable-status-revoked-for-12-b-c-charities-linked-to-single-vancouver-company",
+      "source_name": "vancouversun.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Article covers 12 B.C. charities linked to single Vancouver company facing revocation for tax law breaches, not related to Canada Charity Partners.",
+      "confidence": 0.95
+    },
+    {
+      "title": "Canada Gazette, Part 1, Volume 160, Number 8: COMMISSIONS",
+      "url": "https://gazette.gc.ca/rp-pr/p1/2026/2026-02-21/html/commis-eng.html",
+      "source_name": "gazette.gc.ca",
+      "published_at": "2026-02-21",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Official Canada Gazette notice of CRA's proposed revocation of Canada Charity Partners' registration for failure to meet requirements under paragraphs 168(1)(b), (d), and (e) of the Income Tax Act.",
+      "confidence": 0.98
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": 6,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": 25000.0,
+    "cra_loop_hop_breakdown": {
+      "2hop": 1,
+      "3hop": 0,
+      "4hop": 0,
+      "5hop": 0,
+      "6hop": 2,
+      "7plus": 0
+    },
+    "cra_t3010_violation_count": 1,
+    "cra_t3010_violation_examples": [
+      "EXPENDITURE PARTITION_4950 (FY2021)"
+    ],
+    "cra_max_overhead_ratio": 14.7,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": [
+      {
+        "bn": "863538120RR0001",
+        "legal_name": "Centre Famille SNAP / SNAP Family Center",
+        "shared_count": 1,
+        "sample_director": "Eliezer Bonder"
+      },
+      {
+        "bn": "892714833RR0001",
+        "legal_name": "INTERGÉNÉRATIONS QUÉBEC",
+        "shared_count": 1,
+        "sample_director": "Eliezer Bonder"
+      }
+    ]
+  },
+  "related_entities": [],
+  "gdelt_yearly": {
+    "2022": 1,
+    "2024": 4,
+    "2026": 3
+  },
+  "first_adverse_signal": "2022-12-07",
+  "briefing_memo": "Canada Charity Partners (QC) has received $55,772 in federal funding to date. The CRA revoked the organization's registered charity status following audit findings that it failed to implement corrective measures from a 2020 compliance agreement and continued non-compliance with the Income Tax Act during the 2020-2021 audit period (canadiancharitylaw.ca, justpeaceadvocates.ca, thecjn.ca, all February 2026). T3010 filings show one violation on record and an overhead ratio reaching 14.7%, though the forensic risk score of 32 remains moderate. Elevated due-diligence review is strongly recommended before any further disbursement, given the revoked charitable status represents a material regulatory barrier to lawful operation as a charity.",
+  "actions": [
+    {
+      "urgency": "immediate",
+      "title": "Verify charitable registration status with CRA",
+      "rationale": "Multiple HIGH-severity news sources report CRA revocation of charitable status for this organization.",
+      "evidence": [
+        "HIGH news: CRA revocation",
+        "thecjn.ca",
+        "justpeaceadvocates.ca",
+        "canadiancharitylaw.ca"
+      ]
+    },
+    {
+      "urgency": "immediate",
+      "title": "Suspend all pending and future disbursements",
+      "rationale": "Organization appears to have lost charitable registration, making it ineligible for federal funding as a qualified donee.",
+      "evidence": [
+        "HIGH news: charitable status revoked",
+        "CRA audit reported"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Initiate recovery proceedings for federal funding already disbursed",
+      "rationale": "Federal funds totaling $55,772 may have been provided to an entity that no longer holds valid charitable status.",
+      "evidence": [
+        "fed_total: $55,772",
+        "HIGH news: revocation",
+        "T3010 violations: 1"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Request detailed CRA audit findings and revocation documentation",
+      "rationale": "CRA audit and revocation provide official basis for funding ineligibility and may reveal misuse of prior funds.",
+      "evidence": [
+        "HIGH news: CRA audits",
+        "T3010 violations",
+        "circular_gifting_score: 6"
+      ]
+    }
+  ],
+  "provenance": {
+    "bigquery_rows": [
+      "agency2026ot-data-1776775157.general.entity_golden_records id=50517",
+      "agency2026ot-data-1776775157.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '818335390')",
+      "agency2026ot-data-1776775157.cra.cra_identification WHERE STARTS_WITH(bn, '818335390')",
+      "agency2026ot-data-1776775157.cra.loop_universe WHERE STARTS_WITH(bn, '818335390')",
+      "agency2026ot-data-1776775157.cra.t3010_impossibilities WHERE STARTS_WITH(bn, '818335390')",
+      "agency2026ot-data-1776775157.cra.overhead_by_charity WHERE STARTS_WITH(bn, '818335390')",
+      "agency2026ot-data-1776775157.cra.cra_directors (shared-director join)"
+    ],
+    "external_urls": [
+      {
+        "label": "canadiancharitylaw.ca: Audits by CRA of Charities - CanadianCharityLaw.ca",
+        "url": "https://www.canadiancharitylaw.ca/blog/category/audits-by-cra-of-charities/"
+      },
+      {
+        "label": "justpeaceadvocates.ca: Why did the CRA revoke CZCA and CCP's charitable status?",
+        "url": "https://www.justpeaceadvocates.ca/why-did-the-cra-revoke-czca-and-ccps-charitable-status-supporting-a-foreign-armed-forces/"
+      },
+      {
+        "label": "thecjn.ca: Here are the Canadian Jewish charitable organizations CRA has ...",
+        "url": "https://thecjn.ca/news/here-are-the-canadian-jewish-charitable-organizations-cra-has-revoked-since-2024/"
+      },
+      {
+        "label": "gazette.gc.ca: Canada Gazette, Part 1, Volume 160, Number 8: COMMISSIONS",
+        "url": "https://gazette.gc.ca/rp-pr/p1/2026/2026-02-21/html/commis-eng.html"
+      }
+    ]
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T15:34:02.825344"
+}

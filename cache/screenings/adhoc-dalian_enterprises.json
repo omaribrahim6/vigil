@@ -1,0 +1,427 @@
+{
+  "org": {
+    "id": "adhoc-dalian_enterprises",
+    "canonical_name": "Dalian Enterprises",
+    "aliases": [],
+    "bn_root": null,
+    "entity_type": null,
+    "province": null,
+    "city": null,
+    "fed_total": null,
+    "fed_grant_count": null,
+    "fed_top_departments": [],
+    "cra_designation": null,
+    "cra_category": null,
+    "cra_registration_date": null,
+    "ab_total": null,
+    "ab_payment_count": null,
+    "ab_ministries": [],
+    "dataset_sources": []
+  },
+  "risk": {
+    "score": 25,
+    "tier": "YELLOW",
+    "contributions": {
+      "sanctions": 0,
+      "court_cases": 0,
+      "critical_news": 10,
+      "high_news": 15,
+      "recency": 0,
+      "cra_loop": 0,
+      "t3010_violations": 0,
+      "overhead": 0,
+      "ab_sole_source": 0,
+      "gdelt_spike": 0
+    },
+    "notes": [
+      "1 CRITICAL news article(s)"
+    ]
+  },
+  "timeline_funding": [],
+  "timeline_adverse": [
+    {
+      "source": "tavily",
+      "date": "2022-10-01",
+      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "RCMP investigation into alleged contract performance fraud involving Dalian Enterprises, including invoicing manipulation and undisclosed subcontracting arrangements on CBSA contracts.",
+      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
+      "confidence": 0.85,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-02-01",
+      "title": "Auditor general's office fires 2 workers for undeclared contracts with government | Canadian HR Reporter",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises received $7.9 million in ArriveCAN contracts while its president David Yeo was a Department of National Defence employee, creating conflict of interest concerns; cases referred to Ottawa Police Service.",
+      "url": "https://www.hrreporter.com/chrr-plus/employment-law/auditor-generals-office-fires-2-workers-for-undeclared-contracts-with-government/384553",
+      "confidence": 0.9,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-02",
+      "title": "Canada Suspends Dalian Public Services, Procurement | Mirage News",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Public Services and Procurement Canada formally suspended Dalian Enterprises and Dalian-Coradix joint venture from federal contracts and procurement participation due to conflict of interest violations.",
+      "url": "https://www.miragenews.com/canada-suspends-dalian-public-services-1185815/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-02-29",
+      "title": "Anand ‘extremely surprised’ to learn ArriveCan contractor was also Defence Department employee - The Globe and Mail",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Federal government suspended all contracts with Dalian Enterprises after discovering its president was simultaneously a Defence Department employee while receiving $7.9 million in ArriveCAN contracts.",
+      "url": "https://www.theglobeandmail.com/politics/article-arrivecan-contractor-suspended-department-national-defence/",
+      "confidence": 0.9,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-01-18",
+      "title": "Standing Committee on Government Operations and Estimates: Study on the ArriveCAN application (January 18, 2023)",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Allegations that Dalian and Coradix joint venture misused the procurement strategy for Indigenous Business in ArriveCAN contracts totaling over $23 million.",
+      "url": "https://www.cbsa-asfc.gc.ca/transparency-transparence/pd-dp/bbp-rpp/oggo/2024-01-18/menu-eng.html",
+      "confidence": 0.75,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-02-29",
+      "title": "Public servant's company received more than $200M in government ...",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises awarded over $200 million in government contracts since 2015 while its president David Yeo was a DND employee; company suspended and internal investigation launched.",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-millions-government-contracts-1.7130206",
+      "confidence": 0.9,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-01",
+      "title": "The Spectrum | An IT firm run by a defence department employee has been awarded millions of dollars in government contracts since 2015 | Facebook",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprise received millions in government contracts while run by a defence department employee, raising conflict of interest concerns.",
+      "url": "https://www.facebook.com/groups/253449343226437/posts/887896669781698/",
+      "confidence": 0.7,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-09-01",
+      "title": "ArriveCan contractor exec became public servant after project was completed, company says | CBC News",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises claims its president David Yeo became a public servant in September after ArriveCAN project completion, but had active contracts after that date creating potential conflicts.",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-david-yeo-arrive-can-employee-1.7138383",
+      "confidence": 0.75,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-09-01",
+      "title": "ArriveCan contractor exec became public servant after project was ...",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises president testified about governance role in October while simultaneously employed by DND, with contracts continuing after employment began.",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-david-yeo-arrive-can-employee-1.7138383",
+      "confidence": 0.75,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-06",
+      "title": "Federal procurement department punishes companies that worked ...",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Federal Procurement Department issued stop work notices to Coradix and suspended Dalian and GC Strategies from procurement following ArriveCAN management failures.",
+      "url": "https://winnipeg.citynews.ca/2024/03/06/federal-procurement-department-punishes-companies-that-worked-on-arrivecan-app/",
+      "confidence": 0.8,
+      "raw": null
+    }
+  ],
+  "sanctions": [],
+  "court_cases": [],
+  "news": [
+    {
+      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
+      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2022-10-01",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "RCMP investigation into alleged contract performance fraud involving Dalian Enterprises, including invoicing manipulation and undisclosed subcontracting arrangements on CBSA contracts.",
+      "confidence": 0.85,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 3.6
+    },
+    {
+      "title": "Auditor general's office fires 2 workers for undeclared contracts with government | Canadian HR Reporter",
+      "url": "https://www.hrreporter.com/chrr-plus/employment-law/auditor-generals-office-fires-2-workers-for-undeclared-contracts-with-government/384553",
+      "source_name": "hrreporter.com",
+      "published_at": "2024-02-01",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises received $7.9 million in ArriveCAN contracts while its president David Yeo was a Department of National Defence employee, creating conflict of interest concerns; cases referred to Ottawa Police Service.",
+      "confidence": 0.9,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Canada Suspends Dalian Public Services, Procurement | Mirage News",
+      "url": "https://www.miragenews.com/canada-suspends-dalian-public-services-1185815/",
+      "source_name": "miragenews.com",
+      "published_at": "2024-03-02",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Public Services and Procurement Canada formally suspended Dalian Enterprises and Dalian-Coradix joint venture from federal contracts and procurement participation due to conflict of interest violations.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Anand ‘extremely surprised’ to learn ArriveCan contractor was also Defence Department employee - The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/politics/article-arrivecan-contractor-suspended-department-national-defence/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2024-02-29",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Federal government suspended all contracts with Dalian Enterprises after discovering its president was simultaneously a Defence Department employee while receiving $7.9 million in ArriveCAN contracts.",
+      "confidence": 0.9,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Standing Committee on Government Operations and Estimates: Study on the ArriveCAN application (January 18, 2023)",
+      "url": "https://www.cbsa-asfc.gc.ca/transparency-transparence/pd-dp/bbp-rpp/oggo/2024-01-18/menu-eng.html",
+      "source_name": "cbsa-asfc.gc.ca",
+      "published_at": "2024-01-18",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Allegations that Dalian and Coradix joint venture misused the procurement strategy for Indigenous Business in ArriveCAN contracts totaling over $23 million.",
+      "confidence": 0.75,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.3
+    },
+    {
+      "title": "Public servant's company received more than $200M in government ...",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-millions-government-contracts-1.7130206",
+      "source_name": "cbc.ca",
+      "published_at": "2024-02-29",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises awarded over $200 million in government contracts since 2015 while its president David Yeo was a DND employee; company suspended and internal investigation launched.",
+      "confidence": 0.9,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "The Spectrum | An IT firm run by a defence department employee has been awarded millions of dollars in government contracts since 2015 | Facebook",
+      "url": "https://www.facebook.com/groups/253449343226437/posts/887896669781698/",
+      "source_name": "facebook.com",
+      "published_at": "2024-03-01",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprise received millions in government contracts while run by a defence department employee, raising conflict of interest concerns.",
+      "confidence": 0.7,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "ArriveCan contractor exec became public servant after project was completed, company says | CBC News",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-david-yeo-arrive-can-employee-1.7138383",
+      "source_name": "cbc.ca",
+      "published_at": "2023-09-01",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises claims its president David Yeo became a public servant in September after ArriveCAN project completion, but had active contracts after that date creating potential conflicts.",
+      "confidence": 0.75,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.7
+    },
+    {
+      "title": "ArriveCan contractor exec became public servant after project was ...",
+      "url": "https://www.cbc.ca/news/politics/dalian-enterprise-david-yeo-arrive-can-employee-1.7138383",
+      "source_name": "cbc.ca",
+      "published_at": "2023-09-01",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Dalian Enterprises president testified about governance role in October while simultaneously employed by DND, with contracts continuing after employment began.",
+      "confidence": 0.75,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.7
+    },
+    {
+      "title": "Federal procurement department punishes companies that worked ...",
+      "url": "https://winnipeg.citynews.ca/2024/03/06/federal-procurement-department-punishes-companies-that-worked-on-arrivecan-app/",
+      "source_name": "winnipeg.citynews.ca",
+      "published_at": "2024-03-06",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Federal Procurement Department issued stop work notices to Coradix and suspended Dalian and GC Strategies from procurement following ArriveCAN management failures.",
+      "confidence": 0.8,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "alb-20231231",
+      "url": "https://www.sec.gov/Archives/edgar/data/915913/000091591324000016/alb-20231231.htm",
+      "source_name": "sec.gov",
+      "published_at": "2023-12-31",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Albemarle Corporation SEC filing discussing diversity initiatives and environmental compliance - unrelated to Dalian Enterprises.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.3
+    },
+    {
+      "title": "OFAC Consolidated Frequently Asked Questions",
+      "url": "https://ofac.treasury.gov/faqs/all-faqs",
+      "source_name": "ofac.treasury.gov",
+      "published_at": "2024-08-21",
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "OFAC guidance on sanctions compliance services - unrelated to Dalian Enterprises.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 1.7
+    },
+    {
+      "title": "[PDF] Skillsoft Corp. - Proxy Direct",
+      "url": "https://www.proxy-direct.com/MeetingDocuments/32741/32741_Skillsoft%2010K.pdf",
+      "source_name": "proxy-direct.com",
+      "published_at": null,
+      "severity": "NOISE",
+      "category": "unrelated",
+      "summary": "Skillsoft Corp proxy filing discussing corporate strategy and competition - unrelated to Dalian Enterprises.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": null
+    }
+  ],
+  "forensics": {
+    "cra_loop_score": null,
+    "cra_loop_score_max": 30,
+    "cra_loop_total_circular_amt": null,
+    "cra_loop_hop_breakdown": null,
+    "cra_t3010_violation_count": null,
+    "cra_t3010_violation_examples": null,
+    "cra_max_overhead_ratio": null,
+    "ab_sole_source_count": 0,
+    "ab_sole_source_value": 0.0,
+    "shared_directors": null
+  },
+  "related_entities": [],
+  "gdelt_yearly": {},
+  "first_adverse_signal": "2022-10-01",
+  "briefing_memo": "Dalian Enterprises received over $200 million in federal contracts since 2015, including $7.9 million for ArriveCAN work, according to CBC (February 29, 2024). Public Services and Procurement Canada formally suspended the company and its Dalian-Coradix joint venture from all federal contracting in March 2024 due to conflict of interest violations—the company's president, David Yeo, was simultaneously a Department of National Defence employee while receiving contracts—alongside an active RCMP investigation into alleged contract performance fraud and invoicing manipulation (Globe and Mail, October 1, 2022). No remediation, settlement, leadership change, or lifting of the suspension is documented in available records. Recommend maintaining the existing procurement suspension and awaiting completion of the RCMP investigation and any resulting enforcement actions before considering future eligibility.",
+  "actions": [
+    {
+      "urgency": "immediate",
+      "title": "Verify current suspension status and halt any pending disbursements",
+      "rationale": "Organization was suspended from federal procurement in March 2024, indicating active integrity concerns requiring immediate verification of eligibility status.",
+      "evidence": [
+        "CRITICAL news March 2024",
+        "Canada procurement suspension"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Refer to departmental integrity framework for enhanced due diligence review",
+      "rationale": "Multiple high-severity news items indicate serious misconduct including RCMP investigation into CBSA contract irregularities and undeclared conflicts of interest involving government employees.",
+      "evidence": [
+        "RCMP investigation Oct 2022",
+        "HIGH news Feb 2024",
+        "Undeclared contractor conflicts"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Request written attestation of remediation measures and compliance updates",
+      "rationale": "No documented remediation signals detected despite 2+ years since initial RCMP probe and multiple adverse findings, requiring formal response from organization.",
+      "evidence": [
+        "Zero remediation signals",
+        "Multiple HIGH severity incidents 2022-2024"
+      ]
+    },
+    {
+      "urgency": "monitor",
+      "title": "Flag for quarterly review pending resolution of active integrity matters",
+      "rationale": "Ongoing integrity concerns warrant continued monitoring until procurement suspension is lifted and investigations conclude.",
+      "evidence": [
+        "Risk score 25",
+        "10 adverse news items",
+        "Active suspension status"
+      ]
+    }
+  ],
+  "remediation": {
+    "signal_count": 0,
+    "recent_signal_count": 0,
+    "most_recent_at": null,
+    "summary": null,
+    "dampening_factor": 1.0,
+    "articles": []
+  },
+  "provenance": {
+    "bigquery_rows": [],
+    "external_urls": [
+      {
+        "label": "theglobeandmail.com: RCMP probes alleged misconduct in outsourced CBSA contract",
+        "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/"
+      },
+      {
+        "label": "hrreporter.com: Auditor general's office fires 2 workers for undeclared contracts with governmen",
+        "url": "https://www.hrreporter.com/chrr-plus/employment-law/auditor-generals-office-fires-2-workers-for-undeclared-contracts-with-government/384553"
+      },
+      {
+        "label": "miragenews.com: Canada Suspends Dalian Public Services, Procurement | Mirage News",
+        "url": "https://www.miragenews.com/canada-suspends-dalian-public-services-1185815/"
+      },
+      {
+        "label": "theglobeandmail.com: Anand ‘extremely surprised’ to learn ArriveCan contractor was also Defence Depar",
+        "url": "https://www.theglobeandmail.com/politics/article-arrivecan-contractor-suspended-department-national-defence/"
+      },
+      {
+        "label": "cbc.ca: Public servant's company received more than $200M in government ...",
+        "url": "https://www.cbc.ca/news/politics/dalian-enterprise-millions-government-contracts-1.7130206"
+      }
+    ]
+  },
+  "sources_run": [
+    "opensanctions",
+    "tavily_adverse",
+    "tavily_remediation",
+    "claude_classifier",
+    "forensics",
+    "gdelt"
+  ],
+  "sources_skipped": [
+    "canlii"
+  ],
+  "cached_at": "2026-04-29T16:38:03.926699"
+}

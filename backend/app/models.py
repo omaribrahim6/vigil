@@ -67,6 +67,25 @@ class NewsArticle(BaseModel):
     category: str | None = None
     summary: str | None = None
     confidence: float | None = None
+    is_remediation: bool = False
+    is_stale: bool = False
+    age_years: float | None = None
+
+
+class RemediationContext(BaseModel):
+    """Positive-integrity signals (settlements completed, leadership change,
+    integrity awards, ethics certifications, monitorship concluded).
+
+    Surfaces alongside adverse media so a funder sees the *full* picture, not
+    just historic bad news. Used to dampen the risk score when material
+    remediation has occurred in the last 24 months."""
+
+    signal_count: int = 0
+    recent_signal_count: int = 0
+    most_recent_at: date | None = None
+    summary: str | None = None
+    dampening_factor: float = 1.0
+    articles: list[NewsArticle] = Field(default_factory=list)
 
 
 class ForensicSignals(BaseModel):
@@ -156,6 +175,7 @@ class ScreeningDossier(BaseModel):
     first_adverse_signal: date | None = None
     briefing_memo: str | None = None
     actions: list[ActionItem] = Field(default_factory=list)
+    remediation: RemediationContext = Field(default_factory=RemediationContext)
     provenance: ProvenanceTrail = Field(default_factory=ProvenanceTrail)
     sources_run: list[str] = Field(default_factory=list)
     sources_skipped: list[str] = Field(default_factory=list)
