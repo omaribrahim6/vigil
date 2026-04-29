@@ -1,26 +1,35 @@
-"""Claude classifier + briefing-memo author.
+"""Claude classifier + briefing-memo author + action-items author.
 
-Two responsibilities:
+Three responsibilities:
 
-1. `classify_articles` — given Tavily news hits, ask Claude (one batched call)
-   to label each as CRITICAL / HIGH / MEDIUM / NOISE with a category, summary,
-   and confidence. Spec §6 step 5.
-2. `author_briefing_memo` — given the assembled dossier (sanctions, court
-   cases, classified articles, forensic signals, funding profile), ask Claude
-   to write a 4-sentence Minister-ready brief. The "why flagged" panel.
+1. `classify_articles` — label Tavily news hits CRITICAL / HIGH / MEDIUM / NOISE.
+2. `author_briefing_memo` — 4-sentence Minister-ready brief.
+3. `author_actions` — prescriptive action items ('what should the funder do').
 
-If `ANTHROPIC_API_KEY` is missing, both functions return deterministic
-fallbacks rather than failing — so the demo still runs end-to-end."""
+Backed by either:
+- AWS Bedrock (`AWS_BEARER_TOKEN_BEDROCK` set) — preferred for the hackathon;
+- Direct Anthropic API (`ANTHROPIC_API_KEY` set) — fallback;
+- Deterministic keyword/rule-based fallback if neither is configured.
+
+The fallback path keeps the demo running end-to-end even without an LLM."""
 from __future__ import annotations
 
 import json
 import logging
+import os
 from typing import Any
 
-from anthropic import Anthropic
+from anthropic import Anthropic, AnthropicBedrock
 
 from .config import SETTINGS
-from .models import ForensicSignals, NewsArticle, OrgProfile, SanctionsHit, CourtCase
+from .models import (
+    ActionItem,
+    ForensicSignals,
+    NewsArticle,
+    OrgProfile,
+    SanctionsHit,
+    CourtCase,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -53,17 +62,41 @@ recommended before next disbursement", "no concerning signals detected", or
 similar). Reference uncertainty where it exists."""
 
 
-def _client() -> Anthropic | None:
-    if not SETTINGS.has_anthropic:
-        return None
-    return Anthropic(api_key=SETTINGS.anthropic_api_key)
+def _client() -> Anthropic | AnthropicBedrock | None:
+    """Pick the best available Claude client. Bedrock if the hackathon-provided
+    bearer token is set; else direct Anthropic; else None (fallback path)."""
+    if SETTINGS.has_bedrock:
+        if not os.environ.get("AWS_BEARER_TOKEN_BEDROCK"):
+            os.environ["AWS_BEARER_TOKEN_BEDROCK"] = SETTINGS.aws_bearer_token_bedrock or ""
+        if not os.environ.get("AWS_REGION"):
+            os.environ["AWS_REGION"] = SETTINGS.aws_region
+        try:
+            return AnthropicBedrock(aws_region=SETTINGS.aws_region)
+        except Exception as e:  # noqa: BLE001
+            logger.warning("Bedrock client init failed (%s); falling back.", e)
+    if SETTINGS.has_anthropic_direct:
+        return Anthropic(api_key=SETTINGS.anthropic_api_key)
+    return None
 
 
-def _fallback_classify(articles: list[NewsArticle]) -> list[NewsArticle]:
+def _model_id() -> str:
+    return SETTINGS.bedrock_model_id if SETTINGS.has_bedrock else SETTINGS.anthropic_model
+
+
+def _fallback_classify(articles: list[NewsArticle], name: str = "") -> list[NewsArticle]:
     """Keyword-based degraded classifier for when Anthropic isn't configured.
 
     Tiers ordered most-severe first; first match wins. Matched against a
-    lower-cased concatenation of title + summary."""
+    lower-cased concatenation of title + summary. We also require the org
+    name (or a meaningful prefix of it) to appear in the article text — most
+    Tavily noise is generic 'Fraud Policy' PDFs that don't mention the org."""
+    name_l = (name or "").strip().lower()
+    name_tokens: list[str] = []
+    if name_l:
+        for token in name_l.replace("&", "and").split():
+            t = token.strip(",.;:'\"()")
+            if len(t) >= 4 and t not in {"the", "and", "ltd", "inc.", "inc", "corporation"}:
+                name_tokens.append(t)
     keywords: dict[str, list[str]] = {
         "CRITICAL": [
             "fraud charge", "fraud charges", "indicted", "indictment",
@@ -94,11 +127,20 @@ def _fallback_classify(articles: list[NewsArticle]) -> list[NewsArticle]:
     out: list[NewsArticle] = []
     for a in articles:
         text = f"{a.title or ''} {a.summary or ''}".lower()
+        # Demote articles that don't actually mention the org. (Most Tavily
+        # noise is generic policy/explainer PDFs whose titles match adverse
+        # keywords but never name the entity we're screening.)
+        mentions_org = (
+            not name_tokens or
+            (name_l and name_l in text) or
+            sum(1 for t in name_tokens if t in text) >= max(1, len(name_tokens) // 2)
+        )
         sev = "NOISE"
-        for tier in ("CRITICAL", "HIGH", "MEDIUM"):
-            if any(k in text for k in keywords[tier]):
-                sev = tier
-                break
+        if mentions_org:
+            for tier in ("CRITICAL", "HIGH", "MEDIUM"):
+                if any(k in text for k in keywords[tier]):
+                    sev = tier
+                    break
         out.append(a.model_copy(update={"severity": sev, "category": "auto"}))
     return out
 
@@ -108,7 +150,7 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         return []
     client = _client()
     if client is None:
-        return _fallback_classify(articles)
+        return _fallback_classify(articles, name=name)
 
     payload = [
         {"index": i, "title": a.title, "url": a.url, "summary": (a.summary or "")[:500]}
@@ -123,7 +165,7 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
     )
     try:
         msg = client.messages.create(
-            model=SETTINGS.anthropic_model,
+            model=_model_id(),
             max_tokens=2000,
             system=CLASSIFY_SYSTEM,
             messages=[{"role": "user", "content": user}],
@@ -132,7 +174,7 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         labels = _extract_json_array(text)
     except Exception as e:  # noqa: BLE001
         logger.warning("Claude classify failed: %s — falling back to keywords", e)
-        return _fallback_classify(articles)
+        return _fallback_classify(articles, name=name)
 
     out: list[NewsArticle] = []
     for i, a in enumerate(articles):
@@ -288,7 +330,7 @@ async def author_briefing_memo(
     )
     try:
         msg = client.messages.create(
-            model=SETTINGS.anthropic_model,
+            model=_model_id(),
             max_tokens=500,
             system=BRIEFING_SYSTEM,
             messages=[{"role": "user", "content": user}],
@@ -299,3 +341,202 @@ async def author_briefing_memo(
     except Exception as e:  # noqa: BLE001
         logger.warning("Claude briefing failed: %s", e)
     return _fallback_briefing(profile, sanctions, court, news, forensics)
+
+
+# ─── Action items (the prescriptive 'what should the funder do') ──────────
+
+ACTIONS_SYSTEM = """You write prescriptive next-steps for a Canadian
+government grant officer who has just been shown an adverse-screening dossier.
+
+Output ONLY a JSON array of 2 to 5 action objects. Each object has:
+- urgency: "immediate" | "scheduled" | "monitor" | "none"
+- title: a short imperative sentence (e.g. "Pause next disbursement",
+         "Refer to RCMP Anti-Corruption Unit", "Open Integrity Regime review")
+- rationale: one sentence explaining why, citing the specific signal
+- evidence: array of short labels for the supporting facts (e.g.
+            "AG report 2024", "OpenSanctions hit", "T3010 violations")
+
+Calibration:
+- "immediate" only when there is a sanctions hit, criminal charge, ban,
+  registration revocation, or other already-confirmed adverse outcome.
+- "scheduled" for serious-but-not-yet-confirmed signals (active investigation,
+  AG findings, multiple HIGH news, large circular-gifting score).
+- "monitor" for borderline / weak signals (mixed news, single forensic hit).
+- "none" when no concerning signals were detected.
+
+Tone: factual, government-grade, no political colouring."""
+
+
+def _fallback_actions(
+    profile: OrgProfile,
+    sanctions: list[SanctionsHit],
+    court: list[CourtCase],
+    news: list[NewsArticle],
+    forensics: ForensicSignals,
+    risk_score: int,
+) -> list[ActionItem]:
+    """Rule-based action-items used when no LLM is configured."""
+    actions: list[ActionItem] = []
+    has_critical_news = any(a.severity == "CRITICAL" for a in news)
+    has_high_news = any(a.severity == "HIGH" for a in news)
+    if sanctions:
+        actions.append(
+            ActionItem(
+                urgency="immediate",
+                title="Pause all disbursements pending sanctions review",
+                rationale=f"OpenSanctions hit on '{sanctions[0].list_name}' (score {sanctions[0].score:.2f}); funding to a sanctioned entity may itself be a breach.",
+                evidence=[f"OpenSanctions: {sanctions[0].list_name}"],
+            )
+        )
+    if court:
+        actions.append(
+            ActionItem(
+                urgency="scheduled",
+                title="Cross-reference court matters with grant program eligibility",
+                rationale=f"{len(court)} CanLII court decision(s) returned for this entity — confirm none are disqualifying under program terms.",
+                evidence=[c.citation for c in court[:3]],
+            )
+        )
+    if has_critical_news:
+        crit = next(a for a in news if a.severity == "CRITICAL")
+        actions.append(
+            ActionItem(
+                urgency="immediate",
+                title="Trigger formal due-diligence review before next payment",
+                rationale=f"Critical adverse media: \u201c{crit.title}\u201d ({crit.source_name}).",
+                evidence=[crit.url] if crit.url else [crit.title],
+            )
+        )
+    elif has_high_news:
+        sample = next(a for a in news if a.severity == "HIGH")
+        actions.append(
+            ActionItem(
+                urgency="scheduled",
+                title="Open enhanced due-diligence file",
+                rationale=f"Multiple HIGH-severity adverse-media hits, including: \u201c{sample.title}\u201d.",
+                evidence=[sample.url] if sample.url else [sample.title],
+            )
+        )
+    if forensics.cra_loop_score and forensics.cra_loop_score >= 15:
+        actions.append(
+            ActionItem(
+                urgency="scheduled",
+                title="Refer to CRA Charities Directorate for circular-gifting review",
+                rationale=f"Pre-computed circular-gifting risk score is {forensics.cra_loop_score}/30 (Tarjan SCC + multi-hop cycle detection).",
+                evidence=["cra.loop_universe"],
+            )
+        )
+    if forensics.cra_t3010_violation_count and forensics.cra_t3010_violation_count >= 5:
+        actions.append(
+            ActionItem(
+                urgency="monitor",
+                title="Flag for CRA T3010 compliance follow-up",
+                rationale=f"{forensics.cra_t3010_violation_count} T3010 form-arithmetic violations on file.",
+                evidence=(forensics.cra_t3010_violation_examples or [])[:3] or ["cra.t3010_impossibilities"],
+            )
+        )
+    if forensics.ab_sole_source_count and forensics.ab_sole_source_count >= 5:
+        amt = forensics.ab_sole_source_value or 0
+        actions.append(
+            ActionItem(
+                urgency="monitor",
+                title="Review Alberta sole-source contracting pattern",
+                rationale=f"{forensics.ab_sole_source_count} non-competitive Alberta contracts on file (~${amt:,.0f}).",
+                evidence=["ab.ab_sole_source"],
+            )
+        )
+    if not actions:
+        if risk_score < 20:
+            actions.append(
+                ActionItem(
+                    urgency="none",
+                    title="No concerning signals detected — clear for funding decision",
+                    rationale="External sanctions, court, news, and forensic-signal sweeps returned no critical or high indicators.",
+                    evidence=["full sweep clean"],
+                )
+            )
+        else:
+            actions.append(
+                ActionItem(
+                    urgency="monitor",
+                    title="Add to enhanced-monitoring watchlist",
+                    rationale="Mixed signals returned but none rise to the immediate-action threshold.",
+                    evidence=["risk_score=" + str(risk_score)],
+                )
+            )
+    return actions[:5]
+
+
+async def author_actions(
+    profile: OrgProfile,
+    sanctions: list[SanctionsHit],
+    court: list[CourtCase],
+    news: list[NewsArticle],
+    forensics: ForensicSignals,
+    risk_score: int,
+) -> list[ActionItem]:
+    client = _client()
+    if client is None:
+        return _fallback_actions(profile, sanctions, court, news, forensics, risk_score)
+    context = {
+        "name": profile.canonical_name,
+        "fed_total": profile.fed_total,
+        "ab_total": profile.ab_total,
+        "risk_score": risk_score,
+        "sanctions_hits": len(sanctions),
+        "sanctions_summary": [
+            {"list": s.list_name, "score": s.score} for s in sanctions[:3]
+        ],
+        "court_case_count": len(court),
+        "court_summary": [{"citation": c.citation, "title": c.title} for c in court[:3]],
+        "news_severity_counts": {
+            "CRITICAL": sum(1 for a in news if a.severity == "CRITICAL"),
+            "HIGH": sum(1 for a in news if a.severity == "HIGH"),
+            "MEDIUM": sum(1 for a in news if a.severity == "MEDIUM"),
+        },
+        "top_news": [
+            {"title": a.title, "severity": a.severity, "source": a.source_name}
+            for a in news[:5] if a.severity in ("CRITICAL", "HIGH")
+        ],
+        "forensics": {
+            "circular_gifting_score": forensics.cra_loop_score,
+            "circular_gifting_max": 30,
+            "t3010_violations": forensics.cra_t3010_violation_count,
+            "ab_sole_source_count": forensics.ab_sole_source_count,
+            "max_overhead_ratio": forensics.cra_max_overhead_ratio,
+        },
+    }
+    user = (
+        "Produce JSON action items for this dossier:\n"
+        f"{json.dumps(context, ensure_ascii=False, default=str)}\n\n"
+        "Return ONLY the JSON array."
+    )
+    try:
+        msg = client.messages.create(
+            model=_model_id(),
+            max_tokens=1200,
+            system=ACTIONS_SYSTEM,
+            messages=[{"role": "user", "content": user}],
+        )
+        text = "".join(b.text for b in msg.content if getattr(b, "type", None) == "text")
+        raw = _extract_json_array(text)
+        out: list[ActionItem] = []
+        for item in raw:
+            if not isinstance(item, dict):
+                continue
+            try:
+                out.append(
+                    ActionItem(
+                        urgency=item.get("urgency", "monitor"),
+                        title=str(item.get("title", "")).strip()[:200],
+                        rationale=str(item.get("rationale", "")).strip()[:400],
+                        evidence=[str(e) for e in (item.get("evidence") or [])][:5],
+                    )
+                )
+            except Exception:  # noqa: BLE001
+                continue
+        if out:
+            return out[:5]
+    except Exception as e:  # noqa: BLE001
+        logger.warning("Claude actions failed: %s", e)
+    return _fallback_actions(profile, sanctions, court, news, forensics, risk_score)

@@ -122,6 +122,24 @@ class RiskBreakdown(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
+class ActionItem(BaseModel):
+    """A prescriptive next-step for a funder. The 'what should the funder do'
+    answer that the screening produces."""
+
+    urgency: Literal["immediate", "scheduled", "monitor", "none"]
+    title: str
+    rationale: str
+    evidence: list[str] = Field(default_factory=list)
+
+
+class ProvenanceTrail(BaseModel):
+    """Every external row / URL that contributed to this dossier. Lets the UI
+    answer 'show me where this fact came from'."""
+
+    bigquery_rows: list[str] = Field(default_factory=list)
+    external_urls: list[dict[str, str]] = Field(default_factory=list)
+
+
 class ScreeningDossier(BaseModel):
     """Top-level dossier shape consumed by the frontend org-detail page."""
 
@@ -137,6 +155,8 @@ class ScreeningDossier(BaseModel):
     gdelt_yearly: dict[int, int] = Field(default_factory=dict)
     first_adverse_signal: date | None = None
     briefing_memo: str | None = None
+    actions: list[ActionItem] = Field(default_factory=list)
+    provenance: ProvenanceTrail = Field(default_factory=ProvenanceTrail)
     sources_run: list[str] = Field(default_factory=list)
     sources_skipped: list[str] = Field(default_factory=list)
     cached_at: datetime | None = None

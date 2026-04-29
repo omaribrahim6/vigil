@@ -4,6 +4,7 @@ import { getPortfolioStats, getTopOrgs } from "../lib/api";
 import { OrgTable } from "../components/OrgTable";
 import { SearchBar } from "../components/SearchBar";
 import { StatTile } from "../components/StatTile";
+import { FeaturedScreenings } from "../components/FeaturedScreenings";
 import { fmtMoney } from "../lib/format";
 
 async function PortfolioBanner() {
@@ -58,14 +59,19 @@ function PortfolioStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-async function TopOrgs() {
+async function FeaturedAndTable() {
   let rows = [] as Awaited<ReturnType<typeof getTopOrgs>>;
   try {
     rows = await getTopOrgs(200);
   } catch (e) {
     console.error("getTopOrgs failed", e);
   }
-  return <OrgTable rows={rows} />;
+  return (
+    <div className="space-y-8">
+      <FeaturedScreenings rows={rows} />
+      <OrgTable rows={rows} />
+    </div>
+  );
 }
 
 export default function Home() {
@@ -124,15 +130,13 @@ export default function Home() {
         />
       </section>
 
-      <section>
-        <Suspense
-          fallback={
-            <div className="h-96 rounded-md border border-[var(--border)] bg-white animate-pulse" />
-          }
-        >
-          <TopOrgs />
-        </Suspense>
-      </section>
+      <Suspense
+        fallback={
+          <div className="h-96 rounded-md border border-[var(--border)] bg-white animate-pulse" />
+        }
+      >
+        <FeaturedAndTable />
+      </Suspense>
     </div>
   );
 }

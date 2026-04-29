@@ -68,10 +68,44 @@ def find_top_circular_charity_with_funding() -> tuple[str, str] | None:
 
 
 async def cache_top_orgs() -> int:
+    """Caches the dashboard's top-orgs list. We ALWAYS prepend any screened
+    org (even if its fed_total wouldn't make the top 200) so the demo's
+    flagged entities are guaranteed visible."""
     log.info("Caching top-200 orgs from BigQuery\u2026")
     rows = bigquery_client.fetch_top_orgs(200)
-    enriched = []
+    enriched: list[dict] = []
+    seen_ids: set[str] = set()
+
+    # 1. Inject screened orgs first so they show at the top with their risk badges.
+    screenings_dir = Path(cache.SCREENINGS_DIR)
+    for f in sorted(screenings_dir.glob("*.json")):
+        if f.stem.startswith("adhoc:"):
+            continue
+        data = cache.read_screening(f.stem)
+        if not data:
+            continue
+        org = data.get("org") or {}
+        risk = data.get("risk") or {}
+        breakdown = RiskBreakdown(**risk) if risk else None
+        province = org.get("province")
+        enriched.append(
+            {
+                "id": str(org.get("id") or f.stem),
+                "canonical_name": org.get("canonical_name") or "(unknown)",
+                "province": province,
+                "fed_total": org.get("fed_total"),
+                "cra_designation": org.get("cra_designation"),
+                "risk_score": risk.get("score"),
+                "risk_tier": risk.get("tier") or "UNRATED",
+                "top_flag": top_flag_for(breakdown) if breakdown else None,
+            }
+        )
+        seen_ids.add(str(org.get("id") or f.stem))
+
+    # 2. Append the BigQuery top-N, skipping anything already shown.
     for row in rows:
+        if row.id in seen_ids:
+            continue
         screening = cache.read_screening(row.id)
         if screening:
             risk = screening.get("risk") or {}
@@ -80,8 +114,10 @@ async def cache_top_orgs() -> int:
             breakdown = RiskBreakdown(**risk) if risk else None
             row.top_flag = top_flag_for(breakdown) if breakdown else None
         enriched.append(row.model_dump(mode="json"))
+        seen_ids.add(row.id)
+
     cache.write_top_orgs(enriched)
-    log.info("Cached %d top orgs.", len(enriched))
+    log.info("Cached %d top orgs (%d screened + others).", len(enriched), len(seen_ids) - (len(rows) - sum(1 for r in rows if r.id in seen_ids)))
     return len(enriched)
 
 

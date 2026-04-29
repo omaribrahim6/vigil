@@ -6,11 +6,13 @@ import { fmtDate, fmtMoney } from "../../../lib/format";
 import { RiskBadge } from "../../../components/RiskBadge";
 import { Timeline } from "../../../components/Timeline";
 import { BriefingMemo } from "../../../components/BriefingMemo";
+import { ActionItems } from "../../../components/ActionItems";
 import { ForensicSignalsPanel } from "../../../components/ForensicSignalsPanel";
 import { CourtCasesPanel } from "../../../components/CourtCasesPanel";
 import { NewsPanel } from "../../../components/NewsPanel";
 import { SanctionsPanel } from "../../../components/SanctionsPanel";
 import { RelatedEntities } from "../../../components/RelatedEntities";
+import { ProvenancePanel } from "../../../components/ProvenancePanel";
 import { Section } from "../../../components/Section";
 import { StatTile } from "../../../components/StatTile";
 
@@ -167,6 +169,9 @@ export default async function OrgDetail({
         />
       </Section>
 
+      {/* ─── Action items (the 'so what') ───────────────────────────── */}
+      <ActionItems actions={dossier.actions} />
+
       {/* ─── Briefing memo ──────────────────────────────────────────── */}
       <BriefingMemo memo={dossier.briefing_memo} />
 
@@ -183,6 +188,8 @@ export default async function OrgDetail({
       {dossier.related_entities.length > 0 && (
         <RelatedEntities related={dossier.related_entities} />
       )}
+
+      <ProvenancePanel provenance={dossier.provenance} />
 
       <footer className="text-xs text-[var(--muted)] pt-4 border-t border-[var(--border)]">
         Cached at {dossier.cached_at ? fmtDate(dossier.cached_at) : "—"} · Sources:{" "}

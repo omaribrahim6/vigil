@@ -17,8 +17,8 @@ from .bigquery_client import (
     fetch_org_by_id,
 )
 from .cache import write_screening
-from .classifier import author_briefing_memo, classify_articles
-from .config import SETTINGS
+from .classifier import author_actions, author_briefing_memo, classify_articles
+from .config import DATA_PROJECT, SETTINGS
 from .forensics import fetch_forensics
 from .models import (
     AdverseEvent,
@@ -26,6 +26,7 @@ from .models import (
     FundingEvent,
     NewsArticle,
     OrgProfile,
+    ProvenanceTrail,
     RelatedEntity,
     SanctionsHit,
     ScreeningDossier,
@@ -47,6 +48,49 @@ def _earliest(*dates: Iterable) -> "datetime | None":
             flat.append(d)
     flat = [d for d in flat if d is not None]
     return min(flat) if flat else None
+
+
+def _build_provenance(
+    profile: OrgProfile,
+    sanctions: list[SanctionsHit],
+    court: list[CourtCase],
+    news: list[NewsArticle],
+    forensics,  # ForensicSignals; avoid extra import
+) -> ProvenanceTrail:
+    """Materialize the full citation trail. Each row is a clickable BQ dataset
+    table (or a primary-source URL) — the mentor's 'every fact must trace back
+    to a database row or source' requirement."""
+    bq_rows: list[str] = [
+        f"{DATA_PROJECT}.general.entity_golden_records id={profile.id}",
+    ]
+    if profile.bn_root:
+        bq_rows.append(f"{DATA_PROJECT}.fed.grants_contributions WHERE STARTS_WITH(recipient_business_number, '{profile.bn_root}')")
+        bq_rows.append(f"{DATA_PROJECT}.cra.cra_identification WHERE STARTS_WITH(bn, '{profile.bn_root}')")
+    if forensics.cra_loop_score is not None:
+        bq_rows.append(f"{DATA_PROJECT}.cra.loop_universe WHERE STARTS_WITH(bn, '{profile.bn_root}')")
+    if forensics.cra_t3010_violation_count and forensics.cra_t3010_violation_count > 0:
+        bq_rows.append(f"{DATA_PROJECT}.cra.t3010_impossibilities WHERE STARTS_WITH(bn, '{profile.bn_root}')")
+    if forensics.cra_max_overhead_ratio is not None:
+        bq_rows.append(f"{DATA_PROJECT}.cra.overhead_by_charity WHERE STARTS_WITH(bn, '{profile.bn_root}')")
+    if forensics.ab_sole_source_count and forensics.ab_sole_source_count > 0:
+        bq_rows.append(f"{DATA_PROJECT}.ab.ab_sole_source WHERE LOWER(vendor) LIKE '%{profile.canonical_name.lower()}%'")
+    if forensics.shared_directors:
+        bq_rows.append(f"{DATA_PROJECT}.cra.cra_directors (shared-director join)")
+
+    external: list[dict[str, str]] = []
+    for s in sanctions:
+        if s.entity_url:
+            external.append({"label": f"OpenSanctions: {s.list_name}", "url": s.entity_url})
+    for c in court:
+        if c.url:
+            external.append({"label": f"CanLII: {c.citation}", "url": c.url})
+    for a in news:
+        if a.severity in ("CRITICAL", "HIGH") and a.url:
+            external.append({
+                "label": f"{a.source_name or 'news'}: {a.title[:80]}",
+                "url": a.url,
+            })
+    return ProvenanceTrail(bigquery_rows=bq_rows, external_urls=external[:25])
 
 
 def _adverse_events_from_sources(
@@ -176,11 +220,21 @@ async def screen_profile(
         forensics=forensics,
         risk_score=risk.score,
     )
+    actions = await author_actions(
+        profile=profile,
+        sanctions=sanctions,
+        court=court,
+        news=news,
+        forensics=forensics,
+        risk_score=risk.score,
+    )
 
     candidates = [a.date for a in adverse if a.date]
     if gdelt_first:
         candidates.append(gdelt_first)
     first_adverse = min(candidates) if candidates else None
+
+    provenance = _build_provenance(profile, sanctions, court, news, forensics)
 
     dossier = ScreeningDossier(
         org=profile,
@@ -195,6 +249,8 @@ async def screen_profile(
         gdelt_yearly=gdelt_yearly,
         first_adverse_signal=first_adverse,
         briefing_memo=briefing,
+        actions=actions,
+        provenance=provenance,
         sources_run=sources_run,
         sources_skipped=sources_skipped,
         cached_at=datetime.utcnow(),

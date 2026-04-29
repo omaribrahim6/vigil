@@ -20,14 +20,26 @@ class Settings:
     bq_data_project: str
     anthropic_api_key: str | None
     anthropic_model: str
+    aws_bearer_token_bedrock: str | None
+    aws_region: str
+    bedrock_model_id: str
     opensanctions_api_key: str | None
     tavily_api_key: str | None
     canlii_api_key: str | None
     backend_port: int
 
     @property
-    def has_anthropic(self) -> bool:
+    def has_anthropic_direct(self) -> bool:
         return bool(self.anthropic_api_key)
+
+    @property
+    def has_bedrock(self) -> bool:
+        return bool(self.aws_bearer_token_bedrock)
+
+    @property
+    def has_anthropic(self) -> bool:
+        """True if either Bedrock or direct Anthropic is configured."""
+        return self.has_bedrock or self.has_anthropic_direct
 
     @property
     def has_opensanctions(self) -> bool:
@@ -57,6 +69,10 @@ def get_settings() -> Settings:
         anthropic_api_key=_env("ANTHROPIC_API_KEY"),
         anthropic_model=_env("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
         or "claude-sonnet-4-20250514",
+        aws_bearer_token_bedrock=_env("AWS_BEARER_TOKEN_BEDROCK"),
+        aws_region=_env("AWS_REGION", "us-east-1") or "us-east-1",
+        bedrock_model_id=_env("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0")
+        or "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
         opensanctions_api_key=_env("OPENSANCTIONS_API_KEY"),
         tavily_api_key=_env("TAVILY_API_KEY"),
         canlii_api_key=_env("CANLII_API_KEY"),

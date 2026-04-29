@@ -106,6 +106,18 @@ export interface RiskBreakdown {
   notes: string[];
 }
 
+export interface ActionItem {
+  urgency: "immediate" | "scheduled" | "monitor" | "none";
+  title: string;
+  rationale: string;
+  evidence: string[];
+}
+
+export interface ProvenanceTrail {
+  bigquery_rows: string[];
+  external_urls: Array<{ label: string; url: string }>;
+}
+
 export interface ScreeningDossier {
   org: OrgProfile;
   risk: RiskBreakdown;
@@ -119,6 +131,8 @@ export interface ScreeningDossier {
   gdelt_yearly: Record<string, number>;
   first_adverse_signal?: string | null;
   briefing_memo?: string | null;
+  actions: ActionItem[];
+  provenance: ProvenanceTrail;
   sources_run: string[];
   sources_skipped: string[];
   cached_at?: string | null;
