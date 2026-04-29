@@ -1,5 +1,7 @@
-fix: live-screen org-id no longer breaks on Windows path separator
+docs: rewrite README around the action-items + provenance story
 
-`adhoc:gc_strategies` was being interpreted as a colon-prefixed Windows
-ADS, dropping the JSON cache file. Switched to `adhoc-<slug>` with
-alphanum-only slugification so live search works end-to-end on Windows.
+- Lead with the 'single thing' — the prescriptive action list
+- Update demo-orgs table with Canada Charity Partners as headline
+- Explain mentor-driven design (external sources, traceability, actions)
+- Add component / route map and API surface
+- Suppress dev-only hydration warning on FeaturedScreenings

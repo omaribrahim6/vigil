@@ -29,7 +29,7 @@ export function FeaturedScreenings({ rows }: Props) {
   if (screened.length === 0) return null;
 
   return (
-    <section>
+    <section suppressHydrationWarning>
       <div className="flex items-center gap-2 mb-3">
         <AlertOctagon size={16} className="text-[var(--accent)]" />
         <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--accent)]">
