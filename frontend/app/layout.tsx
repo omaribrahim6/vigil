@@ -33,10 +33,6 @@ export default function RootLayout({
         <header className="border-b border-[var(--border)] bg-[var(--accent)] text-white">
           <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/60">
-                Agency 26 / Ottawa
-              </span>
-              <span className="h-4 w-px bg-white/30" aria-hidden />
               <span className="text-xl font-semibold tracking-tight">Vigil</span>
               <span className="hidden sm:inline text-xs font-medium uppercase tracking-wider rounded-sm border border-white/30 px-1.5 py-0.5 text-white/80">
                 Beta
@@ -44,14 +40,6 @@ export default function RootLayout({
             </Link>
             <nav className="hidden sm:flex items-center gap-5 text-sm text-white/80">
               <Link href="/" className="hover:text-white">Dashboard</Link>
-              <a
-                href="https://github.com/canlii/API_documentation"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="hover:text-white"
-              >
-                Sources
-              </a>
               <span className="font-mono text-xs text-white/50">v0.1</span>
             </nav>
           </div>

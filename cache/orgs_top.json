@@ -12,6 +12,18 @@
     "total_actions": 1
   },
   {
+    "id": "141398",
+    "canonical_name": "Little Red River Cree Nation",
+    "province": "AB",
+    "fed_total": 1943838834.06,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
     "id": "141987",
     "canonical_name": "Province of British Columbia",
     "province": "BC",
@@ -120,6 +132,30 @@
     "total_actions": 3
   },
   {
+    "id": "233497",
+    "canonical_name": "GENOME CANADA / GÉNOME CANADA",
+    "province": "ON",
+    "fed_total": 1943534500.0,
+    "cra_designation": null,
+    "risk_score": 3,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "238111",
+    "canonical_name": "NUNAVUT",
+    "province": "NU",
+    "fed_total": 1868624750.83,
+    "cra_designation": null,
+    "risk_score": 10,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
     "id": "238889",
     "canonical_name": "CANADA FOUNDATION FOR INNOVATION",
     "province": "ON",
@@ -140,6 +176,54 @@
     "risk_score": 0,
     "risk_tier": "GREEN",
     "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "239851",
+    "canonical_name": "CANADA HEALTH INFOWAY",
+    "province": "QC",
+    "fed_total": 2131523000.0,
+    "cra_designation": null,
+    "risk_score": 5,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "240974",
+    "canonical_name": "GOUVERNEMENT DE LA NATION CRIE / CREE NATION GOVERNMENT",
+    "province": "QC",
+    "fed_total": 2308212139.53,
+    "cra_designation": null,
+    "risk_score": 5,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "245931",
+    "canonical_name": "Siksika Nation",
+    "province": "AB",
+    "fed_total": 1941148566.14,
+    "cra_designation": null,
+    "risk_score": 10,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "246561",
+    "canonical_name": "Government of Nunavut",
+    "province": "NU",
+    "fed_total": 2151149786.5,
+    "cra_designation": null,
+    "risk_score": 3,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
     "immediate_actions": 0,
     "total_actions": 1
   },
@@ -168,6 +252,18 @@
     "total_actions": 2
   },
   {
+    "id": "268954",
+    "canonical_name": "Blood Indian Band No. 435",
+    "province": "AB",
+    "fed_total": 2406014577.89,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
     "id": "275719",
     "canonical_name": "CANADA MEDIA FUND CORPORATION",
     "province": "ON",
@@ -188,6 +284,18 @@
     "risk_score": 0,
     "risk_tier": "GREEN",
     "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "301732",
+    "canonical_name": "ENBRIDGE GAS INC",
+    "province": "ON",
+    "fed_total": 1961348162.0,
+    "cra_designation": null,
+    "risk_score": 5,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
     "immediate_actions": 0,
     "total_actions": 1
   },
@@ -220,6 +328,18 @@
     "canonical_name": "GOVERNMENT OF ALBERTA - MINISTRY OF HEALTH",
     "province": "AB",
     "fed_total": 9021123070.0,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "315674",
+    "canonical_name": "Government of New Brunswick - Department of Health",
+    "province": "NB",
+    "fed_total": 2100041191.0,
     "cra_designation": null,
     "risk_score": 0,
     "risk_tier": "GREEN",
@@ -276,6 +396,42 @@
     "total_actions": 1
   },
   {
+    "id": "361884",
+    "canonical_name": "Ontario Ministry of Children, Community and Social Services",
+    "province": "ON",
+    "fed_total": 2380652788.09,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "361960",
+    "canonical_name": "Ministry of Transportation of Ontario",
+    "province": "ON",
+    "fed_total": 2228431970.24,
+    "cra_designation": null,
+    "risk_score": 5,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
+    "id": "373135",
+    "canonical_name": "Ontario Ministry of the Attorney General",
+    "province": "ON",
+    "fed_total": 2304094250.0,
+    "cra_designation": null,
+    "risk_score": 10,
+    "risk_tier": "GREEN",
+    "top_flag": "Historical adverse-event spike",
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
     "id": "382707",
     "canonical_name": "Province of Ontario",
     "province": "ON",
@@ -298,6 +454,18 @@
     "top_flag": "T3010 violations",
     "immediate_actions": 0,
     "total_actions": 2
+  },
+  {
+    "id": "415568",
+    "canonical_name": "United Nations Children's Fund (UNICEF)",
+    "province": "ON",
+    "fed_total": 2251791063.02,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
   },
   {
     "id": "422760",
@@ -370,6 +538,18 @@
     "top_flag": "Adverse media",
     "immediate_actions": 0,
     "total_actions": 1
+  },
+  {
+    "id": "8095",
+    "canonical_name": "The Governing Council of the University of Toronto",
+    "province": "ON",
+    "fed_total": 1941496991.71,
+    "cra_designation": "C",
+    "risk_score": 5,
+    "risk_tier": "GREEN",
+    "top_flag": "T3010 violations",
+    "immediate_actions": 0,
+    "total_actions": 2
   },
   {
     "id": "89570",
@@ -480,6 +660,18 @@
     "total_actions": 1
   },
   {
+    "id": "99944",
+    "canonical_name": "Lac La Ronge Indian Band",
+    "province": "SK",
+    "fed_total": 1829165465.57,
+    "cra_designation": null,
+    "risk_score": 0,
+    "risk_tier": "GREEN",
+    "top_flag": null,
+    "immediate_actions": 0,
+    "total_actions": 1
+  },
+  {
     "id": "adhoc-atkinsrealis",
     "canonical_name": "AtkinsRealis",
     "province": null,
@@ -550,198 +742,6 @@
     "top_flag": "Critical adverse media",
     "immediate_actions": 0,
     "total_actions": 3
-  },
-  {
-    "id": "268954",
-    "canonical_name": "Blood Indian Band No. 435",
-    "province": "AB",
-    "fed_total": 2406014577.89,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "361884",
-    "canonical_name": "Ontario Ministry of Children, Community and Social Services",
-    "province": "ON",
-    "fed_total": 2380652788.09,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "240974",
-    "canonical_name": "GOUVERNEMENT DE LA NATION CRIE / CREE NATION GOVERNMENT",
-    "province": "QC",
-    "fed_total": 2308212139.53,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "373135",
-    "canonical_name": "Ontario Ministry of the Attorney General",
-    "province": "ON",
-    "fed_total": 2304094250.0,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "415568",
-    "canonical_name": "United Nations Children's Fund (UNICEF)",
-    "province": "ON",
-    "fed_total": 2251791063.02,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "361960",
-    "canonical_name": "Ministry of Transportation of Ontario",
-    "province": "ON",
-    "fed_total": 2228431970.24,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "246561",
-    "canonical_name": "Government of Nunavut",
-    "province": "NU",
-    "fed_total": 2151149786.5,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "239851",
-    "canonical_name": "CANADA HEALTH INFOWAY",
-    "province": "QC",
-    "fed_total": 2131523000.0,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "315674",
-    "canonical_name": "Government of New Brunswick - Department of Health",
-    "province": "NB",
-    "fed_total": 2100041191.0,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "301732",
-    "canonical_name": "ENBRIDGE GAS INC",
-    "province": "ON",
-    "fed_total": 1961348162.0,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "141398",
-    "canonical_name": "Little Red River Cree Nation",
-    "province": "AB",
-    "fed_total": 1943838834.06,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "233497",
-    "canonical_name": "GENOME CANADA / GÉNOME CANADA",
-    "province": "ON",
-    "fed_total": 1943534500.0,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "8095",
-    "canonical_name": "The Governing Council of the University of Toronto",
-    "province": "ON",
-    "fed_total": 1941496991.71,
-    "cra_designation": "C",
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "245931",
-    "canonical_name": "Siksika Nation",
-    "province": "AB",
-    "fed_total": 1941148566.14,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "238111",
-    "canonical_name": "NUNAVUT",
-    "province": "NU",
-    "fed_total": 1868624750.83,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
-  },
-  {
-    "id": "99944",
-    "canonical_name": "Lac La Ronge Indian Band",
-    "province": "SK",
-    "fed_total": 1829165465.57,
-    "cra_designation": null,
-    "risk_score": null,
-    "risk_tier": "UNRATED",
-    "top_flag": null,
-    "immediate_actions": 0,
-    "total_actions": 0
   },
   {
     "id": "22381",

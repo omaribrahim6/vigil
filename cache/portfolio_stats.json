@@ -1,13 +1,13 @@
 {
-  "total_orgs_screened": 46,
+  "total_orgs_screened": 62,
   "flagged_org_count": 4,
   "flagged_total_funding": 55772.0,
-  "portfolio_total_funding": 298383189186.2101,
+  "portfolio_total_funding": 332103523738.7201,
   "by_tier": {
     "RED": 0,
     "ORANGE": 2,
     "YELLOW": 2,
-    "GREEN": 42,
+    "GREEN": 58,
     "UNRATED": 0
   },
   "immediate_action_count": 5,
