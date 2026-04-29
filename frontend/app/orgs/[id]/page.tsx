@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, MapPin } from "lucide-react";
 import { getOrg } from "../../../lib/api";
@@ -14,6 +13,7 @@ import { RemediationPanel } from "../../../components/RemediationPanel";
 import { SanctionsPanel } from "../../../components/SanctionsPanel";
 import { RelatedEntities } from "../../../components/RelatedEntities";
 import { ProvenancePanel } from "../../../components/ProvenancePanel";
+import { LiveScreenProgress } from "../../../components/LiveScreenProgress";
 import { Section } from "../../../components/Section";
 import { StatTile } from "../../../components/StatTile";
 
@@ -21,16 +21,34 @@ export const dynamic = "force-dynamic";
 
 export default async function OrgDetail({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ name?: string }>;
 }) {
   const { id } = await params;
+  const sp = await searchParams;
   let dossier;
   try {
     dossier = await getOrg(id);
   } catch (e) {
     if ((e as { status?: number }).status === 404) {
-      notFound();
+      // Org isn't cached yet — trigger a live screen via the client component.
+      // The component POSTs /api/orgs/{id}/screen, shows pipeline progress,
+      // and refreshes the route when the dossier lands on disk.
+      return (
+        <div className="space-y-6">
+          <div>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1 text-sm text-[var(--muted)] hover:text-[var(--accent)]"
+            >
+              <ChevronLeft size={14} /> Back to dashboard
+            </Link>
+          </div>
+          <LiveScreenProgress orgId={id} orgName={sp.name || id} />
+        </div>
+      );
     }
     throw e;
   }

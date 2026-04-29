@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Play } from "lucide-react";
 import type { RiskTier, TopOrgRow } from "../lib/types";
 import { fmtMoney } from "../lib/format";
 import { RiskBadge } from "./RiskBadge";
@@ -16,6 +16,11 @@ const TIER_RANK: Record<RiskTier, number> = {
   GREEN: 1,
   UNRATED: 0,
 };
+
+function SortIcon({ active, dir }: { active: boolean; dir: "asc" | "desc" }) {
+  if (!active) return <ArrowUpDown size={12} className="opacity-40" />;
+  return dir === "asc" ? <ArrowUp size={12} /> : <ArrowDown size={12} />;
+}
 
 export function OrgTable({ rows }: { rows: TopOrgRow[] }) {
   const [sort, setSort] = useState<{ key: SortKey; dir: "asc" | "desc" }>({
@@ -47,11 +52,6 @@ export function OrgTable({ rows }: { rows: TopOrgRow[] }) {
       s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "desc" }
     );
   }
-
-  const SortIcon = ({ active, dir }: { active: boolean; dir: "asc" | "desc" }) => {
-    if (!active) return <ArrowUpDown size={12} className="opacity-40" />;
-    return dir === "asc" ? <ArrowUp size={12} /> : <ArrowDown size={12} />;
-  };
 
   return (
     <div className="rounded-md border border-[var(--border)] bg-white">
@@ -101,31 +101,49 @@ export function OrgTable({ rows }: { rows: TopOrgRow[] }) {
             </tr>
           </thead>
           <tbody>
-            {sorted.map((row) => (
-              <tr
-                key={row.id}
-                className="border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--background)]"
-              >
-                <td className="px-5 py-3">
-                  <Link href={`/orgs/${row.id}`} className="font-medium hover:underline decoration-[var(--accent)]">
-                    {row.canonical_name}
-                  </Link>
-                  {row.cra_designation && (
-                    <span className="ml-2 text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                      CRA-{row.cra_designation}
-                    </span>
-                  )}
-                </td>
-                <td className="px-5 py-3 text-[var(--muted)]">{row.province ?? "—"}</td>
-                <td className="px-5 py-3 text-right font-mono tabular-nums">
-                  {fmtMoney(row.fed_total, { compact: true })}
-                </td>
-                <td className="px-5 py-3">
-                  <RiskBadge tier={row.risk_tier} score={row.risk_score} size="sm" />
-                </td>
-                <td className="px-5 py-3 text-[var(--muted)]">{row.top_flag ?? "—"}</td>
-              </tr>
-            ))}
+            {sorted.map((row) => {
+              const unrated = row.risk_tier === "UNRATED";
+              const href = unrated
+                ? `/orgs/${encodeURIComponent(row.id)}?name=${encodeURIComponent(row.canonical_name)}`
+                : `/orgs/${encodeURIComponent(row.id)}`;
+              return (
+                <tr
+                  key={row.id}
+                  className="border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--background)]"
+                >
+                  <td className="px-5 py-3">
+                    <Link
+                      href={href}
+                      className="font-medium hover:underline decoration-[var(--accent)]"
+                    >
+                      {row.canonical_name}
+                    </Link>
+                    {row.cra_designation && (
+                      <span className="ml-2 text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">
+                        CRA-{row.cra_designation}
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-5 py-3 text-[var(--muted)]">{row.province ?? "—"}</td>
+                  <td className="px-5 py-3 text-right font-mono tabular-nums">
+                    {fmtMoney(row.fed_total, { compact: true })}
+                  </td>
+                  <td className="px-5 py-3">
+                    {unrated ? (
+                      <Link
+                        href={href}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider px-2 py-1 rounded-sm border border-[var(--border)] text-[var(--accent)] hover:bg-[var(--accent)] hover:!text-white focus-visible:bg-[var(--accent)] focus-visible:!text-white transition-colors"
+                      >
+                        <Play size={11} fill="currentColor" /> Screen now
+                      </Link>
+                    ) : (
+                      <RiskBadge tier={row.risk_tier} score={row.risk_score} size="sm" />
+                    )}
+                  </td>
+                  <td className="px-5 py-3 text-[var(--muted)]">{row.top_flag ?? "—"}</td>
+                </tr>
+              );
+            })}
             {sorted.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-5 py-12 text-center text-sm text-[var(--muted)]">
