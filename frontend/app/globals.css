@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8fb;
+  --foreground: #0a0e1a;
+  --card: #ffffff;
+  --border: #e2e6ee;
+  --muted: #5d6577;
+  --accent: #0c1e3e;
+  --accent-hover: #15305f;
+
+  --risk-red: #b22222;
+  --risk-red-bg: #fde2e2;
+  --risk-orange: #b85c00;
+  --risk-orange-bg: #fcebd0;
+  --risk-yellow: #8a6d00;
+  --risk-yellow-bg: #fbf2c4;
+  --risk-green: #2f6f3a;
+  --risk-green-bg: #d8efdc;
+  --risk-grey: #4d5566;
+  --risk-grey-bg: #e6e9ef;
+
+  --funding: #2f6f3a;
+  --adverse: #b22222;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-geist-sans), Inter, ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+::selection { background: #0c1e3e; color: #fff; }
