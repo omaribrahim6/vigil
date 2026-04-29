@@ -153,7 +153,13 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         return _fallback_classify(articles, name=name)
 
     payload = [
-        {"index": i, "title": a.title, "url": a.url, "summary": (a.summary or "")[:500]}
+        {
+            "index": i,
+            "title": a.title,
+            "url": a.url,
+            "source": a.source_name,
+            "content": (a.summary or "")[:1500],
+        }
         for i, a in enumerate(articles)
     ]
     user = (
@@ -161,12 +167,17 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         f"Articles to classify (JSON):\n{json.dumps(payload, ensure_ascii=False)}\n\n"
         "Return ONLY a JSON array; one object per article in the same order, with keys: "
         "index, classification, category, event_date, allegation_summary, "
-        "source_credibility, confidence."
+        "source_credibility, confidence.\n\n"
+        "For event_date: extract the date the alleged event/decision occurred from "
+        "the article body. Use YYYY-MM-DD. If multiple dates are present, use the "
+        "primary event date (when the action took place). The URL may contain a "
+        "date too (e.g. /2024/11/title or /article-name-2024). Use null only if "
+        "no date can be reasonably inferred."
     )
     try:
         msg = client.messages.create(
             model=_model_id(),
-            max_tokens=2000,
+            max_tokens=3000,
             system=CLASSIFY_SYSTEM,
             messages=[{"role": "user", "content": user}],
         )
@@ -176,18 +187,30 @@ async def classify_articles(name: str, articles: list[NewsArticle]) -> list[News
         logger.warning("Claude classify failed: %s — falling back to keywords", e)
         return _fallback_classify(articles, name=name)
 
+    from datetime import date as _date, datetime as _dt
+
+    def _parse_iso(s: Any) -> _date | None:
+        if not isinstance(s, str) or len(s) < 10:
+            return None
+        try:
+            return _dt.fromisoformat(s[:10]).date()
+        except ValueError:
+            return None
+
     out: list[NewsArticle] = []
     for i, a in enumerate(articles):
         match = next((l for l in labels if l.get("index") == i), None)
         if not match:
             out.append(a.model_copy(update={"severity": "NOISE", "category": "unrated"}))
             continue
+        event_date = _parse_iso(match.get("event_date"))
         out.append(
             a.model_copy(
                 update={
                     "severity": match.get("classification") or "NOISE",
                     "category": match.get("category") or "unrated",
                     "summary": match.get("allegation_summary") or a.summary,
+                    "published_at": a.published_at or event_date,
                     "confidence": (
                         float(match["confidence"])
                         if isinstance(match.get("confidence"), (int, float))

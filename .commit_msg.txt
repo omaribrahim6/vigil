@@ -1,7 +1,6 @@
-feat: surface action counts on dashboard
+feat: extract article event dates so timeline shows adverse markers
 
-- TopOrgRow + PortfolioStats now carry immediate/total action counts
-- Featured-screening cards show "N now" pill for immediate actions
-- Portfolio banner shows immediate / scheduled action stats and uses
-  an action-oriented headline
-- Precache aggregates from cached dossiers
+- Tavily: include_raw_content + merge with snippet (capped at 1500 ch)
+- Classifier: pipe Claude-extracted event_date into NewsArticle.published_at
+- Pipeline: timeline_adverse now carries dates, populating red dots on
+  the counterfactual timeline

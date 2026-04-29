@@ -87,7 +87,9 @@ async def search_adverse(
         "search_depth": "advanced",
         "max_results": max_results,
         "include_answer": False,
-        "include_raw_content": False,
+        # raw_content gives Claude enough text to extract event_date / dates
+        # mentioned inside the article (Tavily 'published_date' is often null).
+        "include_raw_content": True,
     }
     if canadian_only:
         body["include_domains"] = CANADIAN_DOMAINS
@@ -105,13 +107,24 @@ async def search_adverse(
         url = r.get("url")
         if not url:
             continue
+        # Combine snippet + raw_content so the classifier has enough context
+        # to extract dates that are mentioned inside the article body.
+        snippet = (r.get("content") or r.get("snippet") or "").strip()
+        raw = (r.get("raw_content") or "").strip()
+        # Trim raw_content aggressively (tokens cost) but enough that headers
+        # / leading paragraphs make it through with their dates intact.
+        if raw and raw != snippet:
+            raw = raw[:1200]
+            summary = (snippet + "\n\n" + raw)[:1500]
+        else:
+            summary = snippet[:1500]
         out.append(
             NewsArticle(
                 title=r.get("title") or url,
                 url=url,
                 source_name=_domain_to_source_name(url),
                 published_at=_parse_date(r.get("published_date") or r.get("publishedDate")),
-                summary=(r.get("content") or r.get("snippet") or "")[:600] or None,
+                summary=summary or None,
                 confidence=float(r.get("score") or 0) or None,
             )
         )
