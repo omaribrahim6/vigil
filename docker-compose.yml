@@ -1,0 +1,42 @@
+services:
+  vigil_backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: vigil_backend
+    restart: unless-stopped
+    expose:
+      - "8000"
+    env_file:
+      - ./.env
+    environment:
+      - VIRTUAL_HOST=api.astrali.tech
+      - LETSENCRYPT_HOST=api.astrali.tech
+      - VIRTUAL_PORT=8000
+      - LETSENCRYPT_EMAIL=omarmgmi08@gmail.com
+    volumes:
+      - ./cache:/app/cache
+    networks:
+      - webnet
+
+  vigil_frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_BASE=https://api.astrali.tech
+    container_name: vigil_frontend
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      - VIRTUAL_HOST=astrali.tech,www.astrali.tech
+      - LETSENCRYPT_HOST=astrali.tech,www.astrali.tech
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_EMAIL=omarmgmi08@gmail.com
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    external: true
