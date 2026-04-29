@@ -1,17 +1,17 @@
 {
-  "total_orgs_screened": 9,
+  "total_orgs_screened": 46,
   "flagged_org_count": 4,
   "flagged_total_funding": 55772.0,
-  "portfolio_total_funding": 716366258.0,
+  "portfolio_total_funding": 298383189186.2101,
   "by_tier": {
     "RED": 0,
     "ORANGE": 2,
     "YELLOW": 2,
-    "GREEN": 5,
+    "GREEN": 42,
     "UNRATED": 0
   },
-  "immediate_action_count": 7,
-  "scheduled_action_count": 12,
-  "orgs_with_immediate_actions": 4,
-  "headline": "7 immediate actions outstanding across 4 flagged organizations in the screened portfolio."
+  "immediate_action_count": 5,
+  "scheduled_action_count": 14,
+  "orgs_with_immediate_actions": 3,
+  "headline": "5 immediate actions outstanding across 3 flagged organizations in the screened portfolio."
 }

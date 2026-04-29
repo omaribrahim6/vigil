@@ -19,14 +19,14 @@
     "dataset_sources": []
   },
   "risk": {
-    "score": 65,
+    "score": 40,
     "tier": "ORANGE",
     "contributions": {
       "sanctions": 0,
       "court_cases": 0,
       "critical_news": 30,
-      "high_news": 15,
-      "recency": 10,
+      "high_news": 0,
+      "recency": 0,
       "cra_loop": 0,
       "t3010_violations": 0,
       "overhead": 0,
@@ -34,7 +34,7 @@
       "gdelt_spike": 10
     },
     "notes": [
-      "8 CRITICAL news article(s) — 3 are >5y old (down-weighted)",
+      "11 CRITICAL news article(s) — 1 are >5y old (down-weighted)",
       "GDELT adverse-event spike: 103 events in 2024"
     ]
   },
@@ -42,33 +42,77 @@
   "timeline_adverse": [
     {
       "source": "tavily",
-      "date": "2024-03-06",
-      "title": "Public Services and Procurement Canada announces the suspension of Coradix Technology Consulting Ltd. - Canada.ca",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "Public Services and Procurement Canada suspended Coradix Technology Consulting from all federal contracts and procurement opportunities due to conflict of interest or potential wrongdoing concerns.",
-      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
-      "confidence": 0.95,
-      "raw": null
-    },
-    {
-      "source": "tavily",
       "date": "2019-08-08",
       "title": "Question Period Note: Allegations of misconduct by Canada Border ...",
       "severity": "CRITICAL",
       "category": "fraud",
-      "summary": "Allegations of collusion between Dalian Enterprises, Coradix Technology Consulting, and GCStrategies with a CBSA Director General to secure contracts with excessive mark-up, and falsification of Botler AI employee credentials.",
+      "summary": "Alleged collusion between Dalian-Coradix joint venture, GCStrategies, and a CBSA Director General to secure work with excessive mark-up, and falsification of employee credentials to win work and increase billing.",
       "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
-      "confidence": 0.9,
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-10-01",
+      "title": "Evidence - OGGO (44-1) - No. 85 - House of Commons of Canada",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "Parliamentary testimony reveals Coradix-Dalian joint venture used employee names without consent in task authorizations and subcontracted work to GC Strategies while billing CBSA directly.",
+      "url": "https://www.noscommunes.ca/documentviewer/en/44-1/OGGO/meeting-85/evidence",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-10-01",
+      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
+      "severity": "CRITICAL",
+      "category": "criminal_charges",
+      "summary": "RCMP investigation into alleged misconduct involving Coradix-Dalian joint venture related to CBSA contract with evidence of unauthorized markup schemes and pass-through arrangements.",
+      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-01",
+      "title": "ArriveCan contractors failed to meet terms of Indigenous ...",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Coradix-Dalian joint venture failed compliance audits for Indigenous procurement program, not meeting ownership, control, and Indigenous content criteria, leading to suspension.",
+      "url": "https://www.theglobeandmail.com/politics/article-arrivecan-audit-indigenous-procurement-system/",
+      "confidence": 0.95,
       "raw": null
     },
     {
       "source": "tavily",
       "date": "2024-03-06",
-      "title": "Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
+      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office ...",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "PSPC suspended Coradix Technology Consulting from continuing work on existing contracts and from participating in new procurement opportunities due to integrity concerns.",
+      "summary": "Public Services and Procurement Canada suspended Coradix from all federal contracts, issuing stop work orders and barring new bids due to potential wrongdoing in procurement system.",
+      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-06",
+      "title": "Federal procurement department punishes companies that worked on ArriveCan app - The Globe and Mail",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Federal government barred Coradix and Dalian from procurement opportunities following ArriveCan app management failures and procurement irregularities.",
+      "url": "https://www.theglobeandmail.com/politics/article-federal-procurement-department-punishes-companies-that-worked-on/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-06",
+      "title": "Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "PSPC issued stop work orders and suspended Coradix from federal procurement due to conflict of interest or potential wrongdoing to safeguard procurement system integrity.",
       "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/",
       "confidence": 0.95,
       "raw": null
@@ -76,65 +120,10 @@
     {
       "source": "tavily",
       "date": "2024-03-06",
-      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globalnews.ca",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Coradix suspended from federal contracts amid RCMP, Integrity Commissioner, and Privacy Commissioner investigations into ArriveCan contracting irregularities involving at least $59.5 million in questionable spending.",
-      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
-      "confidence": 0.9,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2019-08-08",
-      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
-      "severity": "CRITICAL",
-      "category": "fraud",
-      "summary": "RCMP investigating alleged misconduct involving Coradix in CBSA contract including potential collusion, credential falsification, and unauthorized subcontracting to GC Strategies with improper markup.",
-      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
-      "confidence": 0.92,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2025-06-06",
-      "title": "Company that worked on ArriveCan app barred from government contracts for 7 years | 980 CJME",
+      "title": "Public Services and Procurement Canada announces the ...",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "Government barred Dalian Enterprises and Coradix Technology Consulting from participating in procurement opportunities following ArriveCan contracting scandal.",
-      "url": "https://www.cjme.com/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
-      "confidence": 0.88,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2024-11-11",
-      "title": "Question Period Note: Procurement with Dalian and Coradix",
-      "severity": "HIGH",
-      "category": "regulatory",
-      "summary": "Following suspension, Coradix filed lawsuit against Government of Canada claiming $64 million in damages after 81 federal contracts were terminated or suspended.",
-      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2024-QP-00062",
-      "confidence": 0.85,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2025-06-06",
-      "title": "Company that worked on ArriveCan app barred from government ...",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "Government barred Dalian Enterprises and Coradix Technology Consulting from procurement opportunities following Auditor General findings of poor record-keeping and excessive reliance on contractors in ArriveCan project.",
-      "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-banned-contracts-1.7555239",
-      "confidence": 0.9,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2024-03-06",
-      "title": "Public Services and Procurement Canada announces the suspension of Coradix Technology Consulting Ltd. - Canada.ca",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "PSPC suspended Coradix Technology Consulting from federal contracts due to conflict of interest or potential wrongdoing to safeguard procurement system integrity.",
+      "summary": "Public Services and Procurement Canada suspended Coradix from continuing work on contracts and participating in new procurement opportunities due to potential wrongdoing.",
       "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
       "confidence": 0.95,
       "raw": null
@@ -142,64 +131,41 @@
     {
       "source": "tavily",
       "date": "2024-03-06",
-      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globalnews.ca",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Coradix suspended from government contracts amid RCMP, Integrity Commissioner, and Privacy Commissioner investigations into ArriveCan contracting irregularities and alleged wrongdoing.",
-      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
-      "confidence": 0.9,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2020-06-29",
-      "title": "Evidence - OGGO (44-1) - No. 85 - House of Commons of Canada",
-      "severity": "HIGH",
-      "category": "fraud",
-      "summary": "Parliamentary committee investigating allegations that Coradix (in joint venture with Dalian) and GC Strategies used CVs without consent and conducted unauthorized subcontracting work on ArriveCan contracts.",
-      "url": "https://www.noscommunes.ca/documentviewer/en/44-1/OGGO/meeting-85/evidence",
-      "confidence": 0.88,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2024-05-14",
-      "title": "Standing Committee on Public Accounts—Report 1, ArriveCAN (May ...",
-      "severity": "MEDIUM",
+      "title": "Public Services and Procurement Canada announces the ...",
+      "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "Standing Committee on Public Accounts report documents Coradix Technology Consulting received $9.65 million in ArriveCan-related contracts and Dalian/Coradix joint venture received $4.84 million amid procurement irregularities.",
-      "url": "https://www.cbsa-asfc.gc.ca/transparency-transparence/pd-dp/bbp-rpp/pacp/2024-05-14/issues-enjeux-eng.html",
-      "confidence": 0.85,
+      "summary": "PSPC suspended Coradix from continuing contract work and new procurement opportunities due to conflict of interest or potential wrongdoing.",
+      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
+      "confidence": 0.95,
       "raw": null
     },
     {
       "source": "tavily",
       "date": "2024-03-06",
-      "title": "Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
+      "title": "Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "PSPC issued stop work orders and suspended Coradix Technology Consulting from participating in new procurement opportunities due to integrity concerns in federal procurement system.",
+      "summary": "PSPC suspended Coradix from federal contracts and procurement opportunities due to conflict of interest or potential wrongdoing.",
       "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-03-01",
+      "title": "Ottawa was warned about problems with Indigenous procurement – but grew it into a $1.6-billion program anyway - The Globe and Mail",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Coradix-Dalian joint venture failed Indigenous procurement audits across dozen contracts, leading to suspension, with evidence of substantial overlap between the two firms.",
+      "url": "https://www.theglobeandmail.com/canada/article-ottawa-was-warned-about-problems-with-indigenous-procurement-but-grew/",
       "confidence": 0.95,
       "raw": null
     }
   ],
+  "timeline_remediation": [],
   "sanctions": [],
   "court_cases": [],
   "news": [
-    {
-      "title": "Public Services and Procurement Canada announces the suspension of Coradix Technology Consulting Ltd. - Canada.ca",
-      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
-      "source_name": "canada.ca",
-      "published_at": "2024-03-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "Public Services and Procurement Canada suspended Coradix Technology Consulting from all federal contracts and procurement opportunities due to conflict of interest or potential wrongdoing concerns.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 2.1
-    },
     {
       "title": "Question Period Note: Allegations of misconduct by Canada Border ...",
       "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
@@ -207,154 +173,167 @@
       "published_at": "2019-08-08",
       "severity": "CRITICAL",
       "category": "fraud",
-      "summary": "Allegations of collusion between Dalian Enterprises, Coradix Technology Consulting, and GCStrategies with a CBSA Director General to secure contracts with excessive mark-up, and falsification of Botler AI employee credentials.",
-      "confidence": 0.9,
+      "summary": "Alleged collusion between Dalian-Coradix joint venture, GCStrategies, and a CBSA Director General to secure work with excessive mark-up, and falsification of employee credentials to win work and increase billing.",
+      "confidence": 0.95,
       "is_remediation": false,
       "is_stale": true,
       "age_years": 6.7
-    },
-    {
-      "title": "Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
-      "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/",
-      "source_name": "miragenews.com",
-      "published_at": "2024-03-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "PSPC suspended Coradix Technology Consulting from continuing work on existing contracts and from participating in new procurement opportunities due to integrity concerns.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 2.1
-    },
-    {
-      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globalnews.ca",
-      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
-      "source_name": "globalnews.ca",
-      "published_at": "2024-03-06",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Coradix suspended from federal contracts amid RCMP, Integrity Commissioner, and Privacy Commissioner investigations into ArriveCan contracting irregularities involving at least $59.5 million in questionable spending.",
-      "confidence": 0.9,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 2.1
-    },
-    {
-      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
-      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
-      "source_name": "theglobeandmail.com",
-      "published_at": "2019-08-08",
-      "severity": "CRITICAL",
-      "category": "fraud",
-      "summary": "RCMP investigating alleged misconduct involving Coradix in CBSA contract including potential collusion, credential falsification, and unauthorized subcontracting to GC Strategies with improper markup.",
-      "confidence": 0.92,
-      "is_remediation": false,
-      "is_stale": true,
-      "age_years": 6.7
-    },
-    {
-      "title": "Company that worked on ArriveCan app barred from government contracts for 7 years | 980 CJME",
-      "url": "https://www.cjme.com/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
-      "source_name": "cjme.com",
-      "published_at": "2025-06-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "Government barred Dalian Enterprises and Coradix Technology Consulting from participating in procurement opportunities following ArriveCan contracting scandal.",
-      "confidence": 0.88,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 0.9
-    },
-    {
-      "title": "Question Period Note: Procurement with Dalian and Coradix",
-      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2024-QP-00062",
-      "source_name": "search.open.canada.ca",
-      "published_at": "2024-11-11",
-      "severity": "HIGH",
-      "category": "regulatory",
-      "summary": "Following suspension, Coradix filed lawsuit against Government of Canada claiming $64 million in damages after 81 federal contracts were terminated or suspended.",
-      "confidence": 0.85,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 1.5
-    },
-    {
-      "title": "Company that worked on ArriveCan app barred from government ...",
-      "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-banned-contracts-1.7555239",
-      "source_name": "cbc.ca",
-      "published_at": "2025-06-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "Government barred Dalian Enterprises and Coradix Technology Consulting from procurement opportunities following Auditor General findings of poor record-keeping and excessive reliance on contractors in ArriveCan project.",
-      "confidence": 0.9,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 0.9
-    },
-    {
-      "title": "Public Services and Procurement Canada announces the suspension of Coradix Technology Consulting Ltd. - Canada.ca",
-      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
-      "source_name": "canada.ca",
-      "published_at": "2024-03-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "PSPC suspended Coradix Technology Consulting from federal contracts due to conflict of interest or potential wrongdoing to safeguard procurement system integrity.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 2.1
-    },
-    {
-      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globalnews.ca",
-      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
-      "source_name": "globalnews.ca",
-      "published_at": "2024-03-06",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Coradix suspended from government contracts amid RCMP, Integrity Commissioner, and Privacy Commissioner investigations into ArriveCan contracting irregularities and alleged wrongdoing.",
-      "confidence": 0.9,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 2.1
     },
     {
       "title": "Evidence - OGGO (44-1) - No. 85 - House of Commons of Canada",
       "url": "https://www.noscommunes.ca/documentviewer/en/44-1/OGGO/meeting-85/evidence",
       "source_name": "noscommunes.ca",
-      "published_at": "2020-06-29",
-      "severity": "HIGH",
+      "published_at": "2023-10-01",
+      "severity": "CRITICAL",
       "category": "fraud",
-      "summary": "Parliamentary committee investigating allegations that Coradix (in joint venture with Dalian) and GC Strategies used CVs without consent and conducted unauthorized subcontracting work on ArriveCan contracts.",
-      "confidence": 0.88,
-      "is_remediation": false,
-      "is_stale": true,
-      "age_years": 5.8
-    },
-    {
-      "title": "Standing Committee on Public Accounts—Report 1, ArriveCAN (May ...",
-      "url": "https://www.cbsa-asfc.gc.ca/transparency-transparence/pd-dp/bbp-rpp/pacp/2024-05-14/issues-enjeux-eng.html",
-      "source_name": "cbsa-asfc.gc.ca",
-      "published_at": "2024-05-14",
-      "severity": "MEDIUM",
-      "category": "regulatory",
-      "summary": "Standing Committee on Public Accounts report documents Coradix Technology Consulting received $9.65 million in ArriveCan-related contracts and Dalian/Coradix joint venture received $4.84 million amid procurement irregularities.",
-      "confidence": 0.85,
+      "summary": "Parliamentary testimony reveals Coradix-Dalian joint venture used employee names without consent in task authorizations and subcontracted work to GC Strategies while billing CBSA directly.",
+      "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 2.0
+      "age_years": 2.6
     },
     {
-      "title": "Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
+      "title": "RCMP probes alleged misconduct in outsourced CBSA contract",
+      "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2023-10-01",
+      "severity": "CRITICAL",
+      "category": "criminal_charges",
+      "summary": "RCMP investigation into alleged misconduct involving Coradix-Dalian joint venture related to CBSA contract with evidence of unauthorized markup schemes and pass-through arrangements.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.6
+    },
+    {
+      "title": "ArriveCan contractors failed to meet terms of Indigenous ...",
+      "url": "https://www.theglobeandmail.com/politics/article-arrivecan-audit-indigenous-procurement-system/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2024-03-01",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Coradix-Dalian joint venture failed compliance audits for Indigenous procurement program, not meeting ownership, control, and Indigenous content criteria, leading to suspension.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office ...",
+      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
+      "source_name": "globalnews.ca",
+      "published_at": "2024-03-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Public Services and Procurement Canada suspended Coradix from all federal contracts, issuing stop work orders and barring new bids due to potential wrongdoing in procurement system.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "Federal procurement department punishes companies that worked on ArriveCan app - The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/politics/article-federal-procurement-department-punishes-companies-that-worked-on/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2024-03-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Federal government barred Coradix and Dalian from procurement opportunities following ArriveCan app management failures and procurement irregularities.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
       "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/",
       "source_name": "miragenews.com",
       "published_at": "2024-03-06",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "PSPC issued stop work orders and suspended Coradix Technology Consulting from participating in new procurement opportunities due to integrity concerns in federal procurement system.",
+      "summary": "PSPC issued stop work orders and suspended Coradix from federal procurement due to conflict of interest or potential wrongdoing to safeguard procurement system integrity.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 2.1
+    },
+    {
+      "title": "Public Services and Procurement Canada announces the ...",
+      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
+      "source_name": "canada.ca",
+      "published_at": "2024-03-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Public Services and Procurement Canada suspended Coradix from continuing work on contracts and participating in new procurement opportunities due to potential wrongdoing.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globalnews.ca",
+      "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/",
+      "source_name": "globalnews.ca",
+      "published_at": "2024-03-01",
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Coradix selling office property following suspension from government contracts, a business transaction secondary to regulatory action.",
+      "confidence": 0.75,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Public Services and Procurement Canada announces the ...",
+      "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html",
+      "source_name": "canada.ca",
+      "published_at": "2024-03-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "PSPC suspended Coradix from continuing contract work and new procurement opportunities due to conflict of interest or potential wrongdoing.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "Suspended ArriveCan IT consultant selling second Ottawa office condo  | Globalnews.ca",
+      "url": "https://globalnews.ca/news/10390318/arrivecan-it-consultant-office-condo-sales-ottawa/",
+      "source_name": "globalnews.ca",
+      "published_at": "2024-03-01",
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Coradix selling second office property following suspension, a business transaction secondary to regulatory enforcement.",
+      "confidence": 0.75,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
+    },
+    {
+      "title": "Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
+      "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/",
+      "source_name": "miragenews.com",
+      "published_at": "2024-03-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "PSPC suspended Coradix from federal contracts and procurement opportunities due to conflict of interest or potential wrongdoing.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.1
+    },
+    {
+      "title": "Ottawa was warned about problems with Indigenous procurement – but grew it into a $1.6-billion program anyway - The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/canada/article-ottawa-was-warned-about-problems-with-indigenous-procurement-but-grew/",
+      "source_name": "theglobeandmail.com",
+      "published_at": "2024-03-01",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Coradix-Dalian joint venture failed Indigenous procurement audits across dozen contracts, leading to suspension, with evidence of substantial overlap between the two firms.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.2
     }
   ],
   "forensics": {
@@ -377,46 +356,49 @@
     "2025": 5
   },
   "first_adverse_signal": "2018-08-20",
-  "briefing_memo": "Coradix Technology Consulting has received federal funding through multiple contracts, though the total amount to date is not specified in available records. On June 6, 2025, the Government of Canada barred both Dalian Enterprises and Coradix Technology Consulting from participating in procurement opportunities for 7 years following the ArriveCan contracting scandal (cjme.com), and Public Services and Procurement Canada suspended Coradix on March 6, 2024, from all federal contracts due to integrity concerns related to alleged collusion, credential falsification, and contract irregularities involving at least $59.5 million in questionable spending. RCMP, Integrity Commissioner, and Privacy Commissioner investigations into these matters remain ongoing as of the most recent reporting in 2024, with no documented remediation, settlement, or leadership changes. Given the current 7-year procurement ban imposed in 2025 and active investigations into serious integrity violations, continued engagement with this entity is not recommended until investigations conclude and substantive remediation is demonstrated.",
+  "briefing_memo": "Coradix Technology Consulting has received federal funding (total amount not disclosed in available records), but is currently suspended from all federal contracts by Public Services and Procurement Canada as of March 2024. An active RCMP investigation, ongoing since October 2023, is examining alleged misconduct in the Coradix-Dalian joint venture's CBSA contracts, including collusion, credential falsification, unauthorized markups, and pass-through arrangements with GC Strategies; the venture also failed Indigenous procurement compliance audits in March 2024. No remediation signals are documented, and the suspension remains in effect with stop-work orders issued and new bids barred. Recommendation: No funding decisions should proceed until the RCMP investigation concludes and suspension is lifted; existing contracts should remain frozen pending investigation outcomes and any required integrity reviews.",
   "actions": [
     {
-      "urgency": "immediate",
-      "title": "Suspend all active funding agreements and disbursements",
-      "rationale": "Public Services and Procurement Canada issued a formal suspension of Coradix Technology Consulting Ltd. in March 2024, indicating current ineligibility for federal contracting.",
+      "urgency": "scheduled",
+      "title": "Refer to RCMP Anti-Corruption Unit for coordination on ongoing investigation",
+      "rationale": "Multiple CRITICAL-severity articles report active RCMP investigation into alleged misconduct in CBSA ArriveCan contract, with Parliamentary testimony from October 2023 indicating ongoing scrutiny.",
       "evidence": [
-        "PSPC suspension 2024",
-        "8 CRITICAL news items",
-        "risk_score 65"
-      ]
-    },
-    {
-      "urgency": "immediate",
-      "title": "Refer file to departmental integrity framework unit for debarment review",
-      "rationale": "Active PSPC suspension coupled with RCMP investigation into alleged misconduct in CBSA contracts requires immediate integrity regime assessment.",
-      "evidence": [
-        "PSPC suspension 2024",
-        "RCMP investigation",
-        "CBSA contract misconduct allegations"
+        "RCMP investigation (2023)",
+        "Parliamentary OGGO testimony",
+        "Globe and Mail reporting",
+        "ArriveCan contract irregularities"
       ]
     },
     {
       "urgency": "scheduled",
-      "title": "Request status update from RCMP on ongoing investigation",
-      "rationale": "The 2019 RCMP probe into alleged misconduct in outsourced CBSA contracts appears unresolved and may inform eligibility determinations.",
+      "title": "Open Integrity Regime review for alleged contract non-compliance",
+      "rationale": "Contractor failed to meet terms of Indigenous procurement requirements per March 2024 Globe and Mail reporting, indicating potential material breach of federal contracting obligations.",
       "evidence": [
-        "RCMP investigation 2019",
+        "Indigenous procurement violations",
+        "ArriveCan contract non-compliance",
+        "Globe and Mail March 2024"
+      ]
+    },
+    {
+      "urgency": "immediate",
+      "title": "Suspend all active contracts and pause new procurements pending investigation outcome",
+      "rationale": "Active RCMP criminal investigation combined with Parliamentary findings and contractor suspension creates immediate reputational and fiduciary risk for continued federal engagement.",
+      "evidence": [
+        "Contractor suspension (2024)",
+        "RCMP probe ongoing",
+        "Parliamentary scrutiny",
+        "Multiple CRITICAL news items within 24 months"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Conduct enhanced due diligence audit of all historical contracts with this vendor",
+      "rationale": "Pattern of alleged misconduct spanning 2019-2024 with 11 CRITICAL-severity adverse signals warrants systematic review of all past dealings to identify scope of potential irregularities.",
+      "evidence": [
+        "Six-year pattern of adverse reporting",
         "CBSA misconduct allegations",
-        "4 HIGH severity news"
-      ]
-    },
-    {
-      "urgency": "scheduled",
-      "title": "Conduct enhanced financial and compliance audit of all past disbursements",
-      "rationale": "The pattern of critical adverse news and formal government suspension warrants retrospective review of all funds previously disbursed to this entity.",
-      "evidence": [
-        "8 CRITICAL news",
-        "PSPC suspension",
-        "no remediation documented"
+        "ArriveCan irregularities",
+        "Parliamentary testimony"
       ]
     }
   ],
@@ -432,52 +414,48 @@
     "bigquery_rows": [],
     "external_urls": [
       {
-        "label": "canada.ca: Public Services and Procurement Canada announces the suspension of Coradix Techn",
-        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html"
-      },
-      {
         "label": "search.open.canada.ca: Question Period Note: Allegations of misconduct by Canada Border ...",
         "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055"
-      },
-      {
-        "label": "miragenews.com: Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
-        "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/"
-      },
-      {
-        "label": "globalnews.ca: Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globaln",
-        "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/"
-      },
-      {
-        "label": "theglobeandmail.com: RCMP probes alleged misconduct in outsourced CBSA contract",
-        "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/"
-      },
-      {
-        "label": "cjme.com: Company that worked on ArriveCan app barred from government contracts for 7 year",
-        "url": "https://www.cjme.com/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/"
-      },
-      {
-        "label": "search.open.canada.ca: Question Period Note: Procurement with Dalian and Coradix",
-        "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2024-QP-00062"
-      },
-      {
-        "label": "cbc.ca: Company that worked on ArriveCan app barred from government ...",
-        "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-banned-contracts-1.7555239"
-      },
-      {
-        "label": "canada.ca: Public Services and Procurement Canada announces the suspension of Coradix Techn",
-        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html"
-      },
-      {
-        "label": "globalnews.ca: Suspended ArriveCan IT consultant unloading $2.2M Ottawa office condo  | Globaln",
-        "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/"
       },
       {
         "label": "noscommunes.ca: Evidence - OGGO (44-1) - No. 85 - House of Commons of Canada",
         "url": "https://www.noscommunes.ca/documentviewer/en/44-1/OGGO/meeting-85/evidence"
       },
       {
-        "label": "miragenews.com: Canada Suspends Coradix Technology Consulting Ltd | Mirage News",
+        "label": "theglobeandmail.com: RCMP probes alleged misconduct in outsourced CBSA contract",
+        "url": "https://www.theglobeandmail.com/politics/article-rcmp-border-services-it-misconduct/"
+      },
+      {
+        "label": "theglobeandmail.com: ArriveCan contractors failed to meet terms of Indigenous ...",
+        "url": "https://www.theglobeandmail.com/politics/article-arrivecan-audit-indigenous-procurement-system/"
+      },
+      {
+        "label": "globalnews.ca: Suspended ArriveCan IT consultant unloading $2.2M Ottawa office ...",
+        "url": "https://globalnews.ca/news/10374884/suspended-arrivecan-it-consultant-sells-office-condo-rcmp-probe/"
+      },
+      {
+        "label": "theglobeandmail.com: Federal procurement department punishes companies that worked on ArriveCan app -",
+        "url": "https://www.theglobeandmail.com/politics/article-federal-procurement-department-punishes-companies-that-worked-on/"
+      },
+      {
+        "label": "miragenews.com: Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
         "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/"
+      },
+      {
+        "label": "canada.ca: Public Services and Procurement Canada announces the ...",
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html"
+      },
+      {
+        "label": "canada.ca: Public Services and Procurement Canada announces the ...",
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/03/public-services-and-procurement-canada-announces-the-suspension-of-coradix-technology-consulting-ltd.html"
+      },
+      {
+        "label": "miragenews.com: Canada Suspends Coradix Technology Consulting Ltd - Mirage News",
+        "url": "https://www.miragenews.com/canada-suspends-coradix-technology-consulting-1189070/"
+      },
+      {
+        "label": "theglobeandmail.com: Ottawa was warned about problems with Indigenous procurement – but grew it into ",
+        "url": "https://www.theglobeandmail.com/canada/article-ottawa-was-warned-about-problems-with-indigenous-procurement-but-grew/"
       }
     ]
   },
@@ -492,5 +470,5 @@
   "sources_skipped": [
     "canlii"
   ],
-  "cached_at": "2026-04-29T16:39:24.865112"
+  "cached_at": "2026-04-29T17:20:07.583417"
 }

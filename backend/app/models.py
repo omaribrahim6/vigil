@@ -159,6 +159,19 @@ class ProvenanceTrail(BaseModel):
     external_urls: list[dict[str, str]] = Field(default_factory=list)
 
 
+class RemediationEvent(BaseModel):
+    """Dated positive-integrity milestone for the timeline (a third band that
+    sits between adverse and funding). Mirrors NewsArticle but normalized to
+    just what the chart and tooltip need."""
+
+    date: date | None
+    title: str
+    summary: str | None = None
+    url: str | None = None
+    source_name: str | None = None
+    is_independent: bool = False
+
+
 class ScreeningDossier(BaseModel):
     """Top-level dossier shape consumed by the frontend org-detail page."""
 
@@ -166,6 +179,7 @@ class ScreeningDossier(BaseModel):
     risk: RiskBreakdown
     timeline_funding: list[FundingEvent] = Field(default_factory=list)
     timeline_adverse: list[AdverseEvent] = Field(default_factory=list)
+    timeline_remediation: list[RemediationEvent] = Field(default_factory=list)
     sanctions: list[SanctionsHit] = Field(default_factory=list)
     court_cases: list[CourtCase] = Field(default_factory=list)
     news: list[NewsArticle] = Field(default_factory=list)

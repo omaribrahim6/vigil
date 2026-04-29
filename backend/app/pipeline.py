@@ -12,6 +12,7 @@ from datetime import datetime
 from typing import Iterable
 
 from .bigquery_client import (
+    fetch_ab_payments_by_name,
     fetch_funding_events,
     fetch_funding_events_by_name,
     fetch_org_by_id,
@@ -29,6 +30,7 @@ from .models import (
     ProvenanceTrail,
     RelatedEntity,
     RemediationContext,
+    RemediationEvent,
     SanctionsHit,
     ScreeningDossier,
 )
@@ -337,6 +339,14 @@ async def screen_profile(
         except Exception as e:  # noqa: BLE001
             logger.warning("funding events fetch failed: %s", e)
             funding_events = []
+        # Merge in Alberta sole-source contracts so the timeline shows both
+        # provincial and federal flow. Goldens orgs already have ab_total
+        # from the goldens table; this just adds dated rows for the chart.
+        try:
+            ab_events = fetch_ab_payments_by_name(profile.canonical_name)
+            funding_events = (funding_events or []) + ab_events
+        except Exception as e:  # noqa: BLE001
+            logger.warning("AB events fetch failed: %s", e)
 
     adverse = _adverse_events_from_sources(sanctions, court, news)
 
@@ -374,6 +384,26 @@ async def screen_profile(
         candidates.append(gdelt_first)
     first_adverse = min(candidates) if candidates else None
 
+    # Surface dated remediation articles as their own timeline band so the
+    # chart shows the full counter-narrative (e.g. Ethisphere certification
+    # in 2023 sitting *after* a 2019 fraud article).
+    timeline_rem: list[RemediationEvent] = []
+    for a in news:
+        if not a.is_remediation or not a.published_at:
+            continue
+        timeline_rem.append(
+            RemediationEvent(
+                date=a.published_at,
+                title=a.title,
+                summary=a.summary,
+                url=a.url,
+                source_name=a.source_name,
+                is_independent=_is_independent_source(
+                    a.source_name, profile.canonical_name
+                ),
+            )
+        )
+
     provenance = _build_provenance(profile, sanctions, court, news, forensics)
 
     dossier = ScreeningDossier(
@@ -381,6 +411,7 @@ async def screen_profile(
         risk=risk,
         timeline_funding=funding_events or [],
         timeline_adverse=adverse,
+        timeline_remediation=timeline_rem,
         sanctions=sanctions,
         court_cases=court,
         news=news,
@@ -410,9 +441,21 @@ async def screen_by_id(org_id: str) -> ScreeningDossier | None:
 
 async def screen_by_name(name: str) -> ScreeningDossier:
     """Live-search fallback: build a synthetic OrgProfile from name+fed lookup
-    and run the screening anyway. Used for the demo's 'type any org' moment."""
+    and run the screening anyway. Used for the demo's 'type any org' moment.
+
+    The fuzzy name matcher in `bigquery_client._name_variants` expands the
+    query to accent-stripped, suffix-stripped, and known-alias variants so
+    rebrands (AtkinsRéalis → SNC-Lavalin) and diacritics still hit BQ rows.
+    Federal grants + Alberta sole-source contracts are merged into a single
+    timeline; their summed amounts populate fed_total / ab_total so the
+    header tiles aren't empty for adhoc orgs."""
     funding = fetch_funding_events_by_name(name)
+    ab_funding = fetch_ab_payments_by_name(name)
+    combined_funding = funding + ab_funding
     fed_total = sum((f.amount or 0) for f in funding) or None
+    ab_total = sum((f.amount or 0) for f in ab_funding) or None
+    fed_count = sum(1 for f in funding if f.amount) or None
+    ab_count = sum(1 for f in ab_funding if f.amount) or None
     slug = "".join(
         c if c.isalnum() else "_"
         for c in name.lower().strip()
@@ -422,5 +465,8 @@ async def screen_by_name(name: str) -> ScreeningDossier:
         canonical_name=name.strip(),
         aliases=[],
         fed_total=fed_total,
+        fed_grant_count=fed_count,
+        ab_total=ab_total,
+        ab_payment_count=ab_count,
     )
-    return await screen_profile(profile, related=[], funding_events=funding)
+    return await screen_profile(profile, related=[], funding_events=combined_funding)

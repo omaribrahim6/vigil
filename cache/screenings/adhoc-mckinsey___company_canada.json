@@ -7,14 +7,14 @@
     "entity_type": null,
     "province": null,
     "city": null,
-    "fed_total": null,
-    "fed_grant_count": null,
+    "fed_total": 10000.0,
+    "fed_grant_count": 1,
     "fed_top_departments": [],
     "cra_designation": null,
     "cra_category": null,
     "cra_registration_date": null,
-    "ab_total": null,
-    "ab_payment_count": null,
+    "ab_total": 3572275.0,
+    "ab_payment_count": 2,
     "ab_ministries": [],
     "dataset_sources": []
   },
@@ -24,90 +24,174 @@
     "contributions": {
       "sanctions": 0,
       "court_cases": 0,
-      "critical_news": 0,
-      "high_news": 12,
-      "recency": 10,
+      "critical_news": 15,
+      "high_news": 15,
+      "recency": 0,
       "cra_loop": 0,
       "t3010_violations": 0,
       "overhead": 0,
       "ab_sole_source": 5,
       "gdelt_spike": 0,
-      "remediation_dampening": -8
+      "remediation_dampening": -16
     },
     "notes": [
-      "3 HIGH news article(s)",
+      "2 CRITICAL news article(s) — 2 are >5y old (down-weighted)",
       "2 Alberta sole-source contract(s)",
-      "Remediation dampening x0.70 (2 recent positive-integrity signal(s))",
+      "Remediation dampening x0.55 (4 recent positive-integrity signal(s))",
       "Post-remediation: historic adverse signals are documented as addressed."
     ]
   },
-  "timeline_funding": [],
+  "timeline_funding": [
+    {
+      "source": "fed",
+      "date": "2006-12-19",
+      "amount": 10000.0,
+      "department_or_program": "Innovation, Science and Economic Development Canada | Innovation, Sciences et Développement économique Canada",
+      "title": "500730",
+      "agreement_type": "C",
+      "description": "Mexico: fairs - South Korea: mtgs & Workshops - Taiwain: forum - promotional material"
+    },
+    {
+      "source": "ab",
+      "date": "2020-12-03",
+      "amount": 970000.0,
+      "department_or_program": "Service Alberta",
+      "title": "Perform Broadband Analysis",
+      "agreement_type": "sole_source",
+      "description": null
+    },
+    {
+      "source": "ab",
+      "date": "2020-04-01",
+      "amount": 2602275.0,
+      "department_or_program": "Health",
+      "title": "To support Alberta Health, Alberta Health Services, and the Provincial Operation Centre in governmentâ€™s Covid response, including crisis management, supply chains, reporting and jurisdiction scanning.",
+      "agreement_type": "sole_source",
+      "description": null
+    }
+  ],
   "timeline_adverse": [
     {
       "source": "tavily",
       "date": "2021-01-01",
-      "title": "McKinsey & Company Sued Over Alleged Role in Opioid ...",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Class action lawsuit filed against McKinsey & Company alleging role in fuelling Canada's opioid epidemic through consulting work with Purdue Pharma.",
+      "title": "[PDF] McKinsey & Company Sued Over Alleged Role in Opioid Epidemic ...",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "Class action lawsuit filed alleging McKinsey's role in fueling the opioid epidemic in Canada through work with Purdue Pharma on OxyContin sales.",
       "url": "https://goldblattpartners.com/wp-content/uploads/McKinsey-Press-Release-EN.pdf",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "raw": null
     },
     {
       "source": "tavily",
-      "date": "2024-06-04",
-      "title": "Feds blasted for 'frequent disregard of policies' with McKinsey & Company contracts: auditor general | Canadian HR Reporter",
-      "severity": "MEDIUM",
-      "category": "regulatory",
-      "summary": "Auditor General found federal organizations showed frequent disregard of procurement policies when awarding $209 million in contracts to McKinsey, 70% non-competitive.",
-      "url": "https://www.hrreporter.com/news/hr-news/feds-blasted-for-frequent-disregard-of-policies-with-mckinsey-company-contracts-auditor-general/386513",
-      "confidence": 0.8,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2024-04-01",
-      "title": "B.C. court certifies Canada-wide class-action suit against ...",
+      "date": "2023-02-07",
+      "title": "Auditor general says feds didn't follow rules on awarding McKinsey ...",
       "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "B.C. court certified Canada-wide class action alleging McKinsey promoted opioid over-prescription through consulting work with Purdue and other pharmaceutical companies.",
+      "category": "regulatory",
+      "summary": "Auditor General found federal government failed to follow procurement rules when awarding $200 million in contracts to McKinsey, with weak rationale for non-competitive contracts and inability to demonstrate value for money.",
+      "url": "https://www.consulting.ca/news/4073/auditor-general-says-feds-didnt-follow-rules-on-awarding-mckinsey-contracts",
+      "confidence": 0.92,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-01-20",
+      "title": "B.C. court certifies Canada-wide class-action suit against McKinsey for alleged opioid promotion | CBC News",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "B.C. court certifies Canada-wide class action alleging McKinsey was the 'hand in the glove' for improper promotion of opioid manufacturing across Canada for multiple distributors.",
       "url": "https://www.cbc.ca/news/canada/british-columbia/mckinsey-opioid-class-action-lawsuit-purdue-1.7563040",
-      "confidence": 0.85,
+      "confidence": 0.88,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-09-01",
+      "title": "Feds blasted for 'frequent disregard of policies' with McKinsey ...",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Auditor General report details federal agencies' frequent disregard of procurement policies when awarding 97 contracts worth $209 million to McKinsey, with 70% non-competitive and missing bid evaluations.",
+      "url": "https://www.hrreporter.com/news/hr-news/feds-blasted-for-frequent-disregard-of-policies-with-mckinsey-company-contracts-auditor-general/386513",
+      "confidence": 0.93,
       "raw": null
     },
     {
       "source": "tavily",
       "date": "2021-10-15",
-      "title": "McKinsey Opioids",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Class action commenced alleging McKinsey's role in opioid epidemic through consulting for manufacturers who misrepresented opioids as safe and effective treatment.",
+      "title": "McKinsey Opioids Class Action - Sotos Class Actions",
+      "severity": "MEDIUM",
+      "category": "fraud",
+      "summary": "Ontario class action regarding McKinsey's alleged role in opioid epidemic was discontinued by consent; parallel action commenced in British Columbia.",
       "url": "https://www.sotosclassactions.com/cases/mckinsey-opioids/",
-      "confidence": 0.8,
+      "confidence": 0.75,
       "raw": null
     },
     {
       "source": "tavily",
-      "date": "2024-06-04",
+      "date": "2023-02-07",
       "title": "Federal government flouted rules when awarding McKinsey contracts",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "category": "regulatory",
-      "summary": "Auditor General found federal government flouted contracting policies and could not demonstrate value for money on $209 million in McKinsey contracts.",
+      "summary": "Auditor General found federal government flouted contracting policies and could not demonstrate value for money in $209 million awarded to McKinsey between 2011-2023.",
       "url": "https://www.cbc.ca/news/politics/mckinsey-contracts-awarded-federal-government-auditor-general-hogan-1.7223893",
-      "confidence": 0.8,
+      "confidence": 0.94,
       "raw": null
     },
     {
       "source": "tavily",
-      "date": "2024-06-04",
-      "title": "Federal government flouted rules when awarding McKinsey contracts",
+      "date": "2024-03-01",
+      "title": "Procurement Practice Review of Contracts Awarded to McKinsey & Company - Office of the Procurement Ombudsman",
       "severity": "MEDIUM",
       "category": "regulatory",
-      "summary": "Duplicate of indices 2 and 5—Auditor General found procurement policy violations and inability to demonstrate value for money on McKinsey contracts.",
-      "url": "https://www.cbc.ca/news/politics/mckinsey-contracts-awarded-federal-government-auditor-general-hogan-1.7223893",
+      "summary": "Procurement Ombudsman practice review of McKinsey contracts awarded between April 2011 and March 2023 examining competitive and non-competitive procurement processes.",
+      "url": "https://opo-boa.gc.ca/praapp-prorev/2024/epa-ppr-03-2024-01-eng.html",
+      "confidence": 0.85,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-02-08",
+      "title": "President of the Treasury Board appearance before the Standing Committee on Government Operations and Estimates (OGGO) – Federal Government Consulting Contracts Awarded to McKinsey & Company – February 8, 2023 - Canada.ca",
+      "severity": "MEDIUM",
+      "category": "regulatory",
+      "summary": "Treasury Board President appeared before parliamentary committee regarding federal consulting contracts awarded to McKinsey, discussing procurement directive and Code of Conduct requirements.",
+      "url": "https://www.canada.ca/en/treasury-board-secretariat/corporate/transparency/briefing-documents-treasury-board-canada-secretariat/parliamentary-committee/president-oggo-consulting-contracts-awarded-february2023.html",
       "confidence": 0.8,
       "raw": null
+    }
+  ],
+  "timeline_remediation": [
+    {
+      "date": "2024-12-13",
+      "title": "[PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn",
+      "summary": "McKinsey & Company entered into a Deferred Prosecution Agreement with U.S. authorities, agreeing to implement comprehensive compliance reforms including risk evaluation, quality review programs, and document retention procedures.",
+      "url": "https://www.gibsondunn.com/wp-content/uploads/2025/02/Mckinsey_-_deferred_prosecution_agreement.pdf",
+      "source_name": "gibsondunn.com",
+      "is_independent": true
+    },
+    {
+      "date": "2024-12-13",
+      "title": "The McKinsey $650 Million Settlement: Compliance Lessons from the Opioid Crisis - Compliance Podcast Network",
+      "summary": "McKinsey committed to significant compliance reforms under DPA including risk evaluation process, quality review programs, and new document retention procedures to prevent repeat of past mistakes.",
+      "url": "https://compliancepodcastnetwork.net/the-mckinsey-650-million-settlement-compliance-lessons-from-the-opioid-crisis/",
+      "source_name": "compliancepodcastnetwork.net",
+      "is_independent": true
+    },
+    {
+      "date": "2024-12-13",
+      "title": "Historic $650M Settlement: McKinsey Held Criminally Responsible for Role in Opioid Crisis | Legal Services in Boston, Massachusetts",
+      "summary": "McKinsey entered five-year Deferred Prosecution Agreement requiring cessation of all opioid consulting, annual compliance certifications, and significant upgrades to compliance programs including risk assessment and quality control.",
+      "url": "https://www.parrellahealth.law/historic-650m-settlement-mckinsey-held-criminally-responsible-for-role-in-opioid-crisis",
+      "source_name": "parrellahealth.law",
+      "is_independent": true
+    },
+    {
+      "date": "2024-12-13",
+      "title": "McKinsey to pay $650m to settle US opioid consulting probe | Drugs News | Al Jazeera",
+      "summary": "McKinsey agreed to five-year deferred prosecution agreement, paying $650 million settlement and improving compliance practices with oversight from Justice Department and HHS inspector general.",
+      "url": "https://www.aljazeera.com/economy/2024/12/13/mckinsey-to-pay-650m-to-settle-us-opioid-consulting-probe",
+      "source_name": "aljazeera.com",
+      "is_independent": true
     }
   ],
   "sanctions": [],
@@ -120,60 +204,73 @@
       "published_at": "2008-01-01",
       "severity": "NOISE",
       "category": "unrelated",
-      "summary": "Former Canada Revenue Agency employees charged with corruption, extortion, bribery, and fraud—unrelated to McKinsey & Company Canada.",
+      "summary": "Former Canada Revenue Agency workers charged with corruption including extortion, bribery, and fraud; no connection to McKinsey & Company Canada.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": true,
       "age_years": 18.3
     },
     {
-      "title": "McKinsey & Company Sued Over Alleged Role in Opioid ...",
+      "title": "[PDF] McKinsey & Company Sued Over Alleged Role in Opioid Epidemic ...",
       "url": "https://goldblattpartners.com/wp-content/uploads/McKinsey-Press-Release-EN.pdf",
       "source_name": "goldblattpartners.com",
       "published_at": "2021-01-01",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Class action lawsuit filed against McKinsey & Company alleging role in fuelling Canada's opioid epidemic through consulting work with Purdue Pharma.",
-      "confidence": 0.85,
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "Class action lawsuit filed alleging McKinsey's role in fueling the opioid epidemic in Canada through work with Purdue Pharma on OxyContin sales.",
+      "confidence": 0.9,
       "is_remediation": false,
       "is_stale": true,
       "age_years": 5.3
     },
     {
-      "title": "Feds blasted for 'frequent disregard of policies' with McKinsey & Company contracts: auditor general | Canadian HR Reporter",
-      "url": "https://www.hrreporter.com/news/hr-news/feds-blasted-for-frequent-disregard-of-policies-with-mckinsey-company-contracts-auditor-general/386513",
-      "source_name": "hrreporter.com",
-      "published_at": "2024-06-04",
-      "severity": "MEDIUM",
+      "title": "Auditor general says feds didn't follow rules on awarding McKinsey ...",
+      "url": "https://www.consulting.ca/news/4073/auditor-general-says-feds-didnt-follow-rules-on-awarding-mckinsey-contracts",
+      "source_name": "consulting.ca",
+      "published_at": "2023-02-07",
+      "severity": "HIGH",
       "category": "regulatory",
-      "summary": "Auditor General found federal organizations showed frequent disregard of procurement policies when awarding $209 million in contracts to McKinsey, 70% non-competitive.",
-      "confidence": 0.8,
+      "summary": "Auditor General found federal government failed to follow procurement rules when awarding $200 million in contracts to McKinsey, with weak rationale for non-competitive contracts and inability to demonstrate value for money.",
+      "confidence": 0.92,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 1.9
+      "age_years": 3.2
     },
     {
-      "title": "B.C. court certifies Canada-wide class-action suit against ...",
+      "title": "B.C. court certifies Canada-wide class-action suit against McKinsey for alleged opioid promotion | CBC News",
       "url": "https://www.cbc.ca/news/canada/british-columbia/mckinsey-opioid-class-action-lawsuit-purdue-1.7563040",
       "source_name": "cbc.ca",
-      "published_at": "2024-04-01",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "B.C. court certified Canada-wide class action alleging McKinsey promoted opioid over-prescription through consulting work with Purdue and other pharmaceutical companies.",
-      "confidence": 0.85,
+      "published_at": "2023-01-20",
+      "severity": "CRITICAL",
+      "category": "fraud",
+      "summary": "B.C. court certifies Canada-wide class action alleging McKinsey was the 'hand in the glove' for improper promotion of opioid manufacturing across Canada for multiple distributors.",
+      "confidence": 0.88,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 2.1
+      "age_years": 3.3
     },
     {
-      "title": "McKinsey Opioids",
+      "title": "Feds blasted for 'frequent disregard of policies' with McKinsey ...",
+      "url": "https://www.hrreporter.com/news/hr-news/feds-blasted-for-frequent-disregard-of-policies-with-mckinsey-company-contracts-auditor-general/386513",
+      "source_name": "hrreporter.com",
+      "published_at": "2023-09-01",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Auditor General report details federal agencies' frequent disregard of procurement policies when awarding 97 contracts worth $209 million to McKinsey, with 70% non-competitive and missing bid evaluations.",
+      "confidence": 0.93,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.7
+    },
+    {
+      "title": "McKinsey Opioids Class Action - Sotos Class Actions",
       "url": "https://www.sotosclassactions.com/cases/mckinsey-opioids/",
       "source_name": "sotosclassactions.com",
       "published_at": "2021-10-15",
-      "severity": "HIGH",
-      "category": "criminal_charges",
-      "summary": "Class action commenced alleging McKinsey's role in opioid epidemic through consulting for manufacturers who misrepresented opioids as safe and effective treatment.",
-      "confidence": 0.8,
+      "severity": "MEDIUM",
+      "category": "fraud",
+      "summary": "Ontario class action regarding McKinsey's alleged role in opioid epidemic was discontinued by consent; parallel action commenced in British Columbia.",
+      "confidence": 0.75,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 4.5
@@ -182,105 +279,92 @@
       "title": "Federal government flouted rules when awarding McKinsey contracts",
       "url": "https://www.cbc.ca/news/politics/mckinsey-contracts-awarded-federal-government-auditor-general-hogan-1.7223893",
       "source_name": "cbc.ca",
-      "published_at": "2024-06-04",
+      "published_at": "2023-02-07",
+      "severity": "HIGH",
+      "category": "regulatory",
+      "summary": "Auditor General found federal government flouted contracting policies and could not demonstrate value for money in $209 million awarded to McKinsey between 2011-2023.",
+      "confidence": 0.94,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 3.2
+    },
+    {
+      "title": "Procurement Practice Review of Contracts Awarded to McKinsey & Company - Office of the Procurement Ombudsman",
+      "url": "https://opo-boa.gc.ca/praapp-prorev/2024/epa-ppr-03-2024-01-eng.html",
+      "source_name": "opo-boa.gc.ca",
+      "published_at": "2024-03-01",
       "severity": "MEDIUM",
       "category": "regulatory",
-      "summary": "Auditor General found federal government flouted contracting policies and could not demonstrate value for money on $209 million in McKinsey contracts.",
-      "confidence": 0.8,
+      "summary": "Procurement Ombudsman practice review of McKinsey contracts awarded between April 2011 and March 2023 examining competitive and non-competitive procurement processes.",
+      "confidence": 0.85,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 1.9
-    },
-    {
-      "title": "Regulatory & Investigations : Clyde & Co",
-      "url": "https://www.clydeco.com/expertise/services/regulatory-investigation",
-      "source_name": "clydeco.com",
-      "published_at": null,
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "General service page from law firm Clyde & Co describing regulatory investigation services—no specific allegations involving McKinsey Canada.",
-      "confidence": 0.98,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": null
-    },
-    {
-      "title": "Regulatory & Investigations : Clyde & Co",
-      "url": "http://www.clydeco.com/en/expertise/services/regulatory-investigation",
-      "source_name": "clydeco.com",
-      "published_at": null,
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Duplicate of index 6—law firm service page with no specific allegations involving McKinsey Canada.",
-      "confidence": 0.98,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": null
-    },
-    {
-      "title": "McKinsey & Company - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/McKinsey_%26_Company",
-      "source_name": "en.wikipedia.org",
-      "published_at": "2002-07-01",
-      "severity": "NOISE",
-      "category": "business_news",
-      "summary": "Wikipedia article discussing McKinsey's past consulting role with Enron prior to its 2001 scandal—no investigation of McKinsey, historical context only.",
-      "confidence": 0.75,
-      "is_remediation": false,
-      "is_stale": true,
-      "age_years": 23.8
+      "age_years": 2.2
     },
     {
       "title": "[PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn",
       "url": "https://www.gibsondunn.com/wp-content/uploads/2025/02/Mckinsey_-_deferred_prosecution_agreement.pdf",
       "source_name": "gibsondunn.com",
-      "published_at": "2025-02-01",
+      "published_at": "2024-12-13",
+      "severity": "CRITICAL",
+      "category": "criminal_charges",
+      "summary": "McKinsey & Company entered into a Deferred Prosecution Agreement with U.S. authorities, agreeing to implement comprehensive compliance reforms including risk evaluation, quality review programs, and document retention procedures.",
+      "confidence": 0.95,
+      "is_remediation": true,
+      "is_stale": false,
+      "age_years": 1.4
+    },
+    {
+      "title": "The McKinsey $650 Million Settlement: Compliance Lessons from the Opioid Crisis - Compliance Podcast Network",
+      "url": "https://compliancepodcastnetwork.net/the-mckinsey-650-million-settlement-compliance-lessons-from-the-opioid-crisis/",
+      "source_name": "compliancepodcastnetwork.net",
+      "published_at": "2024-12-13",
       "severity": "CRITICAL",
       "category": "remediation",
-      "summary": "McKinsey & Company, Inc. United States entered into Deferred Prosecution Agreement, agreeing to maintain effective compliance program and internal controls.",
+      "summary": "McKinsey committed to significant compliance reforms under DPA including risk evaluation process, quality review programs, and new document retention procedures to prevent repeat of past mistakes.",
+      "confidence": 0.92,
+      "is_remediation": true,
+      "is_stale": false,
+      "age_years": 1.4
+    },
+    {
+      "title": "Historic $650M Settlement: McKinsey Held Criminally Responsible for Role in Opioid Crisis | Legal Services in Boston, Massachusetts",
+      "url": "https://www.parrellahealth.law/historic-650m-settlement-mckinsey-held-criminally-responsible-for-role-in-opioid-crisis",
+      "source_name": "parrellahealth.law",
+      "published_at": "2024-12-13",
+      "severity": "CRITICAL",
+      "category": "remediation",
+      "summary": "McKinsey entered five-year Deferred Prosecution Agreement requiring cessation of all opioid consulting, annual compliance certifications, and significant upgrades to compliance programs including risk assessment and quality control.",
       "confidence": 0.9,
       "is_remediation": true,
       "is_stale": false,
-      "age_years": 1.2
+      "age_years": 1.4
     },
     {
-      "title": "Comptroller General of Canada appearance before the Standing Committee on Government Operations and Estimates (OGGO) – Federal Government Consulting Contracts Awarded to McKinsey & Company – September 2024 - Canada.ca",
-      "url": "https://www.canada.ca/en/treasury-board-secretariat/corporate/transparency/briefing-documents-treasury-board-canada-secretariat/briefing-books-comptroller-general-canada/comptroller-general-canada-oggo-september-2024.html",
-      "source_name": "canada.ca",
-      "published_at": "2024-09-01",
-      "severity": "MEDIUM",
-      "category": "remediation",
-      "summary": "Canadian government implemented new mandatory procurement procedures requiring manager certifications on conflict of interest and contractor oversight following McKinsey audit.",
-      "confidence": 0.85,
+      "title": "McKinsey to pay $650m to settle US opioid consulting probe | Drugs News | Al Jazeera",
+      "url": "https://www.aljazeera.com/economy/2024/12/13/mckinsey-to-pay-650m-to-settle-us-opioid-consulting-probe",
+      "source_name": "aljazeera.com",
+      "published_at": "2024-12-13",
+      "severity": "CRITICAL",
+      "category": "criminal_charges",
+      "summary": "McKinsey agreed to five-year deferred prosecution agreement, paying $650 million settlement and improving compliance practices with oversight from Justice Department and HHS inspector general.",
+      "confidence": 0.93,
       "is_remediation": true,
       "is_stale": false,
-      "age_years": 1.7
+      "age_years": 1.4
     },
     {
-      "title": "Federal government flouted rules when awarding McKinsey contracts",
-      "url": "https://www.cbc.ca/news/politics/mckinsey-contracts-awarded-federal-government-auditor-general-hogan-1.7223893",
-      "source_name": "cbc.ca",
-      "published_at": "2024-06-04",
+      "title": "President of the Treasury Board appearance before the Standing Committee on Government Operations and Estimates (OGGO) – Federal Government Consulting Contracts Awarded to McKinsey & Company – February 8, 2023 - Canada.ca",
+      "url": "https://www.canada.ca/en/treasury-board-secretariat/corporate/transparency/briefing-documents-treasury-board-canada-secretariat/parliamentary-committee/president-oggo-consulting-contracts-awarded-february2023.html",
+      "source_name": "canada.ca",
+      "published_at": "2023-02-08",
       "severity": "MEDIUM",
       "category": "regulatory",
-      "summary": "Duplicate of indices 2 and 5—Auditor General found procurement policy violations and inability to demonstrate value for money on McKinsey contracts.",
+      "summary": "Treasury Board President appeared before parliamentary committee regarding federal consulting contracts awarded to McKinsey, discussing procurement directive and Code of Conduct requirements.",
       "confidence": 0.8,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 1.9
-    },
-    {
-      "title": "Executive Leadership Team | Rimkus",
-      "url": "https://rimkus.com/executive-leadership-team/",
-      "source_name": "rimkus.com",
-      "published_at": null,
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Executive biography page mentioning Eric Egleston previously led McKinsey's North American Industrial Services Practice—no allegations or red flags.",
-      "confidence": 0.99,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": null
+      "age_years": 3.2
     }
   ],
   "forensics": {
@@ -298,71 +382,97 @@
   "related_entities": [],
   "gdelt_yearly": {},
   "first_adverse_signal": "2021-01-01",
-  "briefing_memo": "McKinsey & Company Canada has received federal contracts totaling $209 million to date, 70% of which were awarded non-competitively in frequent disregard of procurement policies according to the Auditor General (June 2024). The firm currently faces a certified Canada-wide class action lawsuit alleging it fueled the opioid epidemic through consulting work that promoted opioid over-prescription for Purdue Pharma and other pharmaceutical manufacturers (B.C. court certification April 2024). McKinsey & Company, Inc. entered into a Deferred Prosecution Agreement with U.S. authorities in February 2025, committing to maintain an effective compliance program and internal controls, while the Canadian government implemented mandatory procurement procedures requiring manager certifications on conflict of interest following the 2024 audit. Given the active litigation, recent U.S. deferred prosecution, and systemic procurement violations, recommend enhanced due diligence and competitive procurement requirements for any new McKinsey contracts, with quarterly reporting to Treasury Board on compliance and value demonstration until the class action resolves and the DPA term concludes.",
+  "briefing_memo": "McKinsey & Company Canada has received $10,000 in federal funding to date, with an additional $3.57 million in Alberta sole-source contracts. A B.C. court certified a Canada-wide class action in January 2023 alleging McKinsey was the \"hand in the glove\" for improper opioid promotion across Canada, and the Auditor General reported in September 2023 that federal agencies showed frequent disregard of procurement policies when awarding 97 contracts worth $209 million to McKinsey, with 70% non-competitive. McKinsey entered a five-year Deferred Prosecution Agreement with U.S. authorities on December 13, 2024, paying $650 million and committing to comprehensive compliance reforms including risk evaluation processes, quality review programs, and annual compliance certifications with Justice Department and HHS oversight. Given the very recent DPA and ongoing Canadian class action litigation, recommend suspending new federal contracts pending completion of the five-year monitorship and resolution of the certified class action.",
   "actions": [
     {
       "urgency": "scheduled",
-      "title": "Conduct enhanced due diligence review of ongoing contracts",
-      "rationale": "Recent certification of Canada-wide class action regarding opioid crisis involvement warrants verification that U.S. Deferred Prosecution Agreement (Feb 2025) remediation measures apply to Canadian operations and that integrity safeguards are in place.",
+      "title": "Conduct enhanced due diligence on procurement compliance and conflict-of-interest safeguards",
+      "rationale": "Auditor General found federal departments failed to follow procurement rules when awarding McKinsey contracts, indicating systemic contracting irregularities requiring verification of current controls",
       "evidence": [
-        "HIGH severity news (3)",
-        "DPA Feb 2025",
-        "Class action certified 2024",
-        "Parliamentary scrutiny Sept 2024"
-      ]
-    },
-    {
-      "urgency": "scheduled",
-      "title": "Request written confirmation of DPA compliance and remediation implementation",
-      "rationale": "U.S. Deferred Prosecution Agreement signed February 2025 indicates material misconduct in pharmaceutical consulting; confirm remediation protocols extend to Canadian entity and verify monitoring obligations are being met.",
-      "evidence": [
-        "USA v. McKinsey DPA",
-        "Opioid-related litigation",
-        "OGGO committee appearance"
+        "AG report 2023",
+        "2 AB sole-source contracts",
+        "HIGH news severity"
       ]
     },
     {
       "urgency": "monitor",
-      "title": "Track class action litigation outcome and any findings of wrongdoing",
-      "rationale": "Canada-wide class action certified in April 2024 remains active; monitor for settlement, judgment, or adverse findings that would impact supplier integrity standing.",
+      "title": "Review terms of US Deferred Prosecution Agreement for relevance to Canadian operations",
+      "rationale": "McKinsey entered $650M settlement and DPA with US authorities in December 2024 for opioid-related conduct; monitor compliance obligations and assess whether Canadian entity faces ongoing litigation risk",
       "evidence": [
-        "B.C. court certification 2024",
-        "Multiple opioid litigation HIGH news"
+        "US DPA 2024-12-13",
+        "CRITICAL opioid litigation",
+        "Canada-wide class action certified 2023"
+      ]
+    },
+    {
+      "urgency": "scheduled",
+      "title": "Confirm status of certified Canadian class-action lawsuit and potential Crown liability exposure",
+      "rationale": "B.C. court certified Canada-wide class action against McKinsey for alleged opioid promotion in 2023; federal departments must assess whether contracts create indirect Crown exposure or reputational risk",
+      "evidence": [
+        "CBC certified class action 2023",
+        "CRITICAL news severity",
+        "Active Canadian litigation"
       ]
     }
   ],
   "remediation": {
-    "signal_count": 2,
-    "recent_signal_count": 2,
-    "most_recent_at": "2025-02-01",
-    "summary": "[PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn (2025-02-01); Comptroller General of Canada appearance before the Standing Committee on Government Operations and Estimates (OGGO) – Federal Government Consulting Contracts Awarded to McKinsey & Company – September 2024 - Canada.ca (2024-09-01)",
-    "dampening_factor": 0.45,
+    "signal_count": 4,
+    "recent_signal_count": 4,
+    "most_recent_at": "2024-12-13",
+    "summary": "[PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn (2024-12-13); The McKinsey $650 Million Settlement: Compliance Lessons from the Opioid Crisis - Compliance Podcast Network (2024-12-13); Historic $650M Settlement: McKinsey Held Criminally Responsible for Role in Opioid Crisis | Legal Services in Boston, Massachusetts (2024-12-13)",
+    "dampening_factor": 0.35,
     "articles": [
       {
         "title": "[PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn",
         "url": "https://www.gibsondunn.com/wp-content/uploads/2025/02/Mckinsey_-_deferred_prosecution_agreement.pdf",
         "source_name": "gibsondunn.com",
-        "published_at": "2025-02-01",
+        "published_at": "2024-12-13",
+        "severity": "CRITICAL",
+        "category": "criminal_charges",
+        "summary": "McKinsey & Company entered into a Deferred Prosecution Agreement with U.S. authorities, agreeing to implement comprehensive compliance reforms including risk evaluation, quality review programs, and document retention procedures.",
+        "confidence": 0.95,
+        "is_remediation": true,
+        "is_stale": false,
+        "age_years": 1.4
+      },
+      {
+        "title": "The McKinsey $650 Million Settlement: Compliance Lessons from the Opioid Crisis - Compliance Podcast Network",
+        "url": "https://compliancepodcastnetwork.net/the-mckinsey-650-million-settlement-compliance-lessons-from-the-opioid-crisis/",
+        "source_name": "compliancepodcastnetwork.net",
+        "published_at": "2024-12-13",
         "severity": "CRITICAL",
         "category": "remediation",
-        "summary": "McKinsey & Company, Inc. United States entered into Deferred Prosecution Agreement, agreeing to maintain effective compliance program and internal controls.",
+        "summary": "McKinsey committed to significant compliance reforms under DPA including risk evaluation process, quality review programs, and new document retention procedures to prevent repeat of past mistakes.",
+        "confidence": 0.92,
+        "is_remediation": true,
+        "is_stale": false,
+        "age_years": 1.4
+      },
+      {
+        "title": "Historic $650M Settlement: McKinsey Held Criminally Responsible for Role in Opioid Crisis | Legal Services in Boston, Massachusetts",
+        "url": "https://www.parrellahealth.law/historic-650m-settlement-mckinsey-held-criminally-responsible-for-role-in-opioid-crisis",
+        "source_name": "parrellahealth.law",
+        "published_at": "2024-12-13",
+        "severity": "CRITICAL",
+        "category": "remediation",
+        "summary": "McKinsey entered five-year Deferred Prosecution Agreement requiring cessation of all opioid consulting, annual compliance certifications, and significant upgrades to compliance programs including risk assessment and quality control.",
         "confidence": 0.9,
         "is_remediation": true,
         "is_stale": false,
-        "age_years": 1.2
+        "age_years": 1.4
       },
       {
-        "title": "Comptroller General of Canada appearance before the Standing Committee on Government Operations and Estimates (OGGO) – Federal Government Consulting Contracts Awarded to McKinsey & Company – September 2024 - Canada.ca",
-        "url": "https://www.canada.ca/en/treasury-board-secretariat/corporate/transparency/briefing-documents-treasury-board-canada-secretariat/briefing-books-comptroller-general-canada/comptroller-general-canada-oggo-september-2024.html",
-        "source_name": "canada.ca",
-        "published_at": "2024-09-01",
-        "severity": "MEDIUM",
-        "category": "remediation",
-        "summary": "Canadian government implemented new mandatory procurement procedures requiring manager certifications on conflict of interest and contractor oversight following McKinsey audit.",
-        "confidence": 0.85,
+        "title": "McKinsey to pay $650m to settle US opioid consulting probe | Drugs News | Al Jazeera",
+        "url": "https://www.aljazeera.com/economy/2024/12/13/mckinsey-to-pay-650m-to-settle-us-opioid-consulting-probe",
+        "source_name": "aljazeera.com",
+        "published_at": "2024-12-13",
+        "severity": "CRITICAL",
+        "category": "criminal_charges",
+        "summary": "McKinsey agreed to five-year deferred prosecution agreement, paying $650 million settlement and improving compliance practices with oversight from Justice Department and HHS inspector general.",
+        "confidence": 0.93,
         "is_remediation": true,
         "is_stale": false,
-        "age_years": 1.7
+        "age_years": 1.4
       }
     ]
   },
@@ -372,20 +482,40 @@
     ],
     "external_urls": [
       {
-        "label": "goldblattpartners.com: McKinsey & Company Sued Over Alleged Role in Opioid ...",
+        "label": "goldblattpartners.com: [PDF] McKinsey & Company Sued Over Alleged Role in Opioid Epidemic ...",
         "url": "https://goldblattpartners.com/wp-content/uploads/McKinsey-Press-Release-EN.pdf"
       },
       {
-        "label": "cbc.ca: B.C. court certifies Canada-wide class-action suit against ...",
+        "label": "consulting.ca: Auditor general says feds didn't follow rules on awarding McKinsey ...",
+        "url": "https://www.consulting.ca/news/4073/auditor-general-says-feds-didnt-follow-rules-on-awarding-mckinsey-contracts"
+      },
+      {
+        "label": "cbc.ca: B.C. court certifies Canada-wide class-action suit against McKinsey for alleged ",
         "url": "https://www.cbc.ca/news/canada/british-columbia/mckinsey-opioid-class-action-lawsuit-purdue-1.7563040"
       },
       {
-        "label": "sotosclassactions.com: McKinsey Opioids",
-        "url": "https://www.sotosclassactions.com/cases/mckinsey-opioids/"
+        "label": "hrreporter.com: Feds blasted for 'frequent disregard of policies' with McKinsey ...",
+        "url": "https://www.hrreporter.com/news/hr-news/feds-blasted-for-frequent-disregard-of-policies-with-mckinsey-company-contracts-auditor-general/386513"
+      },
+      {
+        "label": "cbc.ca: Federal government flouted rules when awarding McKinsey contracts",
+        "url": "https://www.cbc.ca/news/politics/mckinsey-contracts-awarded-federal-government-auditor-general-hogan-1.7223893"
       },
       {
         "label": "gibsondunn.com: [PDF] USA v. McKinsey - Deferred Prosecution Agreement - Gibson Dunn",
         "url": "https://www.gibsondunn.com/wp-content/uploads/2025/02/Mckinsey_-_deferred_prosecution_agreement.pdf"
+      },
+      {
+        "label": "compliancepodcastnetwork.net: The McKinsey $650 Million Settlement: Compliance Lessons from the Opioid Crisis ",
+        "url": "https://compliancepodcastnetwork.net/the-mckinsey-650-million-settlement-compliance-lessons-from-the-opioid-crisis/"
+      },
+      {
+        "label": "parrellahealth.law: Historic $650M Settlement: McKinsey Held Criminally Responsible for Role in Opio",
+        "url": "https://www.parrellahealth.law/historic-650m-settlement-mckinsey-held-criminally-responsible-for-role-in-opioid-crisis"
+      },
+      {
+        "label": "aljazeera.com: McKinsey to pay $650m to settle US opioid consulting probe | Drugs News | Al Jaz",
+        "url": "https://www.aljazeera.com/economy/2024/12/13/mckinsey-to-pay-650m-to-settle-us-opioid-consulting-probe"
       }
     ]
   },
@@ -400,5 +530,5 @@
   "sources_skipped": [
     "canlii"
   ],
-  "cached_at": "2026-04-29T16:40:34.247765"
+  "cached_at": "2026-04-29T17:21:28.136265"
 }

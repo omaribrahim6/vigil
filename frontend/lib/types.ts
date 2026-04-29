@@ -65,6 +65,15 @@ export interface RemediationContext {
   articles: NewsArticle[];
 }
 
+export interface RemediationEvent {
+  date: string | null;
+  title: string;
+  summary?: string | null;
+  url?: string | null;
+  source_name?: string | null;
+  is_independent?: boolean;
+}
+
 export interface ForensicSignals {
   cra_loop_score?: number | null;
   cra_loop_score_max: number;
@@ -135,6 +144,7 @@ export interface ScreeningDossier {
   risk: RiskBreakdown;
   timeline_funding: FundingEvent[];
   timeline_adverse: AdverseEvent[];
+  timeline_remediation?: RemediationEvent[];
   sanctions: SanctionsHit[];
   court_cases: CourtCase[];
   news: NewsArticle[];

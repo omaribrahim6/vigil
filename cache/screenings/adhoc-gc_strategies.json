@@ -19,13 +19,13 @@
     "dataset_sources": []
   },
   "risk": {
-    "score": 58,
+    "score": 48,
     "tier": "ORANGE",
     "contributions": {
       "sanctions": 0,
       "court_cases": 0,
       "critical_news": 30,
-      "high_news": 15,
+      "high_news": 5,
       "recency": 10,
       "cra_loop": 0,
       "t3010_violations": 0,
@@ -34,7 +34,7 @@
       "gdelt_spike": 3
     },
     "notes": [
-      "5 CRITICAL news article(s) — 2 are >5y old (down-weighted)"
+      "7 CRITICAL news article(s) — 3 are >5y old (down-weighted)"
     ]
   },
   "timeline_funding": [],
@@ -42,10 +42,32 @@
     {
       "source": "tavily",
       "date": "2025-06-06",
+      "title": "Company that worked on ArriveCan app barred from government ...",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "GC Strategies Inc. banned from government contracts for 7 years after assessment deemed supplier's conduct ineligible, following ArriveCan app contracting issues where firm was awarded over $19 million.",
+      "url": "https://toronto.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2024-02-14",
+      "title": "ArriveCan contractor calls auditor general’s damning report ‘inaccurate’ - National | Globalnews.ca",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Auditor general found GC Strategies awarded ArriveCan contracts worth at least $59 million with scant explanation, poor financial record-keeping described as one of worst examples seen, and little documentation of why firm was selected.",
+      "url": "https://globalnews.ca/news/10356980/arrivecan-gc-strategies-committee-testimony/",
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2025-06-06",
       "title": "Company that worked on ArriveCan app barred from government contracts for 7 years",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years and deemed ineligible after assessment of supplier conduct related to ArriveCan app contract where they received $19 million.",
+      "summary": "GC Strategies Inc. banned from government contracts for 7 years after Public Services and Procurement Canada deemed supplier ineligible following assessment of conduct related to ArriveCan app contracts totaling over $19 million.",
       "url": "https://edmonton.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
       "confidence": 0.95,
       "raw": null
@@ -56,53 +78,42 @@
       "title": "Company that worked on ArriveCan app barred from government ...",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years after assessment of supplier conduct; partner Kristian Firth previously ordered to appear before House of Commons bar after refusing to answer questions.",
-      "url": "https://toronto.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
-      "confidence": 0.95,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2023-10-01",
-      "title": "Question Period Note: Allegations of misconduct by Canada Border ...",
-      "severity": "HIGH",
-      "category": "fraud",
-      "summary": "Globe & Mail article alleged collusion between GC Strategies and CBSA Director General to secure work with excessive mark-up, and falsification of Botler AI employee credentials to win work and increase billing.",
-      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
-      "confidence": 0.85,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2025-06-06",
-      "title": "Company that worked on ArriveCan app barred from government ...",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years and deemed ineligible after assessment of supplier conduct on ArriveCan app where they received over $19 million.",
+      "summary": "Ottawa banned GC Strategies from government contracts for 7 years after deeming the company ineligible following assessment of supplier's conduct on ArriveCan project where it was awarded over $19 million.",
       "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-banned-contracts-1.7555239",
       "confidence": 0.95,
       "raw": null
     },
     {
       "source": "tavily",
-      "date": "2024-02-13",
+      "date": "2023-12-31",
       "title": "Canada suspended all contracts with ArriveCan app company late ...",
-      "severity": "HIGH",
+      "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "Canada suspended all contracts with GC Strategies after Auditor General reported government overpaid for ArriveCan app and CBSA mishandled the file; at least 28 of GC Strategies' contracts were awarded without competition.",
+      "summary": "Canada suspended all contracts with GC Strategies after auditor general found government overpaid approximately $60 million for ArriveCan app with poor record-keeping, and at least 28 of firm's contracts were awarded without competition.",
       "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-contracts-suspended-report-1.7115203",
-      "confidence": 0.9,
+      "confidence": 0.95,
+      "raw": null
+    },
+    {
+      "source": "tavily",
+      "date": "2023-10-31",
+      "title": "Question Period Notes",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Globe & Mail article alleged collusion between GC Strategies, Dalian Enterprises, and Coradix Technology Consulting with CBSA Director General to secure work with excessive mark-up, and falsification of Botler AI employee credentials to win work and increase billing.",
+      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
+      "confidence": 0.85,
       "raw": null
     },
     {
       "source": "tavily",
       "date": "2024-02-14",
       "title": "ArriveCan sweetheart GC Strategies earned $258 million in taxpayer contracts since 2015: report - Rebel News",
-      "severity": "HIGH",
-      "category": "fraud",
-      "summary": "Two-person company GC Strategies earned $258 million in taxpayer contracts since 2015; Conservative Leader called for RCMP investigation into ArriveCan after Auditor General's report exposed alleged corruption.",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "GC Strategies, a two-person company operating from suburban basement, earned $258 million in taxpayer contracts since 2015; auditor general criticized agencies for not following good management practices in ArriveCan contracting where firm received nearly half its contracts.",
       "url": "https://www.rebelnews.com/arrivecan_sweetheart_gc_strategies_earned_258_million_in_taxpayer_contracts_since_2015_report",
-      "confidence": 0.75,
+      "confidence": 0.8,
       "raw": null
     },
     {
@@ -111,39 +122,16 @@
       "title": "ArriveCan investigation: GC Strategies had dozens of government contracts. Now, it's not eligible for any",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies no longer eligible for any government contracts following ArriveCan investigation where they had dozens of federal contracts.",
+      "summary": "GC Strategies rendered ineligible for any government contracts following ArriveCan investigation that revealed procurement and contracting irregularities.",
       "url": "https://www.ctvnews.ca/politics/article/arrivecan-investigation-gc-strategies-had-dozens-of-government-contracts-now-its-not-eligible-for-any/",
-      "confidence": 0.9,
-      "raw": null
-    },
-    {
-      "source": "tavily",
-      "date": "2025-06-19",
-      "title": "PSPC refers two new procurement fraud cases to RCMP; feds take GC Strategies, subcontractor to court over billing practices - The Hill Times - The Hill Times",
-      "severity": "CRITICAL",
-      "category": "fraud",
-      "summary": "Public Services and Procurement Canada referred two new cases of suspected procurement fraud to RCMP for criminal investigation; federal government taking GC Strategies and subcontractor to court over billing practices.",
-      "url": "https://www.hilltimes.com/2025/06/19/pspc-refers-two-new-procurement-fraud-cases-to-rcmp-feds-take-gc-strategies-subcontractor-to-court-over-billing-practices/464540/",
       "confidence": 0.9,
       "raw": null
     }
   ],
+  "timeline_remediation": [],
   "sanctions": [],
   "court_cases": [],
   "news": [
-    {
-      "title": "Company that worked on ArriveCan app barred from government contracts for 7 years",
-      "url": "https://edmonton.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
-      "source_name": "edmonton.citynews.ca",
-      "published_at": "2025-06-06",
-      "severity": "CRITICAL",
-      "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years and deemed ineligible after assessment of supplier conduct related to ArriveCan app contract where they received $19 million.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 0.9
-    },
     {
       "title": "Company that worked on ArriveCan app barred from government ...",
       "url": "https://toronto.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
@@ -151,24 +139,37 @@
       "published_at": "2025-06-06",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years after assessment of supplier conduct; partner Kristian Firth previously ordered to appear before House of Commons bar after refusing to answer questions.",
+      "summary": "GC Strategies Inc. banned from government contracts for 7 years after assessment deemed supplier's conduct ineligible, following ArriveCan app contracting issues where firm was awarded over $19 million.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 0.9
     },
     {
-      "title": "Question Period Note: Allegations of misconduct by Canada Border ...",
-      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
-      "source_name": "search.open.canada.ca",
-      "published_at": "2023-10-01",
-      "severity": "HIGH",
-      "category": "fraud",
-      "summary": "Globe & Mail article alleged collusion between GC Strategies and CBSA Director General to secure work with excessive mark-up, and falsification of Botler AI employee credentials to win work and increase billing.",
-      "confidence": 0.85,
+      "title": "ArriveCan contractor calls auditor general’s damning report ‘inaccurate’ - National | Globalnews.ca",
+      "url": "https://globalnews.ca/news/10356980/arrivecan-gc-strategies-committee-testimony/",
+      "source_name": "globalnews.ca",
+      "published_at": "2024-02-14",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "Auditor general found GC Strategies awarded ArriveCan contracts worth at least $59 million with scant explanation, poor financial record-keeping described as one of worst examples seen, and little documentation of why firm was selected.",
+      "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 2.6
+      "age_years": 2.2
+    },
+    {
+      "title": "Company that worked on ArriveCan app barred from government contracts for 7 years",
+      "url": "https://edmonton.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/",
+      "source_name": "edmonton.citynews.ca",
+      "published_at": "2025-06-06",
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "GC Strategies Inc. banned from government contracts for 7 years after Public Services and Procurement Canada deemed supplier ineligible following assessment of conduct related to ArriveCan app contracts totaling over $19 million.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 0.9
     },
     {
       "title": "Company that worked on ArriveCan app barred from government ...",
@@ -177,7 +178,7 @@
       "published_at": "2025-06-06",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies Inc. banned from federal government contracts for 7 years and deemed ineligible after assessment of supplier conduct on ArriveCan app where they received over $19 million.",
+      "summary": "Ottawa banned GC Strategies from government contracts for 7 years after deeming the company ineligible following assessment of supplier's conduct on ArriveCan project where it was awarded over $19 million.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
@@ -187,24 +188,37 @@
       "title": "Canada suspended all contracts with ArriveCan app company late ...",
       "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-contracts-suspended-report-1.7115203",
       "source_name": "cbc.ca",
-      "published_at": "2024-02-13",
-      "severity": "HIGH",
+      "published_at": "2023-12-31",
+      "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "Canada suspended all contracts with GC Strategies after Auditor General reported government overpaid for ArriveCan app and CBSA mishandled the file; at least 28 of GC Strategies' contracts were awarded without competition.",
-      "confidence": 0.9,
+      "summary": "Canada suspended all contracts with GC Strategies after auditor general found government overpaid approximately $60 million for ArriveCan app with poor record-keeping, and at least 28 of firm's contracts were awarded without competition.",
+      "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
-      "age_years": 2.2
+      "age_years": 2.3
+    },
+    {
+      "title": "Question Period Notes",
+      "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055",
+      "source_name": "search.open.canada.ca",
+      "published_at": "2023-10-31",
+      "severity": "HIGH",
+      "category": "fraud",
+      "summary": "Globe & Mail article alleged collusion between GC Strategies, Dalian Enterprises, and Coradix Technology Consulting with CBSA Director General to secure work with excessive mark-up, and falsification of Botler AI employee credentials to win work and increase billing.",
+      "confidence": 0.85,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 2.5
     },
     {
       "title": "ArriveCan sweetheart GC Strategies earned $258 million in taxpayer contracts since 2015: report - Rebel News",
       "url": "https://www.rebelnews.com/arrivecan_sweetheart_gc_strategies_earned_258_million_in_taxpayer_contracts_since_2015_report",
       "source_name": "rebelnews.com",
       "published_at": "2024-02-14",
-      "severity": "HIGH",
-      "category": "fraud",
-      "summary": "Two-person company GC Strategies earned $258 million in taxpayer contracts since 2015; Conservative Leader called for RCMP investigation into ArriveCan after Auditor General's report exposed alleged corruption.",
-      "confidence": 0.75,
+      "severity": "CRITICAL",
+      "category": "regulatory",
+      "summary": "GC Strategies, a two-person company operating from suburban basement, earned $258 million in taxpayer contracts since 2015; auditor general criticized agencies for not following good management practices in ArriveCan contracting where firm received nearly half its contracts.",
+      "confidence": 0.8,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 2.2
@@ -216,76 +230,24 @@
       "published_at": "2025-06-06",
       "severity": "CRITICAL",
       "category": "regulatory",
-      "summary": "GC Strategies no longer eligible for any government contracts following ArriveCan investigation where they had dozens of federal contracts.",
+      "summary": "GC Strategies rendered ineligible for any government contracts following ArriveCan investigation that revealed procurement and contracting irregularities.",
       "confidence": 0.9,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 0.9
     },
     {
-      "title": "PSPC refers two new procurement fraud cases to RCMP; feds take GC Strategies, subcontractor to court over billing practices - The Hill Times - The Hill Times",
-      "url": "https://www.hilltimes.com/2025/06/19/pspc-refers-two-new-procurement-fraud-cases-to-rcmp-feds-take-gc-strategies-subcontractor-to-court-over-billing-practices/464540/",
-      "source_name": "hilltimes.com",
-      "published_at": "2025-06-19",
-      "severity": "CRITICAL",
-      "category": "fraud",
-      "summary": "Public Services and Procurement Canada referred two new cases of suspected procurement fraud to RCMP for criminal investigation; federal government taking GC Strategies and subcontractor to court over billing practices.",
-      "confidence": 0.9,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 0.9
-    },
-    {
-      "title": "Deferred Prosecution Agreements: How an Effective Compliance Program Can Help You Plan for the Unpredictable | Baker Donelson - JDSupra",
+      "title": "Deferred Prosecution Agreements: How an Effective Compliance ...",
       "url": "https://www.jdsupra.com/legalnews/deferred-prosecution-agreements-how-an-75168/",
       "source_name": "jdsupra.com",
-      "published_at": "2012-12-19",
+      "published_at": "2011-05-31",
       "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Article discusses deferred prosecution agreements in general using examples of WakeMed Health and Wright Medical Group; not related to GC Strategies.",
+      "category": "business_news",
+      "summary": "Article discusses U.S. deferred prosecution agreements and compliance programs using Wright Medical and WakeMed examples; unrelated to GC Strategies or Canadian government contracting.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": true,
-      "age_years": 13.4
-    },
-    {
-      "title": "DOJ Announces Department-Wide Corporate Enforcement Policy | JD Supra",
-      "url": "https://www.jdsupra.com/legalnews/doj-announces-department-wide-corporate-7974892/",
-      "source_name": "jdsupra.com",
-      "published_at": "2025-05-01",
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Article discusses DOJ's general Corporate Enforcement Policy regarding compliance programs and remediation; not related to GC Strategies.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": 1.0
-    },
-    {
-      "title": "DOJ CEP Shift: What Boards Must Do Now",
-      "url": "https://www.bdo.com/insights/advisory/the-dojs-new-corporate-enforcement-policy-what-history-tells-us-and-what-boards-cant-ignore",
-      "source_name": "bdo.com",
-      "published_at": null,
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Article discusses DOJ's Corporate Enforcement Policy and board responsibilities regarding compliance and monitorships; not related to GC Strategies.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": false,
-      "age_years": null
-    },
-    {
-      "title": "Canada to enhance its toolkit to address corporate wrongdoing - Canada.ca",
-      "url": "https://www.canada.ca/en/public-services-procurement/news/2018/03/canada-to-enhance-its-toolkit-to-address-corporate-wrongdoing.html",
-      "source_name": "canada.ca",
-      "published_at": "2018-03-01",
-      "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Article discusses Canada's general enhancements to Integrity Regime and introduction of Remediation Agreement Regime legislation; not related to GC Strategies.",
-      "confidence": 0.95,
-      "is_remediation": false,
-      "is_stale": true,
-      "age_years": 8.2
+      "age_years": 14.9
     },
     {
       "title": "Corporate Resolutions 2023 Year-End Update - Gibson Dunn",
@@ -293,12 +255,51 @@
       "source_name": "gibsondunn.com",
       "published_at": "2023-12-31",
       "severity": "NOISE",
-      "category": "unrelated",
-      "summary": "Article discusses general corporate resolution trends and DOJ enforcement actions in 2023; not related to GC Strategies.",
+      "category": "business_news",
+      "summary": "Gibson Dunn corporate resolutions update discussing U.S. DOJ settlements and NPAs with various companies including NSI and HealthSun; unrelated to GC Strategies.",
       "confidence": 0.95,
       "is_remediation": false,
       "is_stale": false,
       "age_years": 2.3
+    },
+    {
+      "title": "Canada to enhance its toolkit to address corporate wrongdoing - Canada.ca",
+      "url": "https://www.canada.ca/en/public-services-procurement/news/2018/03/canada-to-enhance-its-toolkit-to-address-corporate-wrongdoing.html",
+      "source_name": "canada.ca",
+      "published_at": "2018-03-31",
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Government of Canada announcement of enhancements to Integrity Regime and introduction of Remediation Agreement Regime legislation; general policy document unrelated to specific GC Strategies conduct.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": true,
+      "age_years": 8.1
+    },
+    {
+      "title": "The DOJ's New Corporate Enforcement Policy - BDO USA",
+      "url": "https://www.bdo.com/insights/advisory/the-dojs-new-corporate-enforcement-policy-what-history-tells-us-and-what-boards-cant-ignore",
+      "source_name": "bdo.com",
+      "published_at": "2025-03-10",
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "BDO advisory article discussing U.S. DOJ Corporate Enforcement Policy, monitorships, and compliance programs; unrelated to GC Strategies or Canadian government contracting.",
+      "confidence": 0.95,
+      "is_remediation": false,
+      "is_stale": false,
+      "age_years": 1.1
+    },
+    {
+      "title": "[PDF] Canada's Integrity Regime: The Corporate Grim Reaper",
+      "url": "https://scholarship.law.gwu.edu/cgi/viewcontent.cgi?article=2848&context=faculty_publications",
+      "source_name": "scholarship.law.gwu.edu",
+      "published_at": "2019-12-31",
+      "severity": "NOISE",
+      "category": "business_news",
+      "summary": "Academic article discussing Canada's Integrity Regime and SNC-Lavalin case as example of debarment policy issues; general policy analysis unrelated to GC Strategies' specific conduct.",
+      "confidence": 0.9,
+      "is_remediation": false,
+      "is_stale": true,
+      "age_years": 6.3
     }
   ],
   "forensics": {
@@ -320,36 +321,35 @@
     "2025": 1
   },
   "first_adverse_signal": "2021-05-25",
-  "briefing_memo": "GC Strategies Inc. received over $19 million for work on the ArriveCan app and approximately $258 million in total federal contracts since 2015. On June 6, 2025, the federal government banned GC Strategies from all government contracts for 7 years and deemed the company ineligible following assessment of supplier conduct, including allegations reported by the Globe and Mail in October 2023 of collusion with a CBSA Director General and falsification of employee credentials (source: edmonton.citynews.ca, toronto.citynews.ca, CBC). No material remediation, settlement, or integrity certification has been documented; the Auditor General reported in February 2024 that the government overpaid for ArriveCan and CBSA mishandled the file, with at least 28 contracts awarded without competition. Given the current 7-year ineligibility determination imposed less than one year ago with no evidence of remediation, recommend maintaining the contractual ban and excluding GC Strategies from any federal procurement opportunities.",
+  "briefing_memo": "GC Strategies was awarded ArriveCan contracts worth at least $59 million according to the Auditor General, with over $19 million directly documented in procurement records. Public Services and Procurement Canada banned the company from all government contracts for seven years effective June 6, 2025 (nine months ago), following an assessment that deemed the supplier's conduct ineligible; concurrently, a Globe and Mail investigation alleged collusion with CBSA officials and falsification of subcontractor credentials (October 2023, globalnews.ca and search.open.canada.ca). No remediation signals—such as leadership changes, integrity certifications, or settlements—appear in available records, and the seven-year debarment remains an active sanction disqualifying the entity from federal procurement. Given the current debarment status and absence of documented remediation, no federal funding should be extended to GC Strategies unless and until the supplier regains eligibility through formal reinstatement by Public Services and Procurement Canada.",
   "actions": [
     {
       "urgency": "immediate",
-      "title": "Enforce existing 7-year procurement ban across all departments",
-      "rationale": "GC Strategies is subject to an active government-wide contract bar (June 2025) related to ArriveCan misconduct; immediate compliance verification required.",
+      "title": "Enforce existing 7-year government contract suspension",
+      "rationale": "Entity is currently barred from all government contracts following ArriveCan procurement irregularities, as confirmed by multiple June 2025 sources.",
       "evidence": [
-        "7-year procurement ban (2025)",
-        "5 CRITICAL news articles",
-        "ArriveCan investigation"
+        "7-year contract suspension (2025-06-06)",
+        "7 CRITICAL news articles",
+        "ArriveCan procurement violations"
       ]
     },
     {
       "urgency": "immediate",
-      "title": "Verify no active contracts or payments remain outstanding",
-      "rationale": "Organization barred from contracts in 2025 following ArriveCan allegations; confirm all disbursements ceased and no residual agreements exist.",
+      "title": "Verify suspension is registered in all procurement systems",
+      "rationale": "Confirm that the entity's debarment status is reflected in SAP, GETS, and all departmental vendor databases to prevent inadvertent re-engagement.",
       "evidence": [
-        "Contract suspension (Feb 2024)",
-        "Procurement ban (Jun 2025)",
-        "CBSA misconduct allegations"
+        "Active contract suspension",
+        "Recent AG findings on procurement controls"
       ]
     },
     {
       "urgency": "scheduled",
-      "title": "Request status update on any ongoing investigations or enforcement actions",
-      "rationale": "Multiple CRITICAL-severity articles and CBSA misconduct allegations (2023-2025) suggest potential ongoing investigative or legal proceedings requiring monitoring.",
+      "title": "Review all historical contracts for recovery opportunities",
+      "rationale": "Auditor General report characterized ArriveCan contracting as having irregularities; assess whether prior payments warrant clawback or legal recovery action.",
       "evidence": [
-        "CBSA misconduct Question Period note (2023)",
-        "3 HIGH-severity articles",
-        "Risk score 58"
+        "AG report findings (2024-02-14)",
+        "Multiple CRITICAL news on procurement irregularities",
+        "Suspended contracts late 2023"
       ]
     }
   ],
@@ -365,16 +365,16 @@
     "bigquery_rows": [],
     "external_urls": [
       {
-        "label": "edmonton.citynews.ca: Company that worked on ArriveCan app barred from government contracts for 7 year",
-        "url": "https://edmonton.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/"
-      },
-      {
         "label": "toronto.citynews.ca: Company that worked on ArriveCan app barred from government ...",
         "url": "https://toronto.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/"
       },
       {
-        "label": "search.open.canada.ca: Question Period Note: Allegations of misconduct by Canada Border ...",
-        "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055"
+        "label": "globalnews.ca: ArriveCan contractor calls auditor general’s damning report ‘inaccurate’ - Natio",
+        "url": "https://globalnews.ca/news/10356980/arrivecan-gc-strategies-committee-testimony/"
+      },
+      {
+        "label": "edmonton.citynews.ca: Company that worked on ArriveCan app barred from government contracts for 7 year",
+        "url": "https://edmonton.citynews.ca/2025/06/06/company-that-worked-on-arrivecan-app-barred-from-government-contracts-for-7-years/"
       },
       {
         "label": "cbc.ca: Company that worked on ArriveCan app barred from government ...",
@@ -385,16 +385,16 @@
         "url": "https://www.cbc.ca/news/politics/arrivecan-gc-strategies-contracts-suspended-report-1.7115203"
       },
       {
+        "label": "search.open.canada.ca: Question Period Notes",
+        "url": "https://search.open.canada.ca/qpnotes/record/pwgsc-tpsgc%2CPSPC-2023-QP-00055"
+      },
+      {
         "label": "rebelnews.com: ArriveCan sweetheart GC Strategies earned $258 million in taxpayer contracts sin",
         "url": "https://www.rebelnews.com/arrivecan_sweetheart_gc_strategies_earned_258_million_in_taxpayer_contracts_since_2015_report"
       },
       {
         "label": "ctvnews.ca: ArriveCan investigation: GC Strategies had dozens of government contracts. Now, ",
         "url": "https://www.ctvnews.ca/politics/article/arrivecan-investigation-gc-strategies-had-dozens-of-government-contracts-now-its-not-eligible-for-any/"
-      },
-      {
-        "label": "hilltimes.com: PSPC refers two new procurement fraud cases to RCMP; feds take GC Strategies, su",
-        "url": "https://www.hilltimes.com/2025/06/19/pspc-refers-two-new-procurement-fraud-cases-to-rcmp-feds-take-gc-strategies-subcontractor-to-court-over-billing-practices/464540/"
       }
     ]
   },
@@ -409,5 +409,5 @@
   "sources_skipped": [
     "canlii"
   ],
-  "cached_at": "2026-04-29T16:36:48.829108"
+  "cached_at": "2026-04-29T17:17:28.000731"
 }

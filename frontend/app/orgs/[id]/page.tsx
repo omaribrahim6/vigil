@@ -178,12 +178,13 @@ export default async function OrgDetail({
       {/* ─── Timeline (the money screen) ────────────────────────────── */}
       <Section
         title="Counterfactual timeline"
-        subtitle="Funding events vs adverse signals — with first-signal annotation"
+        subtitle="Funding · remediation · adverse signals — with first-signal annotation"
         emphasis
       >
         <Timeline
           funding={dossier.timeline_funding}
           adverse={dossier.timeline_adverse}
+          remediation={dossier.timeline_remediation}
           firstAdverse={dossier.first_adverse_signal}
         />
       </Section>

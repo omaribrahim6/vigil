@@ -3,6 +3,8 @@ federal-grant timeline events. Uses Application Default Credentials (gcloud)."""
 from __future__ import annotations
 
 import json
+import re
+import unicodedata
 from datetime import date
 from functools import lru_cache
 from typing import Any, Iterable
@@ -11,6 +13,69 @@ from google.cloud import bigquery
 
 from .config import DATA_PROJECT, SETTINGS
 from .models import FundingEvent, OrgProfile, RelatedEntity, TopOrgRow
+
+# Hand-curated alias expansion for the demo orgs (and other well-known
+# Canadian recipients) so that searching by current legal name still
+# matches grants filed under the historical name. Names are lowercase and
+# matched as substrings (LIKE %x%), so we keep them short enough to be
+# discriminating but long enough to avoid false positives.
+KNOWN_NAME_ALIASES: dict[str, list[str]] = {
+    "atkinsrealis": ["snc-lavalin", "snc lavalin", "atkins realis", "snclavalin"],
+    "atkins realis": ["snc-lavalin", "snc lavalin", "atkinsrealis", "snclavalin"],
+    "snc-lavalin": ["atkinsrealis", "atkins realis", "snclavalin"],
+    "mckinsey & company canada": ["mckinsey", "mckinsey company", "mckinsey & company"],
+    "mckinsey & company": ["mckinsey"],
+    "gc strategies": ["gcstrategies", "g.c. strategies", "g.c strategies"],
+    "coradix technology consulting": ["coradix"],
+    "dalian enterprises": ["dalian"],
+}
+
+# Common corporate / legal suffixes we strip when generating LIKE variants.
+_SUFFIX_PATTERNS = re.compile(
+    r"\b(inc|incorporated|corp|corporation|ltd|limited|llc|llp|lp|group|"
+    r"holdings|company|co|canada|canadian|services?|consulting|technology|"
+    r"technologies|enterprises?|partners|associates|society|foundation|"
+    r"l\.?p\.?|s\.?a\.?|n\.?v\.?|gmbh|plc|ltée|ltee|ltd\.?|inc\.?|"
+    r"limitée|limitee)\b\.?",
+    re.IGNORECASE,
+)
+
+
+def _strip_accents(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
+
+
+def _name_variants(name: str) -> list[str]:
+    """Generate substring-match candidates for fuzzy BQ funding lookups.
+
+    Covers: original name (lowercased), accent-stripped, suffix-stripped,
+    suffix-stripped + accent-stripped, and any hand-curated aliases. Caller
+    uses each variant as a `LOWER(field) LIKE %v%` clause."""
+    base = (name or "").strip()
+    if not base:
+        return []
+    variants: list[str] = []
+
+    def _add(v: str) -> None:
+        v = re.sub(r"\s+", " ", v).strip(" -.,&")
+        if not v or len(v) < 4:
+            return
+        if v.lower() not in {x.lower() for x in variants}:
+            variants.append(v.lower())
+
+    _add(base)
+    no_accents = _strip_accents(base)
+    _add(no_accents)
+    no_suffix = _SUFFIX_PATTERNS.sub("", base)
+    _add(no_suffix)
+    _add(_strip_accents(no_suffix))
+
+    for k, aliases in KNOWN_NAME_ALIASES.items():
+        if k in base.lower() or k in no_accents.lower():
+            for a in aliases:
+                _add(a)
+
+    return variants[:8]
 
 GOLDENS = f"`{DATA_PROJECT}.general.entity_golden_records`"
 FED_GC = f"`{DATA_PROJECT}.fed.grants_contributions`"
@@ -328,7 +393,24 @@ def fetch_funding_events(profile: OrgProfile, limit: int = 80) -> list[FundingEv
 
 
 def fetch_funding_events_by_name(name: str, limit: int = 80) -> list[FundingEvent]:
-    """Fallback used by live-search when the org isn't in the goldens table."""
+    """Fallback used by live-search when the org isn't in the goldens table.
+
+    Builds a *fuzzy* substring match: tries the original name, accent-stripped,
+    suffix-stripped, and any known aliases (e.g. AtkinsRéalis ↔ SNC-Lavalin).
+    Without this, demo orgs with diacritics or rebrands return zero funding
+    events and the timeline / fed_total reads as `—`."""
+    variants = _name_variants(name)
+    if not variants:
+        return []
+    params: list[bigquery.ScalarQueryParameter] = []
+    likes: list[str] = []
+    for i, v in enumerate(variants):
+        likes.append(
+            f"LOWER(recipient_legal_name) LIKE @v{i} "
+            f"OR LOWER(recipient_operating_name) LIKE @v{i}"
+        )
+        params.append(bigquery.ScalarQueryParameter(f"v{i}", "STRING", f"%{v}%"))
+    params.append(bigquery.ScalarQueryParameter("lim", "INT64", limit))
     sql = f"""
     SELECT
       agreement_start_date,
@@ -337,22 +419,20 @@ def fetch_funding_events_by_name(name: str, limit: int = 80) -> list[FundingEven
       prog_name_en,
       agreement_title_en,
       agreement_type,
-      description_en
+      description_en,
+      recipient_legal_name
     FROM {FED_GC}
     WHERE is_amendment IS NOT TRUE
-      AND (LOWER(recipient_legal_name) LIKE @q OR LOWER(recipient_operating_name) LIKE @q)
+      AND ({' OR '.join(likes)})
     ORDER BY agreement_start_date DESC
     LIMIT @lim
     """
-    job = get_client().query(
-        sql,
-        job_config=bigquery.QueryJobConfig(
-            query_parameters=[
-                bigquery.ScalarQueryParameter("q", "STRING", f"%{name.lower().strip()}%"),
-                bigquery.ScalarQueryParameter("lim", "INT64", limit),
-            ]
-        ),
-    )
+    try:
+        job = get_client().query(
+            sql, job_config=bigquery.QueryJobConfig(query_parameters=params)
+        )
+    except Exception:  # noqa: BLE001
+        return []
     out: list[FundingEvent] = []
     for r in job:
         d = r.get("agreement_start_date")
@@ -365,6 +445,56 @@ def fetch_funding_events_by_name(name: str, limit: int = 80) -> list[FundingEven
                 title=r.get("agreement_title_en"),
                 agreement_type=r.get("agreement_type"),
                 description=(r.get("description_en") or "")[:400] or None,
+            )
+        )
+    return out
+
+
+def fetch_ab_payments_by_name(name: str, limit: int = 60) -> list[FundingEvent]:
+    """Pull Alberta sole-source contracts for the timeline. (No general AB
+    grants table is available in the dataset, but `ab.ab_sole_source` covers
+    most of the Alberta funding flow we care about for due diligence.)
+    Used by both screen_by_name and to populate the AB band of the timeline.
+    """
+    variants = _name_variants(name)
+    if not variants:
+        return []
+    params: list[bigquery.ScalarQueryParameter] = []
+    likes: list[str] = []
+    for i, v in enumerate(variants):
+        likes.append(f"LOWER(vendor) LIKE @v{i}")
+        params.append(bigquery.ScalarQueryParameter(f"v{i}", "STRING", f"%{v}%"))
+    params.append(bigquery.ScalarQueryParameter("lim", "INT64", limit))
+    sql = f"""
+    SELECT
+      start_date,
+      amount,
+      ministry,
+      contract_services,
+      vendor
+    FROM `{DATA_PROJECT}.ab.ab_sole_source`
+    WHERE {' OR '.join(likes)}
+    ORDER BY start_date DESC
+    LIMIT @lim
+    """
+    try:
+        job = get_client().query(
+            sql, job_config=bigquery.QueryJobConfig(query_parameters=params)
+        )
+    except Exception:  # noqa: BLE001
+        return []
+    out: list[FundingEvent] = []
+    for r in job:
+        d = r.get("start_date")
+        out.append(
+            FundingEvent(
+                source="ab",
+                date=d.date() if hasattr(d, "date") and d else (d if isinstance(d, date) else None),
+                amount=_safe_float(r.get("amount")),
+                department_or_program=r.get("ministry"),
+                title=r.get("contract_services"),
+                agreement_type="sole_source",
+                description=None,
             )
         )
     return out
