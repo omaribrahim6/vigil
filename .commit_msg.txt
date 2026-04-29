@@ -1,6 +1,5 @@
-feat: extract article event dates so timeline shows adverse markers
+fix: live-screen org-id no longer breaks on Windows path separator
 
-- Tavily: include_raw_content + merge with snippet (capped at 1500 ch)
-- Classifier: pipe Claude-extracted event_date into NewsArticle.published_at
-- Pipeline: timeline_adverse now carries dates, populating red dots on
-  the counterfactual timeline
+`adhoc:gc_strategies` was being interpreted as a colon-prefixed Windows
+ADS, dropping the JSON cache file. Switched to `adhoc-<slug>` with
+alphanum-only slugification so live search works end-to-end on Windows.

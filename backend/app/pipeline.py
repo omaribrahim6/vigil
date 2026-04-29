@@ -272,8 +272,12 @@ async def screen_by_name(name: str) -> ScreeningDossier:
     and run the screening anyway. Used for the demo's 'type any org' moment."""
     funding = fetch_funding_events_by_name(name)
     fed_total = sum((f.amount or 0) for f in funding) or None
+    slug = "".join(
+        c if c.isalnum() else "_"
+        for c in name.lower().strip()
+    ).strip("_") or "unknown"
     profile = OrgProfile(
-        id=f"adhoc:{name.lower().strip().replace(' ', '_')}",
+        id=f"adhoc-{slug}",
         canonical_name=name.strip(),
         aliases=[],
         fed_total=fed_total,

@@ -79,7 +79,7 @@ async def cache_top_orgs() -> int:
     # 1. Inject screened orgs first so they show at the top with their risk badges.
     screenings_dir = Path(cache.SCREENINGS_DIR)
     for f in sorted(screenings_dir.glob("*.json")):
-        if f.stem.startswith("adhoc:"):
+        if f.stem.startswith("adhoc-") or f.stem.startswith("adhoc"):
             continue
         data = cache.read_screening(f.stem)
         if not data:
