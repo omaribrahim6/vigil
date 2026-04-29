@@ -173,6 +173,8 @@ class TopOrgRow(BaseModel):
     risk_score: int | None = None
     risk_tier: RiskTier = "UNRATED"
     top_flag: str | None = None
+    immediate_actions: int = 0
+    total_actions: int = 0
 
 
 class PortfolioStats(BaseModel):
@@ -181,4 +183,7 @@ class PortfolioStats(BaseModel):
     flagged_total_funding: float
     portfolio_total_funding: float
     by_tier: dict[RiskTier, int]
+    immediate_action_count: int = 0
+    scheduled_action_count: int = 0
+    orgs_with_immediate_actions: int = 0
     headline: str

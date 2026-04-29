@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, AlertOctagon } from "lucide-react";
+import { ChevronRight, AlertOctagon, ListChecks } from "lucide-react";
 import type { TopOrgRow } from "../lib/types";
 import { fmtMoney } from "../lib/format";
 import { RiskBadge } from "./RiskBadge";
@@ -49,10 +49,25 @@ export function FeaturedScreenings({ rows }: Props) {
           >
             <div className="flex items-start justify-between gap-2 mb-2">
               <RiskBadge tier={r.risk_tier} score={r.risk_score} size="sm" />
-              <ChevronRight
-                size={14}
-                className="text-[var(--muted)] group-hover:text-[var(--accent)] mt-0.5 flex-shrink-0"
-              />
+              <div className="flex items-center gap-1.5">
+                {(r.immediate_actions ?? 0) > 0 && (
+                  <span
+                    className="inline-flex items-center gap-1 rounded-sm px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider"
+                    style={{
+                      background: "var(--risk-red-bg)",
+                      color: "var(--risk-red)",
+                    }}
+                    title={`${r.immediate_actions} immediate action(s) outstanding`}
+                  >
+                    <ListChecks size={10} />
+                    {r.immediate_actions} now
+                  </span>
+                )}
+                <ChevronRight
+                  size={14}
+                  className="text-[var(--muted)] group-hover:text-[var(--accent)] mt-0.5 flex-shrink-0"
+                />
+              </div>
             </div>
             <div className="font-semibold text-sm leading-tight group-hover:underline decoration-[var(--accent)]">
               {r.canonical_name}
@@ -68,10 +83,12 @@ export function FeaturedScreenings({ rows }: Props) {
               </div>
               <div>
                 <div className="text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                  Top flag
+                  {(r.total_actions ?? 0) > 0 ? "Actions" : "Top flag"}
                 </div>
                 <div className="text-[var(--foreground)]/90 truncate">
-                  {r.top_flag || "—"}
+                  {(r.total_actions ?? 0) > 0
+                    ? `${r.total_actions} prescribed`
+                    : r.top_flag || "—"}
                 </div>
               </div>
             </div>

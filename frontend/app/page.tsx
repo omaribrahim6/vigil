@@ -22,13 +22,15 @@ async function PortfolioBanner() {
       </div>
     );
   }
+  const immediate = stats.immediate_action_count ?? 0;
+  const scheduled = stats.scheduled_action_count ?? 0;
   return (
     <div className="rounded-md border border-[var(--accent)] bg-[var(--accent)] text-white px-6 py-5">
       <div className="text-xs uppercase tracking-[0.2em] opacity-70 font-mono mb-1">
         Portfolio headline
       </div>
       <div className="text-2xl leading-snug font-semibold">{stats.headline}</div>
-      <div className="mt-3 grid sm:grid-cols-4 gap-3 text-sm">
+      <div className="mt-3 grid sm:grid-cols-5 gap-3 text-sm">
         <PortfolioStat
           label="Orgs screened"
           value={stats.total_orgs_screened.toString()}
@@ -41,20 +43,32 @@ async function PortfolioBanner() {
           label="Flagged exposure"
           value={fmtMoney(stats.flagged_total_funding, { compact: true })}
         />
-        <PortfolioStat
-          label="Total exposure"
-          value={fmtMoney(stats.portfolio_total_funding, { compact: true })}
-        />
+        <PortfolioStat label="Immediate actions" value={immediate.toString()} highlight />
+        <PortfolioStat label="Scheduled reviews" value={scheduled.toString()} />
       </div>
     </div>
   );
 }
 
-function PortfolioStat({ label, value }: { label: string; value: string }) {
+function PortfolioStat({
+  label,
+  value,
+  highlight,
+}: {
+  label: string;
+  value: string;
+  highlight?: boolean;
+}) {
   return (
     <div>
       <div className="text-[10px] font-mono uppercase tracking-wider opacity-60">{label}</div>
-      <div className="text-lg font-semibold tabular-nums">{value}</div>
+      <div
+        className={`text-lg font-semibold tabular-nums ${
+          highlight && value !== "0" ? "text-[var(--risk-red-bg)]" : ""
+        }`}
+      >
+        {value}
+      </div>
     </div>
   );
 }

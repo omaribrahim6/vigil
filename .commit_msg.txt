@@ -1,0 +1,7 @@
+feat: surface action counts on dashboard
+
+- TopOrgRow + PortfolioStats now carry immediate/total action counts
+- Featured-screening cards show "N now" pill for immediate actions
+- Portfolio banner shows immediate / scheduled action stats and uses
+  an action-oriented headline
+- Precache aggregates from cached dossiers

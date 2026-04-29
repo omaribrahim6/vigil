@@ -147,6 +147,8 @@ export interface TopOrgRow {
   risk_score?: number | null;
   risk_tier: RiskTier;
   top_flag?: string | null;
+  immediate_actions?: number;
+  total_actions?: number;
 }
 
 export interface PortfolioStats {
@@ -155,5 +157,8 @@ export interface PortfolioStats {
   flagged_total_funding: number;
   portfolio_total_funding: number;
   by_tier: Record<RiskTier, number>;
+  immediate_action_count?: number;
+  scheduled_action_count?: number;
+  orgs_with_immediate_actions?: number;
   headline: string;
 }

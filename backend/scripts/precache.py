@@ -87,6 +87,8 @@ async def cache_top_orgs() -> int:
         org = data.get("org") or {}
         risk = data.get("risk") or {}
         breakdown = RiskBreakdown(**risk) if risk else None
+        actions = data.get("actions") or []
+        immediate = sum(1 for a in actions if a.get("urgency") == "immediate")
         province = org.get("province")
         enriched.append(
             {
@@ -98,6 +100,8 @@ async def cache_top_orgs() -> int:
                 "risk_score": risk.get("score"),
                 "risk_tier": risk.get("tier") or "UNRATED",
                 "top_flag": top_flag_for(breakdown) if breakdown else None,
+                "immediate_actions": immediate,
+                "total_actions": len(actions),
             }
         )
         seen_ids.add(str(org.get("id") or f.stem))
@@ -113,6 +117,9 @@ async def cache_top_orgs() -> int:
             row.risk_tier = risk.get("tier") or "UNRATED"
             breakdown = RiskBreakdown(**risk) if risk else None
             row.top_flag = top_flag_for(breakdown) if breakdown else None
+            actions = screening.get("actions") or []
+            row.immediate_actions = sum(1 for a in actions if a.get("urgency") == "immediate")
+            row.total_actions = len(actions)
         enriched.append(row.model_dump(mode="json"))
         seen_ids.add(row.id)
 
@@ -128,6 +135,9 @@ async def cache_portfolio_stats() -> None:
     flagged_count = 0
     flagged_funding = 0.0
     portfolio_funding = 0.0
+    immediate_action_count = 0
+    scheduled_action_count = 0
+    orgs_with_immediate_actions = 0
     by_tier: dict[str, int] = {"RED": 0, "ORANGE": 0, "YELLOW": 0, "GREEN": 0, "UNRATED": 0}
     for f in files:
         try:
@@ -144,23 +154,35 @@ async def cache_portfolio_stats() -> None:
         if tier in ("RED", "ORANGE", "YELLOW"):
             flagged_count += 1
             flagged_funding += total
-    headline_amt = flagged_funding
-    if headline_amt >= 1e9:
-        amount_str = f"${headline_amt/1e9:.2f} billion"
-    elif headline_amt >= 1e6:
-        amount_str = f"${headline_amt/1e6:.1f} million"
+        actions = data.get("actions") or []
+        org_imm = sum(1 for a in actions if a.get("urgency") == "immediate")
+        immediate_action_count += org_imm
+        scheduled_action_count += sum(1 for a in actions if a.get("urgency") == "scheduled")
+        if org_imm > 0:
+            orgs_with_immediate_actions += 1
+    if immediate_action_count > 0:
+        headline = (
+            f"{immediate_action_count} immediate action{'s' if immediate_action_count != 1 else ''} "
+            f"outstanding across {orgs_with_immediate_actions} flagged "
+            f"{'organization' if orgs_with_immediate_actions == 1 else 'organizations'} "
+            f"in the screened portfolio."
+        )
+    elif scheduled_action_count > 0:
+        headline = (
+            f"{scheduled_action_count} scheduled review{'s' if scheduled_action_count != 1 else ''} "
+            f"recommended across the screened portfolio; no immediate actions."
+        )
     else:
-        amount_str = f"${headline_amt:,.0f}"
-    headline = (
-        f"{amount_str} in active federal/provincial funding flows to "
-        f"entities with at least one red flag."
-    )
+        headline = "No outstanding actions in the screened portfolio."
     stats = {
         "total_orgs_screened": len(files),
         "flagged_org_count": flagged_count,
         "flagged_total_funding": flagged_funding,
         "portfolio_total_funding": portfolio_funding,
         "by_tier": by_tier,
+        "immediate_action_count": immediate_action_count,
+        "scheduled_action_count": scheduled_action_count,
+        "orgs_with_immediate_actions": orgs_with_immediate_actions,
         "headline": headline,
     }
     cache.write_portfolio_stats(stats)
