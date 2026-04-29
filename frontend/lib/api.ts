@@ -4,8 +4,11 @@ import type {
   TopOrgRow,
 } from "./types";
 
+// Server-side: talk directly to backend container; client-side: use Next.js rewrite proxy
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  typeof window === "undefined"
+    ? process.env.BACKEND_INTERNAL_URL || "http://localhost:8000"
+    : "";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {

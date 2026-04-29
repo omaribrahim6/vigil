@@ -36,6 +36,7 @@ services:
       - LETSENCRYPT_HOST=astrali.tech,www.astrali.tech
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_EMAIL=omarmgmi08@gmail.com
+      - BACKEND_INTERNAL_URL=http://vigil_backend:8000
     networks:
       - webnet
 
